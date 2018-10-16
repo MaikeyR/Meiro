@@ -78,7 +78,7 @@ class keyBoard{
   
   
   //Om naar de highscore screen te gaan
-  else if(selectedLetter == 19){
+  else if(selectedLetter == 19 && keys[' ']){
     Screen = 1;
   }
   
