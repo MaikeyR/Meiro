@@ -7,6 +7,20 @@ double lastUpdateTime = 0;
 double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
+
+boolean char1fin = false;
+boolean char2fin = false;
+int finX;
+int finY;
+
+int selectedX = 0;
+int selectedY = 0;
+
+char letter1 = '_';
+char letter2 = '_';
+char letter3 = '_';
+
+int charNumber = 0;
 /**
 Movement char1;
 Movement char2;
@@ -17,6 +31,7 @@ Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[];
+keyBoard Board = new keyBoard();
 
 Highscorescreen HS;
 
@@ -35,6 +50,7 @@ void setup(){
   GameScreen 2 is de game
   ...
   */
+  
   walls = new Wall[600];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -54,6 +70,9 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
+  if(Screen == 3){
+  Board.draw();
+  }
 }
 
 void updateGame() {
@@ -128,7 +147,7 @@ void keyPressed() {
     }
      keys[key] = false;
   }
-  if(Screen == 2){
+  if(Screen == 2 || Screen == 3){
     if (key != CODED && key != SHIFT) { 
     
     keys[key] = true;
@@ -147,7 +166,7 @@ void keyPressed() {
 }
 
 void keyReleased() {
-  if(Screen == 2){  
+  if(Screen == 2 || Screen == 3){  
     if (key != CODED && key != SHIFT) {
       
       keys[key] = false;

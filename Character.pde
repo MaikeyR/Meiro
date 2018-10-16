@@ -11,8 +11,8 @@ class Characters {
   
   Characters() {
     
-    posX = 97;
-    posY = 97;
+    posX = 135;
+    posY = 135;
     sizeX = 25;
     sizeY = 25;
     dx = 150;
@@ -104,16 +104,27 @@ class Characters {
           posY += dy * dt;
       }
     }
+    //Checkt of characters op finish zijn
+    if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
+      char1fin = true;
+    }
+    if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
+      char2fin = true;
+    }
+    if(char2fin && char1fin || keys['f']){
+      Screen = 3;
+    }
   }
     
   
   boolean collidesWithCharacter(Wall aWall) {
     
-      if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt) &&
-        (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)) {
-        return true;
-      }
-      else
-        return false;
+    if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt) &&
+      (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)) {
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }
