@@ -112,7 +112,6 @@ void draw(){
   if(Screen == 3){
     keyBoard Board = new keyBoard();
     Board.draw();
-    println("OK");
   }
 }
 
