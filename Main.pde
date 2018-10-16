@@ -31,7 +31,7 @@ Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[];
-keyBoard Board = new keyBoard();
+
 
 Highscorescreen HS;
 
@@ -70,9 +70,7 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
-  if(Screen == 3){
-  Board.draw();
-  }
+  
 }
 
 void updateGame() {
@@ -109,8 +107,12 @@ void draw(){
 
     updateGame();
     drawGame();
-
+  }
     lastUpdateTime = currentTime;
+  if(Screen == 3){
+    keyBoard Board = new keyBoard();
+    Board.draw();
+    println("OK");
   }
 }
 
@@ -147,7 +149,7 @@ void keyPressed() {
     }
      keys[key] = false;
   }
-  if(Screen == 2 || Screen == 3){
+  if(Screen == 2){
     if (key != CODED && key != SHIFT) { 
     
     keys[key] = true;
@@ -161,12 +163,27 @@ void keyPressed() {
       default : break;
       
     }   
-  } 
-  }  
+   } 
+  }
+  if(Screen == 3){
+    if (key != CODED && key != SHIFT) { 
+    keys[key] = true;
+    
+      switch (key) {
+        
+        case 'A' : keys['a'] = true; break;
+        case 'S' : keys['s'] = true; break;
+        case 'D' : keys['d'] = true; break;
+        case 'W' : keys['w'] = true; break;
+        default : break;
+        
+      }  
+    }
+  }
 }
 
 void keyReleased() {
-  if(Screen == 2 || Screen == 3){  
+  if(Screen == 2){  
     if (key != CODED && key != SHIFT) {
       
       keys[key] = false;
@@ -198,5 +215,20 @@ void keyReleased() {
         
       }
     }
+  }
+  if(Screen == 3){
+    if (key != CODED && key != SHIFT) { 
+    keys[key] = false;
+    
+    switch (key) {
+      
+      case 'A' : keys['a'] = false; break;
+      case 'S' : keys['s'] = false; break;
+      case 'D' : keys['d'] = false; break;
+      case 'W' : keys['w'] = false; break;
+      default : break;
+      
+    }  
   } 
+  }
 }
