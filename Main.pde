@@ -34,6 +34,8 @@ Wall walls[];
 
 
 Highscorescreen HS;
+home startScherm;
+keyBoard Board;
 
 PImage Trophy, PlayButton, Titel;
 
@@ -43,6 +45,8 @@ void setup(){
   PlayButton = loadImage("Playbutton.png");
   Titel = loadImage("Titel.png");
   
+  Board = new keyBoard();  
+  startScherm = new home();
   HS = new Highscorescreen();
   /**
   GameScreen 0 is het startscherm
@@ -62,7 +66,7 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
-  frameRate(30);
+  frameRate(60);
 }
 
 void drawGame() {
@@ -89,12 +93,11 @@ void updateGame() {
 
 
 void draw(){
+    HS.update();
   if (Screen == 0){
-    home startScherm = new home();
     startScherm.draw();
   }
   if(Screen == 1){
-    HS.update();
     HS.draw();
   }
   if(Screen == 2){
@@ -110,7 +113,6 @@ void draw(){
   }
     lastUpdateTime = currentTime;
   if(Screen == 3){
-    keyBoard Board = new keyBoard();
     Board.draw();
   }
 }

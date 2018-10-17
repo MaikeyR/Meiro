@@ -6,10 +6,9 @@ class Highscorescreen {
   String[] nameStr;
   String highscoretxt = "highscore.txt";
   String highscoreNametxt = "highscoreName.txt";
+  boolean gameEnd = true;
 
   Highscorescreen() {
-    int score = 100000; //pas nieuwe score en naam tijdelijk hier aan
-    String name = "ZZZ";
     
     String[] scoreStr = null;
     String[] nameStr = null;
@@ -21,12 +20,18 @@ class Highscorescreen {
       highscoreName[i] = nameStr[i];
       
     }
-    addNewScore(score, name);
   }
   
   void update() {
-  
-    
+    int score = 98;
+    println(gameEnd);
+    if (Screen == 1 && gameEnd == false) {
+      addNewScore(score, Board.name);
+      gameEnd = true;
+    }
+    if (Screen == 2 && gameEnd == true) {
+      gameEnd = false;
+    }
   }
 
   void draw() {
