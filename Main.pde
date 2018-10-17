@@ -30,7 +30,7 @@ Maze theMaze;
 Characters char1;
 Characters char2;
 Maze theMaze;
-Wall walls[];
+Wall walls[][];
 
 
 Highscorescreen HS;
@@ -55,7 +55,7 @@ void setup(){
   ...
   */
   
-  walls = new Wall[600];
+  walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
   theMaze = new Maze();
@@ -81,6 +81,7 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
+  //theMaze.charCollisionCheck();
 
   if (char12) {
 
@@ -117,7 +118,7 @@ void draw(){
   }
 }
 
-void keyPressed() { 
+void keyPressed() {
   if(Screen == 0){
     
     keys[key] = true;
@@ -151,11 +152,11 @@ void keyPressed() {
      keys[key] = false;
   }
   if(Screen == 2){
-    if (key != CODED && key != SHIFT) { 
+    if (key != CODED && key != SHIFT) {
     
-    keys[key] = true;
+      keys[key] = true;
     
-    switch (key) {
+      switch (key) {
       
       case 'A' : keys['a'] = true; break;
       case 'S' : keys['s'] = true; break;
@@ -163,11 +164,11 @@ void keyPressed() {
       case 'W' : keys['w'] = true; break;
       default : break;
       
-    }   
-   } 
+      }   
+    } 
   }
   if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
+    if (key != CODED && key != SHIFT) {
     keys[key] = true;
     
       switch (key) {
@@ -184,7 +185,7 @@ void keyPressed() {
 }
 
 void keyReleased() {
-  if(Screen == 2){  
+  if(Screen == 2){
     if (key != CODED && key != SHIFT) {
       
       keys[key] = false;
@@ -218,18 +219,18 @@ void keyReleased() {
     }
   }
   if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
-    keys[key] = false;
+    if (key != CODED && key != SHIFT) {
+      keys[key] = false;
     
-    switch (key) {
+      switch (key) {
       
-      case 'A' : keys['a'] = false; break;
-      case 'S' : keys['s'] = false; break;
-      case 'D' : keys['d'] = false; break;
-      case 'W' : keys['w'] = false; break;
-      default : break;
+        case 'A' : keys['a'] = false; break;
+        case 'S' : keys['s'] = false; break;
+        case 'D' : keys['d'] = false; break;
+        case 'W' : keys['w'] = false; break;
+        default : break;
       
-    }  
-  } 
+      }
+    }
   }
 }
