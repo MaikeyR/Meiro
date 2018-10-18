@@ -1,6 +1,7 @@
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
+
 boolean char12 = true;
 double currentTime = 0;
 double lastUpdateTime = 0;
@@ -8,49 +9,43 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-boolean char1fin = false;
-boolean char2fin = false;
-int finX;
-int finY;
+int n=2;
+float [] wallPosX = new float[n];
+float [] wallPosY = new float[n];
+boolean [] wallPos = new boolean[n];
 
-int selectedX = 0;
-int selectedY = 0;
 
-char letter1 = '_';
-char letter2 = '_';
-char letter3 = '_';
 
-int charNumber = 0;
+
 /**
-Movement char1;
-Movement char2;
-Maze theMaze;
-*/
+ Movement char1;
+ Movement char2;
+ Maze theMaze;
+ */
 
 Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[];
-
+Assets asset;
 
 Highscorescreen HS;
 
 PImage Trophy, PlayButton, Titel;
 
-void setup(){
+void setup() {
   size(1280, 720);
   Trophy = loadImage("Trophy.png");
   PlayButton = loadImage("Playbutton.png");
   Titel = loadImage("Titel.png");
-  
+
   HS = new Highscorescreen();
   /**
-  GameScreen 0 is het startscherm
-  GameScreen 1 is het highscore scherm
-  GameScreen 2 is de game
-  ...
-  */
-  
+   GameScreen 0 is het startscherm
+   GameScreen 1 is het highscore scherm
+   GameScreen 2 is de game
+   ...
+   */
   walls = new Wall[600];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -58,10 +53,20 @@ void setup(){
   theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 435;
-  char2.posY = 400;
+  asset = new Assets();
+  char2.posX = 1006;
+  char2.posY = 61;
   char2.sizeX = 10;
   char2.sizeY = 10;
+
+  wallPos[0]=true;
+  wallPosY[0]=255;
+  wallPosX[0]=115;
+  wallPos[1]=false;
+  wallPosY[1]=500;
+  wallPosX[1]=430;
+
+
   frameRate(30);
 }
 
@@ -70,7 +75,7 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
-  
+  asset.movingWalls();
 }
 
 void updateGame() {
@@ -88,16 +93,16 @@ void updateGame() {
 }
 
 
-void draw(){
-  if (Screen == 0){
+void draw() {
+  if (Screen == 0) {
     home startScherm = new home();
     startScherm.draw();
   }
-  if(Screen == 1){
+  if (Screen == 1) {
     HS.update();
     HS.draw();
   }
-  if(Screen == 2){
+  if (Screen == 2) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
     //System.out.println("millis: " + millis());
@@ -107,127 +112,115 @@ void draw(){
 
     updateGame();
     drawGame();
-  }
+
     lastUpdateTime = currentTime;
-  if(Screen == 3){
-    keyBoard Board = new keyBoard();
-    Board.draw();
   }
 }
 
 void keyPressed() { 
-  if(Screen == 0){
-    
+  if (Screen == 0) {
+
     keys[key] = true;
-    
+
     if (key != CODED && key != SHIFT) { 
-      if(!keys[' ']){
+      if (!keys[' ']) {
         keys['a'] = false;
         keys['d'] = false;
       }             
       keys[key] = true;
-            
+
       switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
+
+      case 'A' : 
+        keys['a'] = true; 
+        break;
+      case 'S' : 
+        keys['s'] = true; 
+        break;
+      case 'D' : 
+        keys['d'] = true; 
+        break;
+      case 'W' : 
+        keys['w'] = true; 
+        break;
+      default : 
+        break;
       }
-      if(!keys['a'] && !keys['d']){
+      if (!keys['a'] && !keys['d']) {
         keys[key] = false;
       }
     }
   }
-  if(Screen == 1){
+  if (Screen == 1) {
     keys[key] = true;
-    if(keys[' '] == true){
-     Screen = 0; 
+    if (keys[' '] == true) {
+      Screen = 0;
     }
-     keys[key] = false;
+    keys[key] = false;
   }
-  if(Screen == 2){
+  if (Screen == 2) {
     if (key != CODED && key != SHIFT) { 
-    
-    keys[key] = true;
-    
-    switch (key) {
-      
-      case 'A' : keys['a'] = true; break;
-      case 'S' : keys['s'] = true; break;
-      case 'D' : keys['d'] = true; break;
-      case 'W' : keys['w'] = true; break;
-      default : break;
-      
-    }   
-   } 
-  }
-  if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
-    keys[key] = true;
-    
+
+      keys[key] = true;
+
       switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
-      }  
+
+      case 'A' : 
+        keys['a'] = true; 
+        break;
+      case 'S' : 
+        keys['s'] = true; 
+        break;
+      case 'D' : 
+        keys['d'] = true; 
+        break;
+      case 'W' : 
+        keys['w'] = true; 
+        break;
+      default : 
+        break;
+      }
     }
   }
 }
 
 void keyReleased() {
-  if(Screen == 2){  
+  if (Screen == 2) {  
     if (key != CODED && key != SHIFT) {
-      
+
       keys[key] = false;
-      
+
       if (key == 'e' || key == 'E') {
-        
+
         keys['e'] = false;
         keys['E'] = false;
-        
+
         if (char12 == true) {
-          
+
           char12 = false;
-          
         } else if (char12 == false) {
-          
+
           char12 = true;
-          
         }
-        
       } 
-      
+
       switch (key) {
-        
-        case 'A' : keys['a'] = false; break;
-        case 'S' : keys['s'] = false; break;
-        case 'D' : keys['d'] = false; break;
-        case 'W' : keys['w'] = false; break;
-        default : break;
-        
+
+      case 'A' : 
+        keys['a'] = false; 
+        break;
+      case 'S' : 
+        keys['s'] = false; 
+        break;
+      case 'D' : 
+        keys['d'] = false; 
+        break;
+      case 'W' : 
+        keys['w'] = false; 
+        break;
+      default : 
+        break;
       }
     }
-  }
-  if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
-    keys[key] = false;
-    
-    switch (key) {
-      
-      case 'A' : keys['a'] = false; break;
-      case 'S' : keys['s'] = false; break;
-      case 'D' : keys['d'] = false; break;
-      case 'W' : keys['w'] = false; break;
-      default : break;
-      
-    }  
-  } 
   }
 }
