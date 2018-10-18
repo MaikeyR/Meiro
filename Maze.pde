@@ -1,68 +1,81 @@
 class Maze {
-  char []grid = new char[] {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'a', 'a', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'a', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'a', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'a', 'a', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'b', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'b', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'f', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'};
-  char wall;
+  int xCord1, yCord1, xCord2, yCord2;
   int X = 10;
   int Y = 10;
   
   
   void gridSetup() {
     
-    for (int i = 0 ; i < grid.length ; i++) {//oof
+    for (int i = 0 ; i < 20 ; i++) {
       
-      walls[i] = new Wall();
-      
-    }
-    
+      for (int u = 0 ; u < 30 ; u++) {
+        
+        walls[i][u] = new Wall();
+        
+      }      
+    }    
   }
   
-  //void gridGen() {
-  //  for (int i = 0; i < grid.length; i++) {
-  //    int d = (int)random(2);
-  //    if (d<1) {
-  //      wall = 'a';
-  //    } else if (d>=1) {
-  //      wall = 'b';
-  //    }
-  //    grid[i] = wall;
-  //  }
-  //}
-
-  void wallDraw() {
-    grd = 0;
-    Y = 10;
+  void charCollisionCheck() {
     
-    for (int i=0; i<20; i++) {
+    xCord1 = (int) (char1.posX / 35);
+    yCord1 = (int) (char1.posY / 35);
+    xCord2 = (int) (char2.posX / 35);
+    yCord2 = (int) (char2.posY / 35);
+    println(xCord1);
+    println(yCord1);
+    
+    if (grid[yCord1][xCord1 + 1] == 'a' && (char1.posX + (char1.sizeX / 2)) > xCord1 * 35 + 33) {
       
-      for (int j=0; j<30; j++) {
-        //println(grd);
-        
-        if (grid[grd]=='a') {
-          
-          fill(204, 102, 0);
-          walls[grd].y = Y;
-          walls[grd].x = X;
-          walls[grd].draw();
-          
-        } else if (grid[grd]=='b') {
-          fill(153);
-          rect(X, Y, 35, 35);
-        }else if(grid[grd] == 'f'){
-          fill(0, 0, 255);
-          rect(X, Y, 35, 35);
-          finX = X;
-          finY = Y;
-        }
-        
-       X += 35;
-        
-        if (grd<599) {
-          grd ++;
-        }
-      }
-      Y += 35;
-      X = 10;
+      keys['d'] = false;
+      
+    }
+    else
+    keys['d'] = true;
+    
+    if (grid[yCord1][xCord1 - 1] == 'a' && char1.posX - (char1.sizeX / 2) < (xCord1) * 35 + 1) {
+      
+      char1.posX = char1.posX - (char1.posX % 35)  + (char1.sizeX/2);
+      keys['a'] = false;
+      
     }
     
-  }
+    if (grid[yCord1 + 1][xCord1] == 'a' && (char1.posY + (char1.sizeY / 2)) > yCord1 * 35 + 34) {
+      
+      char1.posY = char1.posY - (char1.posY % 35) + 35 - (char1.sizeY/2);
+      keys['s'] = false;
+      
+    }
     
+    if (grid[yCord1 - 1][xCord1] == 'a' && char1.posY - (char1.sizeY / 2) < (yCord1) * 35 + 1) {
+      
+      char1.posY = char1.posY - (char1.posY % 35)  + (char1.sizeY/2);
+      keys['w'] = false;
+      
+    }
+  }
+
+  void wallDraw() {
+    
+    for (int i = 0 ; i < 20 ; i++) {
+      
+      for (int j = 0 ; j < 30 ; j++) {
+        
+        X = 35 * j;
+        Y = 35 * i;
+        
+        if (grid[i][j] == 'a') {
+          
+          walls[i][j].x = X;
+          walls[i][j].y = Y;
+          fill(200, 50, 50);
+          walls[i][j].draw();
+          
+        } else {          
+          fill(50, 50, 200);
+          rect(X, Y, 35, 35);          
+        }        
+      }      
+    }    
+  }    
 }

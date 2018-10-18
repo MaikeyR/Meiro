@@ -5,6 +5,11 @@ class keyBoard{
     'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ' ',
     'Z', 'X', 'C', 'V', 'B', 'N', 'M', ' ', ' ', ' '};
   boolean spacePressed = false;  
+
+  String l1;
+  String l2;
+  String l3;
+  String name;
     
   
     
@@ -79,6 +84,10 @@ class keyBoard{
   
   //Om naar de highscore screen te gaan
   else if(selectedLetter == 19 && keys[' ']){
+    l1 = str(letter1);
+    l2 = str(letter2);
+    l3 = str(letter3);
+    name = l1 + l2 + l3;
     Screen = 1;
   }
   
@@ -96,10 +105,13 @@ class keyBoard{
        break;
     }
   }
+  
   textSize(70);
   text(letter1, 100, 100);
   text(letter2, 200, 100);
   text(letter3, 300, 100);
+   
+  
     
     if(key != CODED){
       keys[key] = false;
