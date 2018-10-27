@@ -39,6 +39,7 @@ void draw() {
           } else if (WallPosX[i] == 230) {
             WallPosX[i] -= 30;
           }
+          delay(300);
         }
         //posY
       }
