@@ -30,19 +30,24 @@ Maze theMaze;
 Characters char1;
 Characters char2;
 Maze theMaze;
-Wall walls[];
-
+Wall walls[][];
 
 Highscorescreen HS;
+home startScherm;
+keyBoard Board;
+instellingen instellingen;
 
-PImage Trophy, PlayButton, Titel;
+PImage Trophy, PlayButton, Titel, Settings;
 
 void setup(){
   size(1280, 720);
   Trophy = loadImage("Trophy.png");
   PlayButton = loadImage("Playbutton.png");
   Titel = loadImage("Titel.png");
+  Settings = loadImage("Settings.png");
   
+  Board = new keyBoard();  
+  startScherm = new home();
   HS = new Highscorescreen();
   /**
   GameScreen 0 is het startscherm
@@ -51,7 +56,7 @@ void setup(){
   ...
   */
   
-  walls = new Wall[600];
+  walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
   theMaze = new Maze();
@@ -62,7 +67,8 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
-  frameRate(30);
+  instellingen = new instellingen();
+  frameRate(60);
 }
 
 void drawGame() {
@@ -77,6 +83,7 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
+  //theMaze.charCollisionCheck();
 
   if (char12) {
 
@@ -89,12 +96,13 @@ void updateGame() {
 
 
 void draw(){
+  clear();
+  background(255);
+    HS.update();
   if (Screen == 0){
-    home startScherm = new home();
     startScherm.draw();
   }
   if(Screen == 1){
-    HS.update();
     HS.draw();
   }
   if(Screen == 2){
@@ -110,20 +118,24 @@ void draw(){
   }
     lastUpdateTime = currentTime;
   if(Screen == 3){
-    keyBoard Board = new keyBoard();
     Board.draw();
   }
+  if(Screen == 4){
+    instellingen.render();
+    instellingen.draw();
+  }
+  
 }
 
-void keyPressed() { 
-  if(Screen == 0){
-    
-    keys[key] = true;
-    
+void keyPressed() {
+  if(Screen == 0){    
     if (key != CODED && key != SHIFT) { 
+      keys[key] = true;
+      
       if(!keys[' ']){
         keys['a'] = false;
         keys['d'] = false;
+        keys['s'] = false;
       }             
       keys[key] = true;
             
@@ -136,7 +148,7 @@ void keyPressed() {
         default : break;
         
       }
-      if(!keys['a'] && !keys['d']){
+      if(!keys['a'] && !keys['d'] && !keys['s']){
         keys[key] = false;
       }
     }
@@ -148,12 +160,12 @@ void keyPressed() {
     }
      keys[key] = false;
   }
-  if(Screen == 2){
-    if (key != CODED && key != SHIFT) { 
+  if(Screen == 2 || Screen == 3 || Screen == 4){
+    if (key != CODED && key != SHIFT) {
     
-    keys[key] = true;
+      keys[key] = true;
     
-    switch (key) {
+      switch (key) {
       
       case 'A' : keys['a'] = true; break;
       case 'S' : keys['s'] = true; break;
@@ -161,28 +173,13 @@ void keyPressed() {
       case 'W' : keys['w'] = true; break;
       default : break;
       
-    }   
-   } 
-  }
-  if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
-    keys[key] = true;
-    
-      switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
-      }  
-    }
+      }   
+    } 
   }
 }
 
 void keyReleased() {
-  if(Screen == 2){  
+  if(Screen == 2){
     if (key != CODED && key != SHIFT) {
       
       keys[key] = false;
@@ -215,19 +212,19 @@ void keyReleased() {
       }
     }
   }
-  if(Screen == 3){
-    if (key != CODED && key != SHIFT) { 
-    keys[key] = false;
+  if(Screen == 3 || Screen == 4){
+    if (key != CODED && key != SHIFT) {
+      keys[key] = false;
     
-    switch (key) {
+      switch (key) {
       
-      case 'A' : keys['a'] = false; break;
-      case 'S' : keys['s'] = false; break;
-      case 'D' : keys['d'] = false; break;
-      case 'W' : keys['w'] = false; break;
-      default : break;
+        case 'A' : keys['a'] = false; break;
+        case 'S' : keys['s'] = false; break;
+        case 'D' : keys['d'] = false; break;
+        case 'W' : keys['w'] = false; break;
+        default : break;
       
-    }  
-  } 
+      }
+    }
   }
 }
