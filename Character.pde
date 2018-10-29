@@ -192,13 +192,13 @@ class Characters {
         return false;
   }
   
-   boolean checkCollision(movingWall aMovingWall) {
+//   boolean checkCollision(movingWall aMovingWall) {
     
-      if ((posX + (sizeX / 2) > aMovingWall.x - dx * dt) && (posX - (sizeX / 2) < aMovingWall.x + aMovingWall.size + dx * dt) &&
-        (posY + (sizeY / 2) > aMovingWall.y - dy * dt) && (posY - (sizeY / 2) < aMovingWall.y + aMovingWall.size + dy * dt)) {
-          return true;
-      }
-      else
-        return false;
-  }
+//      if ((posX + (sizeX / 2) > aMovingWall.x - dx * dt) && (posX - (sizeX / 2) < aMovingWall.x + aMovingWall.size + dx * dt) &&
+//        (posY + (sizeY / 2) > aMovingWall.y - dy * dt) && (posY - (sizeY / 2) < aMovingWall.y + aMovingWall.size + dy * dt)) {
+//          return true;
+//      }
+//      else
+//        return false;
+//  }
 }
