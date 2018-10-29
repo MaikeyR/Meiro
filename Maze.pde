@@ -20,22 +20,31 @@ class Maze {
     for (int i = 0 ; i < 20 ; i++) {
       
       for (int j = 0 ; j < 30 ; j++) {
-        
-        X = 35 * j;
-        Y = 35 * i;
-        
-        if (grid[i][j] == 'a') {
-          
-          walls[i][j].x = X;
+
+        if (grid[i][j]=='a') {
+          fill(204, 102, 0);
           walls[i][j].y = Y;
-          fill(200, 50, 50);
+          walls[i][j].x = X;
           walls[i][j].draw();
-          
-        } else {          
-          fill(50, 50, 200);
-          rect(X, Y, 35, 35);          
+        } else if (grid[i][j]=='b'||grid[i][j]=='v') {
+          fill(153);
+          rect(X, Y, 35, 35);
+        } 
+        else if (grid[i][j]=='s') {
+          walls[i][j].y = Y;
+          walls[i][j].x = X-15;
+          walls[i][j].draw();
+        } 
+        else if (grid[i][j]=='h') {
+          walls[i][j].y = Y-20;
+          walls[i][j].x = X;
+          walls[i][j + 1].draw();
         }        
-      }      
-    }    
+      } 
+        X += 35;
+
+      }
+      Y += 35;
+      X = 10; 
   }    
 }
