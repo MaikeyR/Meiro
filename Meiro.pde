@@ -21,6 +21,11 @@ char letter2 = '_';
 char letter3 = '_';
 
 int charNumber = 0;
+/**
+Movement char1;
+Movement char2;
+Maze theMaze;
+*/
 
 Characters char1;
 Characters char2;
@@ -31,6 +36,7 @@ Highscorescreen HS;
 home startScherm;
 keyBoard Board;
 
+Timer timer = new Timer();
 instellingen instellingen;
 
 PImage Trophy, PlayButton, Titel, Settings;
@@ -49,23 +55,22 @@ void setup(){
   GameScreen 0 is het startscherm
   GameScreen 1 is het highscore scherm
   GameScreen 2 is de game
-  GameScreen 3 is het endscreen
-  GameScreen 4 is instellingen
+  ...
   */
   
-  //classes worden opgeroepen
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
+  theMaze = new Maze();
   theMaze.wallDraw();
-  instellingen = new instellingen();
-  
   char1 = new Characters();
   char2 = new Characters();
   char2.posX = 435;
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
+
+  instellingen = new instellingen();
 
   frameRate(60);
 }
@@ -75,6 +80,7 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
+  timer.draw();
 }
 
 void updateGame() {
@@ -84,18 +90,21 @@ void updateGame() {
   //theMaze.charCollisionCheck();
 
   if (char12) {
+
     char1.update(dt);
   } else {
+
     char2.update(dt);
   }
 }
 
 
 void draw(){
+
   clear();
   background(255);
 
-  HS.update();
+    HS.update();
   if (Screen == 0){
     startScherm.draw();
   }
@@ -105,6 +114,11 @@ void draw(){
   if(Screen == 2){
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    //System.out.println("millis: " + millis());
+    //System.out.println("last update time: " + lastUpdateTime);
+    //System.out.println("current time: " + currentTime);
+    //System.out.println("down time: " + dt);
+
     updateGame();
     drawGame();
   }
@@ -116,6 +130,7 @@ void draw(){
     instellingen.render();
     instellingen.draw();
   }
+  
 }
 
 void keyPressed() {
@@ -124,7 +139,7 @@ void keyPressed() {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
       
-      if(!keys['q'] || keys['a'] || keys['d'] || keys['s']){
+      if(!keys[' ']){
         keys['a'] = false;
         keys['d'] = false;
         keys['s'] = false;
@@ -147,7 +162,7 @@ void keyPressed() {
   }
   if(Screen == 1){
     keys[key] = true;
-    if(keys['q'] == true){
+    if(keys[' '] == true){
      Screen = 0; 
     }
      keys[key] = false;

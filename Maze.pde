@@ -15,52 +15,13 @@ class Maze {
       }      
     }    
   }
-  
-  void charCollisionCheck() {
-    
-    xCord1 = (int) (char1.posX / 35);
-    yCord1 = (int) (char1.posY / 35);
-    xCord2 = (int) (char2.posX / 35);
-    yCord2 = (int) (char2.posY / 35);
-    println(xCord1);
-    println(yCord1);
-    
-    if (grid[yCord1][xCord1 + 1] == 'a' && (char1.posX + (char1.sizeX / 2)) > xCord1 * 35 + 33) {
-      
-      keys['d'] = false;
-      
-    }
-    else
-    keys['d'] = true;
-    
-    if (grid[yCord1][xCord1 - 1] == 'a' && char1.posX - (char1.sizeX / 2) < (xCord1) * 35 + 1) {
-      
-      char1.posX = char1.posX - (char1.posX % 35)  + (char1.sizeX/2);
-      keys['a'] = false;
-      
-    }
-    
-    if (grid[yCord1 + 1][xCord1] == 'a' && (char1.posY + (char1.sizeY / 2)) > yCord1 * 35 + 34) {
-      
-      char1.posY = char1.posY - (char1.posY % 35) + 35 - (char1.sizeY/2);
-      keys['s'] = false;
-      
-    }
-    
-    if (grid[yCord1 - 1][xCord1] == 'a' && char1.posY - (char1.sizeY / 2) < (yCord1) * 35 + 1) {
-      
-      char1.posY = char1.posY - (char1.posY % 35)  + (char1.sizeY/2);
-      keys['w'] = false;
-      
-    }
-  }
-
   void wallDraw() {
     
     for (int i = 0 ; i < 20 ; i++) {
-      
       for (int j = 0 ; j < 30 ; j++) {
-
+        X = j * 35;
+        Y = i * 35;
+        
         if (grid[i][j]=='a') {
           fill(204, 102, 0);
           walls[i][j].y = Y;
@@ -79,12 +40,30 @@ class Maze {
           walls[i][j].y = Y-20;
           walls[i][j].x = X;
           walls[i][j + 1].draw();
-        }        
+        } 
+        else if (grid[i][j] == 'w'){
+          walls[i][j].y = Y;
+          walls[i][j].x = X;
+          fill(100, 0, 100);
+          walls[i][j].draw();
+        }
+        if (grid[i][j] == 'v'){
+          walls[i][j].y = Y;
+          walls[i][j].x = X;
+          fill(100, 0, 100);
+          walls[i][j].draw();
+        }
+        if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j - 1] == 'v'){
+           grid[i][j + 1] = 'v';
+           grid[i][j - 1] = 'b';
+           keys[key] = false;
+        }
+        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j + 1] == 'v'){
+           grid[i][j - 1] = 'v';
+           grid[i][j + 1] = 'b';
+           keys[key] = false;
+        }
       } 
-        X += 35;
-
-      }
-      Y += 35;
-      X = 10; 
+    } 
   }    
 }
