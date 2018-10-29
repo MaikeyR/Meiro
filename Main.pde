@@ -32,18 +32,20 @@ Characters char2;
 Maze theMaze;
 Wall walls[][];
 
-
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
 
-PImage Trophy, PlayButton, Titel;
+instellingen instellingen;
+
+PImage Trophy, PlayButton, Titel, Settings;
 
 void setup(){
   size(1280, 720);
   Trophy = loadImage("Trophy.png");
   PlayButton = loadImage("Playbutton.png");
   Titel = loadImage("Titel.png");
+  Settings = loadImage("Settings.png");
   
   Board = new keyBoard();  
   startScherm = new home();
@@ -66,6 +68,9 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
+
+  instellingen = new instellingen();
+
   frameRate(60);
 }
 
@@ -94,6 +99,10 @@ void updateGame() {
 
 
 void draw(){
+
+  clear();
+  background(255);
+
     HS.update();
   if (Screen == 0){
     startScherm.draw();
@@ -116,17 +125,23 @@ void draw(){
   if(Screen == 3){
     Board.draw();
   }
+  if(Screen == 4){
+    instellingen.render();
+    instellingen.draw();
+  }
+  
 }
 
 void keyPressed() {
+
   if(Screen == 0){
-    
-    keys[key] = true;
-    
     if (key != CODED && key != SHIFT) { 
+      keys[key] = true;
+      
       if(!keys[' ']){
         keys['a'] = false;
         keys['d'] = false;
+        keys['s'] = false;
       }             
       keys[key] = true;
             
@@ -139,7 +154,7 @@ void keyPressed() {
         default : break;
         
       }
-      if(!keys['a'] && !keys['d']){
+      if(!keys['a'] && !keys['d'] && !keys['s']){
         keys[key] = false;
       }
     }
@@ -151,7 +166,8 @@ void keyPressed() {
     }
      keys[key] = false;
   }
-  if(Screen == 2){
+  if(Screen == 2 || Screen == 3 || Screen == 4){
+
     if (key != CODED && key != SHIFT) {
     
       keys[key] = true;
@@ -166,21 +182,6 @@ void keyPressed() {
       
       }   
     } 
-  }
-  if(Screen == 3){
-    if (key != CODED && key != SHIFT) {
-    keys[key] = true;
-    
-      switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
-      }  
-    }
   }
 }
 
@@ -218,7 +219,8 @@ void keyReleased() {
       }
     }
   }
-  if(Screen == 3){
+
+  if(Screen == 3 || Screen == 4){
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
     
