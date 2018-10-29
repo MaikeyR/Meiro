@@ -10,12 +10,6 @@ int grd = 0;
 boolean [] keys = new boolean[128];
 
 int n=2;
-float [] wallPosX = new float[n];
-float [] wallPosY = new float[n];
-boolean [] wallPos = new boolean[n];
-
-
-
 
 /**
  Movement char1;
@@ -27,7 +21,7 @@ Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[];
-Assets asset;
+movingWall asset1[];
 
 Highscorescreen HS;
 
@@ -47,26 +41,18 @@ void setup() {
    ...
    */
   walls = new Wall[600];
+  asset1 = new movingWall[600];
   theMaze = new Maze();
   theMaze.gridSetup();
   theMaze = new Maze();
   theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  asset = new Assets();
   char2.posX = 1006;
   char2.posY = 61;
   char2.sizeX = 10;
   char2.sizeY = 10;
-
-  wallPos[0]=true;
-  wallPosY[0]=255;
-  wallPosX[0]=115;
-  wallPos[1]=false;
-  wallPosY[1]=500;
-  wallPosX[1]=430;
-
-
+  
   frameRate(30);
 }
 
@@ -75,7 +61,6 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
-  asset.movingWalls();
 }
 
 void updateGame() {

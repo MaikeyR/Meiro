@@ -11,8 +11,8 @@ class Characters {
   
   Characters() {
     
-    posX = 135;
-    posY = 135;
+    posX = 61;
+    posY = 61;
     sizeX = 25;
     sizeY = 25;
     dx = 150;
@@ -104,27 +104,101 @@ class Characters {
           posY += dy * dt;
       }
     }
-    //Checkt of characters op finish zijn
-    if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
-      char1fin = true;
-    }
-    if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
-      char2fin = true;
-    }
-    if(char2fin && char1fin || keys['f']){
-      Screen = 3;
-    }
+  //  if (keys['a'] == true) {
+  //    boolean wallLeft = true;
+      
+  //    for (int i = 0; i < asset1.length; i++) {
+        
+  //      if (checkCollision(asset1[i])) {
+            
+  //        if ((posX + (sizeX / 2) > asset1[i].x) &&
+  //          (posY + (sizeY / 2) > asset1[i].y) && (posY - (sizeY / 2) < asset1[i].y + asset1[i].size)) {
+  //          wallLeft = false;
+  //        }
+  //      }
+  //    }
+      
+  //    if (wallLeft == true) {
+  //        posX -= dx * dt;
+  //    }
+  //  } 
+    
+  //  if (keys['d'] == true) {
+  //    boolean wallRight = true;
+      
+  //    for (int i = 0; i < asset1.length; i++) {
+        
+  //      if (checkCollision(asset1[i])) {
+            
+  //        if ((posX - (sizeX / 2) < asset1[i].x + asset1[i].size) &&
+  //          (posY + (sizeY / 2) > asset1[i].y) && (posY - (sizeY / 2) < asset1[i].y + asset1[i].size)) {
+  //          wallRight = false;
+  //        }
+  //      }
+  //    }
+      
+  //    if (wallRight == true) {
+  //        posX += dx * dt;
+  //    }
+  //  } 
+    
+  //  if (keys['w'] == true) {
+  //    boolean wallUp = true;
+      
+  //    for (int i = 0; i < walls.length; i++) {
+        
+  //      if (checkCollision(asset1[i])) {
+            
+  //        if ((posY + (sizeY / 2) > asset1[i].y) &&
+  //          (posX - (sizeX / 2) < asset1[i].x + asset1[i].size) &&  (posX + (sizeX / 2) > asset1[i].x)) {
+  //          wallUp = false;
+  //        }
+  //      }
+  //    }
+      
+  //    if (wallUp == true) {
+  //        posY -= dy * dt;
+  //    }
+  //  } 
+    
+  //  if (keys['s'] == true) {
+  //    boolean wallDown = true;
+      
+  //    for (int i = 0; i < asset1.length; i++) {
+        
+  //      if (checkCollision(asset1[i])) {
+            
+  //        if ((posY - (sizeY / 2) < asset1[i].y + asset1[i].size) &&
+  //          (posX - (sizeX / 2) < asset1[i].x + asset1[i].size) &&  (posX + (sizeX / 2) > asset1[i].x)){
+  //          wallDown = false;
+  //        }
+  //      }
+  //    }
+      
+  //    if (wallDown == true) {
+  //        posY += dy * dt;
+  //    }
+  //  }
   }
     
   
   boolean collidesWithCharacter(Wall aWall) {
     
-    if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt) &&
-      (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)) {
-      return true;
-    }
-    else{
-      return false;
-    }
+      if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt) &&
+        (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)) {
+        return true;
+      }
+      else
+        return false;
+  }
+  
+   boolean checkCollision(movingWall aMovingWall) {
+    
+      if ((posX + (sizeX / 2) > aMovingWall.x - dx * dt) && (posX - (sizeX / 2) < aMovingWall.x + aMovingWall.size + dx * dt) &&
+        (posY + (sizeY / 2) > aMovingWall.y - dy * dt) && (posY - (sizeY / 2) < aMovingWall.y + aMovingWall.size + dy * dt)) {
+          return true;
+      }
+      else
+        return false;
   }
 }
