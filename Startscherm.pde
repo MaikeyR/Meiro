@@ -2,13 +2,7 @@ class home{
   public int lastPressed(int lastKeyCode){
     return lastKeyCode;
   }
-  
-  
-  /**
-    TO DO:
-    Titel art*
-    Selector key aanstellen
-  */
+
   int lastKeyCode;
  
   void draw(){
