@@ -71,7 +71,12 @@ class Maze {
           fill(200, 50, 50);
           walls[i][j].draw();
           
-        } else {          
+        }else if(grid[grd] == 'f'){
+          fill(0, 0, 255);
+          rect(X, Y, 35, 35);
+          finX = X;
+          finY = Y;
+        }else {          
           fill(50, 50, 200);
           rect(X, Y, 35, 35);          
         }        
