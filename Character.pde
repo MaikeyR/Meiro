@@ -129,8 +129,16 @@ class Characters {
       if (wallUp == false) {
           posY += dy * dt;
       }
-    }    
-    if(keys['f'] = true){
+
+    }   
+    //Checkt of characters op finish zijn
+    if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
+      char1fin = true;
+    }
+    if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
+      char2fin = true;
+    }
+    if(char2fin && char1fin || keys['f']){
       Screen = 3;
     }
   }
