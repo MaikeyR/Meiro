@@ -140,6 +140,7 @@ class Characters {
     }
     if(char2fin && char1fin || keys['f']){
       Screen = 3;
+      timer.stop();
     }
   }
 }

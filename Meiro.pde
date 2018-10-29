@@ -36,6 +36,7 @@ Highscorescreen HS;
 home startScherm;
 keyBoard Board;
 
+Timer timer = new Timer();
 instellingen instellingen;
 
 PImage Trophy, PlayButton, Titel, Settings;
@@ -79,7 +80,7 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
-  
+  timer.draw();
 }
 
 void updateGame() {
