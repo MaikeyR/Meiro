@@ -34,37 +34,34 @@ class Maze {
       for (int j=0; j<30; j++) {
         //println(grd);
 
-        if (grid[grd]=='a') {
+        if (grid[i][j]=='a') {
           fill(204, 102, 0);
-          walls[grd].y = Y;
-          walls[grd].x = X;
-          walls[grd].draw();
-        } else if (grid[grd]=='b'||grid[grd]=='v') {
+          walls[i][j].y = Y;
+          walls[i][j].x = X;
+          walls[i][j].draw();
+        } else if (grid[i][j]=='b'||grid[i][j]=='v') {
           fill(153);
           rect(X, Y, 35, 35);
         } 
-        else if (grid[grd]=='s') {
-          walls[grd].y = Y;
-          walls[grd].x = X-15;
-          walls[grd].draw();
+        else if (grid[i][j]=='s') {
+          walls[i][j].y = Y;
+          walls[i][j].x = X-15;
+          walls[i][j].draw();
         } 
-        else if (grid[grd]=='h') {
-          walls[grd].y = Y-20;
-          walls[grd].x = X;
-          walls[grd+30].draw();
+        else if (grid[i][j]=='h') {
+          walls[i][j].y = Y-20;
+          walls[i][j].x = X;
+          walls[i][j + 1].draw();
         } 
-        else if (grid[grd]=='w') {
+        else if (grid[i][j]=='w') {
           fill(250, 0, 0);
-          asset1[grd].y = Y;
-          asset1[grd].x = X;
-          asset1[grd].draw();
+          asset1[i][j].y = Y;
+          asset1[i][j].x = X;
+          asset1[i][j].draw();
         }
 
         X += 35;
 
-        if (grd<599) {
-          grd ++;
-        }
       }
       Y += 35;
       X = 10;
