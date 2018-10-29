@@ -6,10 +6,9 @@ class Highscorescreen {
   String[] nameStr;
   String highscoretxt = "highscore.txt";
   String highscoreNametxt = "highscoreName.txt";
+  boolean gameEnd = true;
 
   Highscorescreen() {
-    int score = 100000; //pas nieuwe score en naam tijdelijk hier aan
-    String name = "ZZZ";
     
     String[] scoreStr = null;
     String[] nameStr = null;
@@ -21,12 +20,16 @@ class Highscorescreen {
       highscoreName[i] = nameStr[i];
       
     }
-    addNewScore(score, name);
   }
   
   void update() {
-  
-    
+    if (Screen == 1 && gameEnd == false) {
+      addNewScore(timer.getElapsedTime(), Board.name);
+      gameEnd = true;
+    }
+    if (Screen == 2 && gameEnd == true) {
+      gameEnd = false;
+    }
   }
 
   void draw() {
@@ -62,7 +65,7 @@ class Highscorescreen {
     
     for (int i = 0; i < highscore.length; i++) {
       textSize(28);
-      text(highscore[i], 860, 210 + 40 * i);
+      text((highscore[i] / (1000*60*60)) % 24 +" : "+ (highscore[i] / (1000*60)) % 60 +" : "+ (highscore[i] / 1000) % 60, 860, 210 + 40 * i);
       text(highscoreName[i], 400, 210 + 40 * i);
     }
     
@@ -90,14 +93,3 @@ class Highscorescreen {
     text("Escape", 130, 650);
   }
 }
-
-
-/*  Highscorescreen
-   Text
-      highscore
-      tabel
-         alle highscores
-
-     Button
-        Restart
-*/
