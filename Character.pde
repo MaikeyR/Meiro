@@ -129,6 +129,7 @@ class Characters {
       if (wallUp == false) {
           posY += dy * dt;
       }
+
     }   
     //Checkt of characters op finish zijn
     if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
