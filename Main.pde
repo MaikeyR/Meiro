@@ -31,7 +31,7 @@ Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[];
-
+Deur deur;
 
 Highscorescreen HS;
 
@@ -51,6 +51,7 @@ void setup(){
   ...
   */
   
+  deur = new Deur();
   walls = new Wall[600];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -62,7 +63,7 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
-  frameRate(30);
+  frameRate(60);
 }
 
 void drawGame() {
@@ -70,6 +71,7 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
+  deur.draw();
   
 }
 
