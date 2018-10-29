@@ -130,5 +130,8 @@ class Characters {
           posY += dy * dt;
       }
     }    
+    if(keys['f'] = true){
+      Screen = 3;
+    }
   }
 }
