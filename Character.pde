@@ -184,8 +184,10 @@ class Characters {
   
   boolean collidesWithCharacter(Wall aWall) {
     
-      if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt) &&
-        (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)) {
+      if ((posX + (sizeX / 2) > aWall.x - dx * dt) && (posX - (sizeX / 2) < aWall.x + aWall.size + dx * dt)
+      &&
+        (posY + (sizeY / 2) > aWall.y - dy * dt) && (posY - (sizeY / 2) < aWall.y + aWall.size + dy * dt)
+        ) {
         return true;
       }
       else

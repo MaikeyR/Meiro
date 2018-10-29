@@ -22,6 +22,7 @@ Characters char2;
 Maze theMaze;
 Wall walls[];
 movingWall asset1[];
+//smalleGang asset2[];
 
 Highscorescreen HS;
 
@@ -42,6 +43,7 @@ void setup() {
    */
   walls = new Wall[600];
   asset1 = new movingWall[600];
+  //asset2 = new smalleGang[600];
   theMaze = new Maze();
   theMaze.gridSetup();
   theMaze = new Maze();
@@ -53,7 +55,9 @@ void setup() {
   char2.sizeX = 10;
   char2.sizeY = 10;
   
-  frameRate(30);
+  frameRate(60);
+  
+  noStroke();
 }
 
 void drawGame() {
