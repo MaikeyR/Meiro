@@ -35,6 +35,7 @@ Wall walls[][];
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
+
 instellingen instellingen;
 
 PImage Trophy, PlayButton, Titel, Settings;
@@ -67,7 +68,9 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
+
   instellingen = new instellingen();
+
   frameRate(60);
 }
 
@@ -96,8 +99,10 @@ void updateGame() {
 
 
 void draw(){
+
   clear();
   background(255);
+
     HS.update();
   if (Screen == 0){
     startScherm.draw();
@@ -128,7 +133,8 @@ void draw(){
 }
 
 void keyPressed() {
-  if(Screen == 0){    
+
+  if(Screen == 0){
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
       
@@ -161,6 +167,7 @@ void keyPressed() {
      keys[key] = false;
   }
   if(Screen == 2 || Screen == 3 || Screen == 4){
+
     if (key != CODED && key != SHIFT) {
     
       keys[key] = true;
@@ -212,6 +219,7 @@ void keyReleased() {
       }
     }
   }
+
   if(Screen == 3 || Screen == 4){
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
