@@ -40,7 +40,29 @@ class Maze {
           walls[i][j].y = Y-20;
           walls[i][j].x = X;
           walls[i][j + 1].draw();
-        }        
+        } 
+        else if (grid[i][j] == 'w'){
+          walls[i][j].y = Y;
+          walls[i][j].x = X;
+          fill(100, 0, 100);
+          walls[i][j].draw();
+        }
+        if (grid[i][j] == 'v'){
+          walls[i][j].y = Y;
+          walls[i][j].x = X;
+          fill(100, 0, 100);
+          walls[i][j].draw();
+        }
+        if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j - 1] == 'v'){
+           grid[i][j + 1] = 'v';
+           grid[i][j - 1] = 'b';
+           keys[key] = false;
+        }
+        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j + 1] == 'v'){
+           grid[i][j - 1] = 'v';
+           grid[i][j + 1] = 'b';
+           keys[key] = false;
+        }
       } 
     } 
   }    
