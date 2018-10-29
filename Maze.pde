@@ -18,9 +18,10 @@ class Maze {
   void wallDraw() {
     
     for (int i = 0 ; i < 20 ; i++) {
-      
       for (int j = 0 ; j < 30 ; j++) {
-
+        X = j * 35;
+        Y = i * 35;
+        
         if (grid[i][j]=='a') {
           fill(204, 102, 0);
           walls[i][j].y = Y;
@@ -41,10 +42,6 @@ class Maze {
           walls[i][j + 1].draw();
         }        
       } 
-        X += 35;
-
-      }
-      Y += 35;
-      X = 10; 
+    } 
   }    
 }
