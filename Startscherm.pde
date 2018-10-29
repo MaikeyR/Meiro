@@ -40,6 +40,7 @@ class home{
     //test of de speler naar de volgende pagina wil
     if(keys['d'] == true && keyCode == 32){
       Screen = 2;
+      timer.start();
       keys[' '] = false;
       keys['d'] = false;
     }

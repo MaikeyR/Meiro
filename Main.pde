@@ -38,6 +38,7 @@ home startScherm;
 keyBoard Board;
 
 PImage Trophy, PlayButton, Titel;
+Timer timer = new Timer();
 
 void setup(){
   size(1280, 720);
@@ -58,8 +59,8 @@ void setup(){
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
-  theMaze = new Maze();
-  theMaze.wallDraw();
+  theMaze = new Maze();//
+  theMaze.wallDraw();//TODO: weghalen?
   char1 = new Characters();
   char2 = new Characters();
   char2.posX = 435;
@@ -74,6 +75,8 @@ void drawGame() {
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
+  timer.draw();
+  println(timer.second());
   
 }
 
@@ -81,7 +84,6 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
-  //theMaze.charCollisionCheck();
 
   if (char12) {
 
@@ -104,11 +106,7 @@ void draw(){
   if(Screen == 2){
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    //System.out.println("millis: " + millis());
-    //System.out.println("last update time: " + lastUpdateTime);
-    //System.out.println("current time: " + currentTime);
-    //System.out.println("down time: " + dt);
-
+    
     updateGame();
     drawGame();
   }

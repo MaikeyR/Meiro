@@ -15,46 +15,6 @@ class Maze {
       }      
     }    
   }
-  
-  void charCollisionCheck() {
-    
-    xCord1 = (int) (char1.posX / 35);
-    yCord1 = (int) (char1.posY / 35);
-    xCord2 = (int) (char2.posX / 35);
-    yCord2 = (int) (char2.posY / 35);
-    println(xCord1);
-    println(yCord1);
-    
-    if (grid[yCord1][xCord1 + 1] == 'a' && (char1.posX + (char1.sizeX / 2)) > xCord1 * 35 + 33) {
-      
-      keys['d'] = false;
-      
-    }
-    else
-    keys['d'] = true;
-    
-    if (grid[yCord1][xCord1 - 1] == 'a' && char1.posX - (char1.sizeX / 2) < (xCord1) * 35 + 1) {
-      
-      char1.posX = char1.posX - (char1.posX % 35)  + (char1.sizeX/2);
-      keys['a'] = false;
-      
-    }
-    
-    if (grid[yCord1 + 1][xCord1] == 'a' && (char1.posY + (char1.sizeY / 2)) > yCord1 * 35 + 34) {
-      
-      char1.posY = char1.posY - (char1.posY % 35) + 35 - (char1.sizeY/2);
-      keys['s'] = false;
-      
-    }
-    
-    if (grid[yCord1 - 1][xCord1] == 'a' && char1.posY - (char1.sizeY / 2) < (yCord1) * 35 + 1) {
-      
-      char1.posY = char1.posY - (char1.posY % 35)  + (char1.sizeY/2);
-      keys['w'] = false;
-      
-    }
-  }
-
   void wallDraw() {
     
     for (int i = 0 ; i < 20 ; i++) {
