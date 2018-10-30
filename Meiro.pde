@@ -81,8 +81,8 @@ void setup(){
   theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 435;
-  char2.posY = 400;
+  char2.posX = 50;
+  char2.posY = 50;
   char2.sizeX = 10;
   char2.sizeY = 10;
 
@@ -107,10 +107,10 @@ void updateGame() {
   }
   if (char12) {
 
-    char1.update(dt);
+    char1.update1(dt);
   } else {
 
-    char2.update(dt);
+    char2.update2(dt);
   }
 }
 

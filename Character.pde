@@ -11,8 +11,8 @@ class Characters {
   
   Characters() {
     
-    posX = 575;
-    posY = 500;
+    posX = 1000;
+    posY = 50;
     sizeX = 25;
     sizeY = 25;
     dx = 100;
