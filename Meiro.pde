@@ -1,9 +1,3 @@
-/**
-Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
-
-
-
-*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -75,7 +69,7 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
-
+  changeGrid();
   instellingen = new instellingen();
 
   frameRate(60);
@@ -97,10 +91,10 @@ void updateGame() {
 
   if (char12) {
 
-    char1.update(dt);
+    char1.update1(dt);
   } else {
 
-    char2.update(dt);
+    char2.update2(dt);
   }
 }
 
