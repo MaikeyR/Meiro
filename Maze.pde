@@ -27,12 +27,17 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           walls[i][j].draw();
-        } else if (currentGrid[i][j]=='b'||currentGrid[i][j]=='v') {
+
+        } else if (currentGrid[i][j]=='b') {
           fill(153);
           rect(X, Y, 35, 35);
         } 
         else if (currentGrid[i][j]=='s') {
           walls[i][j].y = Y;
+          walls[i][j].x = X;
+          fill(153);
+          walls[i][j].draw();
+          fill(204, 102, 0);
           walls[i][j].x = X-15;
           walls[i][j].draw();
         } 
@@ -65,6 +70,7 @@ class Maze {
           fill(100, 0, 100);
           walls[i][j].draw();
         }
+
         if(currentGrid[i][j] == 'f'){
           finX = X;
           finY =Y;

@@ -6,6 +6,7 @@ iG103-3
 Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
 
 Besturing door WASD, character wisselen met E en Q voor interact
+
 */
 int Screen = 0;
 int widthMaze = 1050;
@@ -16,6 +17,9 @@ double lastUpdateTime = 0;
 double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
+
+int mazecount = 0;
+
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -101,8 +105,6 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
-  //theMaze.charCollisionCheck();
-
   if (char12) {
 
     char1.update(dt);

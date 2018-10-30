@@ -84,6 +84,7 @@ class keyBoard{
   
   //Om naar de highscore screen te gaan
   else if(selectedLetter == 19 && keys['q']){
+
     l1 = str(letter1);
     l2 = str(letter2);
     l3 = str(letter3);
@@ -91,6 +92,7 @@ class keyBoard{
     Screen = 1;
   }
   
+
   if(keys['e']){
     charNumber--;
     switch(charNumber + 1){
