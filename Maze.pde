@@ -78,32 +78,32 @@ class Maze {
         if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j - 1] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
-           grid[i][j + 1] = 'v';
-           grid[i][j - 1] = 'b';
+           currentGrid[i][j + 1] = 'v';
+           currentGrid[i][j - 1] = 'b';
            keys[key] = false;
           }
         }
         else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j + 1] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
-           grid[i][j - 1] = 'v';
-           grid[i][j + 1] = 'b';
+           currentGrid[i][j - 1] = 'v';
+           currentGrid[i][j + 1] = 'b';
            keys[key] = false;
           }
         } 
         else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i - 1][j] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
-           grid[i + 1][j] = 'v';
-           grid[i - 1][j] = 'b';
+           currentGrid[i + 1][j] = 'v';
+           currentGrid[i - 1][j] = 'b';
            keys[key] = false;
           }
         }
         else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i + 1][j] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
-           grid[i - 1][j] = 'v';
-           grid[i + 1][j] = 'b';
+           currentGrid[i - 1][j] = 'v';
+           currentGrid[i + 1][j] = 'b';
            keys[key] = false;
       } 
     }    

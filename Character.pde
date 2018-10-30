@@ -27,7 +27,7 @@ class Characters {
     
   }
   
-  void update2(double dt) {
+  void update(double dt) {
     xCord = (int) (posX / 35);
     yCord = (int) (posY / 35);
     println(xCord * 35);
@@ -37,16 +37,16 @@ class Characters {
     if (keys['a'] == true) {
       boolean wallLeft = false;
       
-      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2) {
+      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
       posY < walls[yCord - 1][xCord - 1].y + 35 + sizeY / 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
       posY > walls[yCord + 1][xCord - 1].y - sizeY / 2 + 1) {
         wallLeft = true;
       }
@@ -59,18 +59,18 @@ class Characters {
     if (keys['d'] == true) {
       boolean wallRight = false;
       
-      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34) {
+      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34) {
         wallRight = true;
         println(1);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY < walls[yCord - 1][xCord + 1].y + 35 + sizeY / 2) {
         wallRight = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY > walls[yCord + 1][xCord + 1].y - sizeY / 2 + 1) {
         wallRight = true;
         println(3);
@@ -84,18 +84,18 @@ class Characters {
     if (keys['w'] == true) {
       boolean wallUp = false;
       
-      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2) {
+      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2) {
         wallUp = true;
         println(1);
       }
       
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX < walls[yCord - 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX > walls[yCord - 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
@@ -109,18 +109,18 @@ class Characters {
     if (keys['s'] == true) {
       boolean wallUp = false;
       
-      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34) {
+      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34) {
         wallUp = true;
         println(1);
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX < walls[yCord + 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX > walls[yCord + 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
