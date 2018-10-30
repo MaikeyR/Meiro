@@ -35,6 +35,7 @@ class Characters {
     //println(yCord);
     
     
+    //Hier wordt bepaald of het caracter met de muur collide en of hij mag bewegen of niet
     if (keys['a'] == true) {
       boolean wallLeft = false;
       

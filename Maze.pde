@@ -16,7 +16,7 @@ class Maze {
     }    
   }
   void wallDraw() {
-    
+    //tekent het doolhof en bepaald waar welk blokje komt
     for (int i = 0 ; i < 20 ; i++) {
       for (int j = 0 ; j < 30 ; j++) {
         X = j * 35;
@@ -74,6 +74,7 @@ class Maze {
           walls[i][j].draw();
         }
         
+        //code voor de beweegbare muur
         if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j - 1] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
