@@ -45,7 +45,7 @@ class home{
       Screen = 2;
       mazecount = 0;
       timer.start();
-      
+
       keys['q'] = false;
       keys['d'] = false;
     }
