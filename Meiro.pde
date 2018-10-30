@@ -3,8 +3,7 @@ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
 
 
 iG103-3
-
-
+Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
 */
 int Screen = 0;
 int widthMaze = 1050;
@@ -151,7 +150,7 @@ void keyPressed() {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
       
-      if(!keys[' ']){
+      if(!keys['q']){
         keys['a'] = false;
         keys['d'] = false;
         keys['s'] = false;
@@ -174,7 +173,7 @@ void keyPressed() {
   }
   if(Screen == 1){
     keys[key] = true;
-    if(keys[' '] == true){
+    if(keys['q'] == true){
      Screen = 0; 
     }
      keys[key] = false;
