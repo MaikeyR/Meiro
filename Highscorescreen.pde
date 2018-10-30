@@ -9,7 +9,7 @@ class Highscorescreen {
   boolean gameEnd = true;
 
   Highscorescreen() {
-    
+    //De highscore wordt opgeslagen in een text document even als de ingevulde 3 letters
     String[] scoreStr = null;
     String[] nameStr = null;
     scoreStr = loadStrings(highscoretxt);
