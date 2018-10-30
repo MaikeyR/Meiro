@@ -1,3 +1,9 @@
+/**
+Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+
+
+
+*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -65,8 +71,8 @@ void setup(){
   theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 1006;
-  char2.posY = 63;
+  char2.posX = 435;
+  char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
 
