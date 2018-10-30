@@ -4,6 +4,8 @@ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
 
 iG103-3
 Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
+
+Besturing door WASD, character wisselen met E en Q voor interact
 */
 int Screen = 0;
 int widthMaze = 1050;
