@@ -1,3 +1,9 @@
+/**
+Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+
+
+
+*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
