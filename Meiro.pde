@@ -82,6 +82,7 @@ void setup(){
 
   instellingen = new instellingen();
 
+  changeGrid();
   frameRate(60);
 }
 

@@ -22,50 +22,50 @@ class Maze {
         X = j * 35;
         Y = i * 35;
         
-        if (grid[i][j]=='a') {
+        if (currentGrid[i][j]=='a') {
           fill(204, 102, 0);
           walls[i][j].y = Y;
           walls[i][j].x = X;
           walls[i][j].draw();
-        } else if (grid[i][j]=='b'||grid[i][j]=='v') {
+        } else if (currentGrid[i][j]=='b'||currentGrid[i][j]=='v') {
           fill(153);
           rect(X, Y, 35, 35);
         } 
-        else if (grid[i][j]=='s') {
+        else if (currentGrid[i][j]=='s') {
           walls[i][j].y = Y;
           walls[i][j].x = X-15;
           walls[i][j].draw();
         } 
-        else if (grid[i][j]=='h') {
+        else if (currentGrid[i][j]=='h') {
           walls[i][j].y = Y-20;
           walls[i][j].x = X;
           walls[i][j + 1].draw();
         } 
-        else if (grid[i][j] == 'w'){
+        else if (currentGrid[i][j] == 'w'){
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(100, 0, 100);
           walls[i][j].draw();
         }
-        else if (grid[i][j]=='d') {
+        else if (currentGrid[i][j]=='d') {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(255, 0, 155);
           walls[i][j].draw();
         } //smalle gang
-          else if (grid[i][j]=='g') {
+          else if (currentGrid[i][j]=='g') {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(0, 0, 0);
           walls[i][j].draw();
         }
-        if (grid[i][j] == 'v'){
+        if (currentGrid[i][j] == 'v'){
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(100, 0, 100);
           walls[i][j].draw();
         }
-        if(grid[i][j] == 'f'){
+        if(currentGrid[i][j] == 'f'){
           finX = X;
           finY =Y;
           walls[i][j].y = Y;
@@ -75,7 +75,7 @@ class Maze {
         }
         
         //code voor de beweegbare muur
-        if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j - 1] == 'v'){
+        if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j - 1] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
            grid[i][j + 1] = 'v';
@@ -83,7 +83,7 @@ class Maze {
            keys[key] = false;
           }
         }
-        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i][j + 1] == 'v'){
+        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j + 1] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
            grid[i][j - 1] = 'v';
@@ -91,7 +91,7 @@ class Maze {
            keys[key] = false;
           }
         } 
-        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i - 1][j] == 'v'){
+        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i - 1][j] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
            grid[i + 1][j] = 'v';
@@ -99,7 +99,7 @@ class Maze {
            keys[key] = false;
           }
         }
-        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && grid[i][j] == 'w' && keys['q'] && grid[i + 1][j] == 'v'){
+        else if(i > 0 && j > 0 && i <= 20 && j <= 30 && currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i + 1][j] == 'v'){
           if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70) ||
           (char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
            grid[i - 1][j] = 'v';
