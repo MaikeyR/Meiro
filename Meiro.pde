@@ -2,6 +2,8 @@
 Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
 
 
+iG103-3
+
 
 */
 int Screen = 0;
@@ -38,6 +40,8 @@ Characters char2;
 Maze theMaze;
 Wall walls[][];
 
+//Deur deur;
+
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
@@ -64,6 +68,7 @@ void setup(){
   ...
   */
   
+  //deur = new Deur();
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -87,6 +92,7 @@ void drawGame() {
   char1.draw();
   char2.draw();
   timer.draw();
+  //deur.draw();
 }
 
 void updateGame() {
