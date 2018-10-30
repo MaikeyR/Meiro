@@ -30,9 +30,9 @@ class Characters {
   void update(double dt) {
     xCord = (int) (posX / 35);
     yCord = (int) (posY / 35);
-    println(xCord * 35);
-    println(posX - (sizeX / 2));
-    println(yCord);
+    //println(xCord * 35);
+    //println(posX - (sizeX / 2));
+    //println(yCord);
     
     
     if (keys['a'] == true) {
