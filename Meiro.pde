@@ -99,6 +99,7 @@ void drawGame() {
   char2.draw();
   timer.draw();
   //deur.draw();
+  print(1/dt);
 }
 
 void updateGame() {

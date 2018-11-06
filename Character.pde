@@ -149,6 +149,8 @@ class Characters {
     if(char2fin && char1fin || keys['f']){
       if (mazecount < 2) {
         mazecount++;
+        char1fin = false;
+        char2fin = false;        
         char1.posX = 50;
         char1.posY = 50;
         char2.posX = 1000;
@@ -270,27 +272,29 @@ class Characters {
     
 
     //Checkt of characters op finish zijn
-    //if (char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
-    //  char1fin = true;
-    //}
-    //if (char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
-    //  char2fin = true;
-    //}
-    //if(char2fin && char1fin || keys['f']){
+    if (char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
+      char1fin = true;
+    }
+    if (char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
+      char2fin = true;
+    }
+    if(char2fin && char1fin || keys['f']){
       
-    //  if (mazecount < 2) {
-    //    mazecount++;
-    //    changeGrid();
-    //    char1.posX = 50;
-    //    char1.posY = 50;
-    //    char2.posX = 1000;
-    //    char2.posY = 50;
-    //  }
-    //  else {
-    //    Screen = 3;
-    //    timer.stop();
-    //  }
-    //}
+      if (mazecount < 2) {
+        mazecount++;
+        char1fin = false;
+        char2fin = false;
+        char1.posX = 50;
+        char1.posY = 50;
+        char2.posX = 1000;
+        char2.posY = 50;
+        changeGrid();
+      }
+      else {
+        Screen = 3;
+        timer.stop();
+      }
+    }
   }
   
 }
