@@ -3,7 +3,7 @@ class Timer {
   boolean running = false;
   String htime, mtime, stime, time;
   
-    //neemt de tijd op om de hihgscore te bepalen
+    
     void start() {
         startTime = millis();
         running = true;

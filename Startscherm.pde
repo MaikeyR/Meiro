@@ -4,7 +4,7 @@ class home{
   }
 
   int lastKeyCode;
-  //tekent het startscherm en bepaalt wanneer je naar het volgende scherm gaat
+ 
   void draw(){
     clear();
     background(255, 255, 255);
@@ -41,20 +41,20 @@ class home{
     }
     
     //test of de speler naar de volgende pagina wil
-    if(keys['d'] == true && key == 'q'){
+    if(keys['d'] == true && keyCode == 32){
       Screen = 2;
       timer.start();
-      keys['q'] = false;
+      keys[' '] = false;
       keys['d'] = false;
     }
-    else if(keys['a'] == true && key == 'q'){
+    else if(keys['a'] == true && keyCode == 32){
       Screen = 1;
-      keys['q'] = false;
+      keys[' '] = false;
       keys['a'] = false;
     }
-    else if(keys['s'] == true && key == 'q'){
+    else if(keys['s'] == true && keyCode == 32){
       Screen = 4;
-      keys['q'] = false;
+      keys[' '] = false;
       keys['s'] = false;
     }
   }

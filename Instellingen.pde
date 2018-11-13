@@ -3,7 +3,6 @@ class instellingen{
   float mainVolume = 50;
 
   void render(){
-    //het instellingen menu is nog incompleet, er komen meer opties
     if(keys['s'] == true && selectedY < 2){
      selectedY++;
      keys['s'] = false;

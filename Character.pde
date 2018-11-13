@@ -262,7 +262,7 @@ class Characters {
     }
     if(char2fin && char1fin || keys['f']){
       changeGrid();
-      Screen = 3;
+      //Screen = 3;
       timer.stop();
     }
   }

@@ -1,10 +1,3 @@
-/**
-Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
-
-
-iG103-3
-Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
-*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -39,8 +32,6 @@ Characters char2;
 Maze theMaze;
 Wall walls[][];
 
-//Deur deur;
-
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
@@ -67,7 +58,6 @@ void setup(){
   ...
   */
   
-  //deur = new Deur();
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -79,10 +69,9 @@ void setup(){
   char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
-
+  changeGrid();
   instellingen = new instellingen();
 
-  changeGrid();
   frameRate(60);
 }
 
@@ -92,7 +81,6 @@ void drawGame() {
   char1.draw();
   char2.draw();
   timer.draw();
-  //deur.draw();
 }
 
 void updateGame() {
@@ -103,10 +91,10 @@ void updateGame() {
 
   if (char12) {
 
-    char1.update(dt);
+    char1.update1(dt);
   } else {
 
-    char2.update(dt);
+    char2.update2(dt);
   }
 }
 
@@ -151,7 +139,7 @@ void keyPressed() {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
       
-      if(!keys['q']){
+      if(!keys[' ']){
         keys['a'] = false;
         keys['d'] = false;
         keys['s'] = false;
@@ -174,7 +162,7 @@ void keyPressed() {
   }
   if(Screen == 1){
     keys[key] = true;
-    if(keys['q'] == true){
+    if(keys[' '] == true){
      Screen = 0; 
     }
      keys[key] = false;
