@@ -25,6 +25,10 @@ boolean char1fin = false;
 boolean char2fin = false;
 int finX;
 int finY;
+int startX1;
+int startY1;
+int startX2;
+int startY2;
 
 int selectedX = 0;
 int selectedY = 0;
@@ -77,18 +81,13 @@ void setup(){
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
-  theMaze = new Maze();
-  theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 50;
-  char2.posY = 50;
   char2.sizeX = 10;
   char2.sizeY = 10;
 
   instellingen = new instellingen();
 
-  changeGrid();
   frameRate(60);
 }
 
@@ -99,7 +98,6 @@ void drawGame() {
   char2.draw();
   timer.draw();
   //deur.draw();
-  print(1/dt);
 }
 
 void updateGame() {

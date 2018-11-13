@@ -11,10 +11,10 @@ class Characters {
   
   Characters() {
     
-    posX = 1000;
-    posY = 50;
-    sizeX = 25;
-    sizeY = 25;
+    posX = 0;
+    posY = 0;
+    sizeX = 24;
+    sizeY = 24;
     dx = 100;
     dy = 100;
     
@@ -147,22 +147,23 @@ class Characters {
     }
     
     if(char2fin && char1fin || keys['f']){
-      if (mazecount < 2) {
+      if (mazecount < 10) {
         mazecount++;
         char1fin = false;
-        char2fin = false;        
-        char1.posX = 50;
-        char1.posY = 50;
-        char2.posX = 1000;
-        char2.posY = 50;
+        char2fin = false;
         changeGrid();
       }
       else {
         Screen = 3;
         timer.stop();
       }
+      keys['f'] = false;
     }
   }
+  
+  
+  
+  
   
   
   void update1(double dt) {
@@ -253,13 +254,13 @@ class Characters {
       }
       
       else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'd' && currentGrid[yCord + 1][xCord - 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
-      posX < walls[yCord + 1][xCord - 1].x + 35 + sizeX / 2) {
+        posX < walls[yCord + 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
       else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'd' && currentGrid[yCord + 1][xCord + 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
-      posX > walls[yCord + 1][xCord + 1].x - sizeX / 2 + 1) {
+        posX > walls[yCord + 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
       }
@@ -269,7 +270,6 @@ class Characters {
       }
 
     }
-    
 
     //Checkt of characters op finish zijn
     if (char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
@@ -280,20 +280,17 @@ class Characters {
     }
     if(char2fin && char1fin || keys['f']){
       
-      if (mazecount < 2) {
+      if (mazecount < 10) {
         mazecount++;
         char1fin = false;
         char2fin = false;
-        char1.posX = 50;
-        char1.posY = 50;
-        char2.posX = 1000;
-        char2.posY = 50;
         changeGrid();
       }
       else {
         Screen = 3;
         timer.stop();
       }
+      keys['f'] = false;
     }
   }
   

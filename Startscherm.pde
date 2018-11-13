@@ -44,6 +44,7 @@ class home{
     if(keys['d'] == true && key == 'q'){
       Screen = 2;
       mazecount = 0;
+      changeGrid();
       timer.start();
 
       keys['q'] = false;
