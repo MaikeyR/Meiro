@@ -12,7 +12,7 @@ class keyBoard{
   String name;
     
   
-    
+  //maakt een toetsenbord om je 3 initialen in te vullen
   void draw(){
     clear();
     background(255);
@@ -28,7 +28,7 @@ class keyBoard{
     if(selectedY != 2 && keys['s']){
       selectedY += 1; 
     }
-    if(keys[' '] == true){
+    if(keys['q'] == true){
       spacePressed = true;
     }
       
@@ -66,7 +66,7 @@ class keyBoard{
     int selectedLetter = selectedX + (selectedY * 10);
     
     
-    if(keys[' '] && charNumber < 3 && selectedLetter != 19 && selectedLetter <= 26){
+    if(keys['q'] && charNumber < 3 && selectedLetter != 19 && selectedLetter <= 26){
       charNumber++;    
       switch(charNumber){
         case 1: 
@@ -83,7 +83,8 @@ class keyBoard{
   
   
   //Om naar de highscore screen te gaan
-  else if(selectedLetter == 19 && keys[' ']){
+  else if(selectedLetter == 19 && keys['q']){
+
     l1 = str(letter1);
     l2 = str(letter2);
     l3 = str(letter3);
@@ -91,7 +92,8 @@ class keyBoard{
     Screen = 1;
   }
   
-  if(keys['q']){
+
+  if(keys['e']){
     charNumber--;
     switch(charNumber + 1){
      case 3:

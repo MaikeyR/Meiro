@@ -11,8 +11,8 @@ class Characters {
   
   Characters() {
     
-    posX = 575;
-    posY = 500;
+    posX = 1000;
+    posY = 50;
     sizeX = 25;
     sizeY = 25;
     dx = 100;
@@ -37,16 +37,19 @@ class Characters {
     if (keys['a'] == true) {
       boolean wallLeft = false;
       
-      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2) {
+
+      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 's' && currentGrid[yCord][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 's' && currentGrid[yCord - 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+
       posY < walls[yCord - 1][xCord - 1].y + 35 + sizeY / 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'g' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 's' && currentGrid[yCord + 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
       posY > walls[yCord + 1][xCord - 1].y - sizeY / 2 + 1) {
         wallLeft = true;
       }
@@ -59,18 +62,19 @@ class Characters {
     if (keys['d'] == true) {
       boolean wallRight = false;
       
-      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34) {
+
+      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 's' && currentGrid[yCord][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34) {
         wallRight = true;
         println(1);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 's' && currentGrid[yCord - 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY < walls[yCord - 1][xCord + 1].y + 35 + sizeY / 2) {
         wallRight = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'g' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 's' && currentGrid[yCord + 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY > walls[yCord + 1][xCord + 1].y - sizeY / 2 + 1) {
         wallRight = true;
         println(3);
@@ -83,19 +87,19 @@ class Characters {
     
     if (keys['w'] == true) {
       boolean wallUp = false;
-      
-      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2) {
+
+      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 's' && currentGrid[yCord - 1][xCord] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2) {
         wallUp = true;
         println(1);
       }
-      
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 's' && currentGrid[yCord - 1][xCord - 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX < walls[yCord - 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'g' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 's' && currentGrid[yCord - 1][xCord + 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX > walls[yCord - 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
@@ -109,18 +113,18 @@ class Characters {
     if (keys['s'] == true) {
       boolean wallUp = false;
       
-      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34) {
+      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 's' && currentGrid[yCord + 1][xCord] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34) {
         wallUp = true;
         println(1);
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 's' && currentGrid[yCord + 1][xCord - 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX < walls[yCord + 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'g' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 's' && currentGrid[yCord + 1][xCord + 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX > walls[yCord + 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
@@ -137,12 +141,26 @@ class Characters {
     if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
       char1fin = true;
     }
+    
     if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
       char2fin = true;
     }
+    
     if(char2fin && char1fin || keys['f']){
-      Screen = 3;
-      timer.stop();
+      if (mazecount < 2) {
+        mazecount++;
+        char1fin = false;
+        char2fin = false;        
+        char1.posX = 50;
+        char1.posY = 50;
+        char2.posX = 1000;
+        char2.posY = 50;
+        changeGrid();
+      }
+      else {
+        Screen = 3;
+        timer.stop();
+      }
     }
   }
   
@@ -157,16 +175,16 @@ class Characters {
     if (keys['a'] == true) {
       boolean wallLeft = false;
       
-      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 'd' && posX - (sizeX / 2) < xCord * 35 + 2) {
+      if (currentGrid[yCord][xCord - 1] != 'b' && currentGrid[yCord][xCord - 1] != 'd' && currentGrid[yCord][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'd' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'd' && currentGrid[yCord - 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
       posY < walls[yCord - 1][xCord - 1].y + 35 + sizeY / 2) {
         wallLeft = true;
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'd' && posX - (sizeX / 2) < xCord * 35 + 2 &&
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'd' && currentGrid[yCord + 1][xCord - 1] != 'f' && posX - (sizeX / 2) < xCord * 35 + 2 &&
       posY > walls[yCord + 1][xCord - 1].y - sizeY / 2 + 1) {
         wallLeft = true;
       }
@@ -179,18 +197,18 @@ class Characters {
     if (keys['d'] == true) {
       boolean wallRight = false;
       
-      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 'd' && posX + (sizeX / 2) > xCord * 35 + 34) {
+      if (currentGrid[yCord][xCord + 1] != 'b' && currentGrid[yCord][xCord + 1] != 'd' && currentGrid[yCord][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34) {
         wallRight = true;
         println(1);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'd' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'd' && currentGrid[yCord - 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY < walls[yCord - 1][xCord + 1].y + 35 + sizeY / 2) {
         wallRight = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'd' && posX + (sizeX / 2) > xCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'd' && currentGrid[yCord + 1][xCord + 1] != 'f' && posX + (sizeX / 2) > xCord * 35 + 34 &&
       posY > walls[yCord + 1][xCord + 1].y - sizeY / 2 + 1) {
         wallRight = true;
         println(3);
@@ -204,18 +222,18 @@ class Characters {
     if (keys['w'] == true) {
       boolean wallUp = false;
       
-      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 'd' && posY - (sizeY / 2) < yCord * 35 + 2) {
+      if (currentGrid[yCord - 1][xCord] != 'b' && currentGrid[yCord - 1][xCord] != 'd' && currentGrid[yCord - 1][xCord] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2) {
         wallUp = true;
         println(1);
       }
       
-      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'd' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord - 1] != 'b' && currentGrid[yCord - 1][xCord - 1] != 'd' && currentGrid[yCord - 1][xCord - 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX < walls[yCord - 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'd' && posY - (sizeY / 2) < yCord * 35 + 2 &&
+      else if (currentGrid[yCord - 1][xCord + 1] != 'b' && currentGrid[yCord - 1][xCord + 1] != 'd' && currentGrid[yCord - 1][xCord + 1] != 'f' && posY - (sizeY / 2) < yCord * 35 + 2 &&
       posX > walls[yCord - 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
@@ -229,18 +247,18 @@ class Characters {
     if (keys['s'] == true) {
       boolean wallUp = false;
       
-      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 'd' && posY + (sizeY / 2) > yCord * 35 + 34) {
+      if (currentGrid[yCord + 1][xCord] != 'b' && currentGrid[yCord + 1][xCord] != 'd' && currentGrid[yCord + 1][xCord] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34) {
         wallUp = true;
         println(1);
       }
       
-      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'd' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord - 1] != 'b' && currentGrid[yCord + 1][xCord - 1] != 'd' && currentGrid[yCord + 1][xCord - 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX < walls[yCord + 1][xCord - 1].x + 35 + sizeX / 2) {
         wallUp = true;
         println(2);
       }
       
-      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'd' && posY + (sizeY / 2) > yCord * 35 + 34 &&
+      else if (currentGrid[yCord + 1][xCord + 1] != 'b' && currentGrid[yCord + 1][xCord + 1] != 'd' && currentGrid[yCord + 1][xCord + 1] != 'f' && posY + (sizeY / 2) > yCord * 35 + 34 &&
       posX > walls[yCord + 1][xCord + 1].x - sizeX / 2 + 1) {
         wallUp = true;
         println(3);
@@ -254,16 +272,28 @@ class Characters {
     
 
     //Checkt of characters op finish zijn
-    if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
+    if (char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
       char1fin = true;
     }
-    if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
+    if (char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
       char2fin = true;
     }
     if(char2fin && char1fin || keys['f']){
-      changeGrid();
-      //Screen = 3;
-      timer.stop();
+      
+      if (mazecount < grids.length-1) {
+        mazecount=;
+        char1fin = false;
+        char2fin = false;
+        char1.posX = 50;
+        char1.posY = 50;
+        char2.posX = 1000;
+        char2.posY = 50;
+        changeGrid();
+      }
+      else {
+        Screen = 3;
+        timer.stop();
+      }
     }
   }
   
