@@ -26,15 +26,15 @@ class Timer {
     }
     
     int second() {
-      return (getElapsedTime() / 1000) % 60;
+      return ((getElapsedTime() + penaltyMiliSeconds) / 1000) % 60;
     }
     
     int minute() {
-      return (getElapsedTime() / (1000*60)) % 60;
+      return (getElapsedTime() + penaltyMiliSeconds) / (1000*60) % 60;
     }
     
     int hour() {
-      return (getElapsedTime() / (1000*60*60)) % 24;
+      return (getElapsedTime() + penaltyMiliSeconds) / (1000*60*60) % 24;
     }
     
     void draw() {

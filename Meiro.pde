@@ -4,6 +4,9 @@ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
 
 iG103-3
 Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
+
+Besturing door WASD, character wisselen met E en Q voor interact
+
 */
 int Screen = 0;
 int widthMaze = 1050;
@@ -15,10 +18,17 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
+int mazecount = 0;
+
+
 boolean char1fin = false;
 boolean char2fin = false;
 int finX;
 int finY;
+int startX1;
+int startY1;
+int startX2;
+int startY2;
 
 int selectedX = 0;
 int selectedY = 0;
@@ -28,6 +38,8 @@ char letter2 = '_';
 char letter3 = '_';
 
 int charNumber = 0;
+
+int penaltyMiliSeconds = 0;
 /**
 Movement char1;
 Movement char2;
@@ -71,14 +83,12 @@ void setup(){
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
-  theMaze = new Maze();
-  theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 435;
-  char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
+  char1.dx = 100;
+  char1.dy = 100;
 
   instellingen = new instellingen();
 
@@ -98,14 +108,12 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
-  //theMaze.charCollisionCheck();
-
   if (char12) {
 
-    char1.update(dt);
+    char1.update1(dt);
   } else {
 
-    char2.update(dt);
+    char2.update2(dt);
   }
 }
 
