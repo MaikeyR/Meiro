@@ -85,6 +85,8 @@ void setup(){
   char2 = new Characters();
   char2.sizeX = 10;
   char2.sizeY = 10;
+  char1.dx = 100;
+  char1.dy = 100;
 
   instellingen = new instellingen();
 
