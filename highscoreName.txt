@@ -1,5 +1,6 @@
 WER
 DHY
+DFG
 QQA
 KUT
 BOI
@@ -7,4 +8,3 @@ GKO
 YUI
 SEX
 SFR
-HGT

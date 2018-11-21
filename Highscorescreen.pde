@@ -30,6 +30,10 @@ class Highscorescreen {
     if (Screen == 2 && gameEnd == true) {
       gameEnd = false;
     }
+    if(keys['e']) {
+      keys[key] = false;
+      Screen = 0; 
+    }
   }
 
   void draw() {
@@ -80,14 +84,14 @@ class Highscorescreen {
     saveStrings(highscoretxt, scoreStr);
     saveStrings(highscoreNametxt, nameStr);
   }
-  
+
   void keyPressed() {
   
-    if(keys[' '] == true) {
+    if(keys['e']) {
       Screen = 0; 
     }
   }
-  
+
   void backToMenu() {
     triangle(70, 640, 105, 630, 105, 650);
     text("Escape", 130, 650);

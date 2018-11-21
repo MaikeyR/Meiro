@@ -106,7 +106,7 @@ void drawGame() {
 }
 
 void updateGame() {
-
+  clear();
   if (keys['e'] == true) {
   }
   if (char12) {
@@ -120,7 +120,6 @@ void updateGame() {
 
 
 void draw(){
-
   clear();
   background(255);
 
@@ -147,16 +146,14 @@ void draw(){
     Board.draw();
   }
   if(Screen == 4){
-    currentTime = (double) millis() / 1000;
-    dt = currentTime - lastUpdateTime;
-    tutorial.render();
-    tutorial.draw();
-    //instellingen.render();
-    //instellingen.draw();
+    instellingen.render();
+    instellingen.draw();
   }
   if(Screen == 5){
     tutorial.render();
     tutorial.draw();
+    currentTime = (double) millis() / 1000;
+    dt = currentTime - lastUpdateTime;
   }
   
 }
@@ -164,39 +161,6 @@ void draw(){
 void keyPressed() {
 
   if(Screen == 0){
-    if (key != CODED && key != SHIFT) { 
-      keys[key] = true;
-      
-      if(!keys['q']){
-        keys['a'] = false;
-        keys['d'] = false;
-        keys['s'] = false;
-      }             
-      keys[key] = true;
-            
-      switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
-      }
-      if(!keys['a'] && !keys['d'] && !keys['s']){
-        keys[key] = false;
-      }
-    }
-  }
-  if(Screen == 1){
-    keys[key] = true;
-    if(keys['q'] == true){
-     Screen = 0; 
-    }
-     keys[key] = false;
-  }
-  if(Screen == 2 || Screen == 3 || Screen == 4){
-
     if (key != CODED && key != SHIFT) {
     
       keys[key] = true;
@@ -212,6 +176,35 @@ void keyPressed() {
       }   
     } 
   }
+
+  if(Screen == 1 || Screen == 5){
+    keys[key] = true;
+    if(keys['q'] == true){
+     Screen = 0; 
+     keys[key] = false;
+    }
+    keys[key] = false;
+  }
+  else if(Screen == 2 || Screen == 3 || Screen == 4){
+
+    if (key != CODED && key != SHIFT) {
+    
+      keys[key] = true;
+    
+      switch (key) {
+      
+      case 'A' : keys['a'] = true; break;
+      case 'S' : keys['s'] = true; break;
+      case 'D' : keys['d'] = true; break;
+      case 'W' : keys['w'] = true; break;
+      default : break;
+      
+      }
+      
+    }
+    
+  }
+  
 }
 
 void keyReleased() {
@@ -249,7 +242,7 @@ void keyReleased() {
     }
   }
 
-  if(Screen == 3 || Screen == 4){
+  else if(Screen == 3 || Screen == 4){
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
     

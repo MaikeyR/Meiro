@@ -25,7 +25,6 @@ class Tutorial{
   }
  
   void render(){
-    
     patternTime = millis();
     if (patternTime - patternStop > 500){
       patternStop = patternTime;
@@ -52,11 +51,6 @@ class Tutorial{
     else moveSelect = 0;
     
     println(pattern);
-  
-    if(keys['e']){
-      Screen = 0;
-    }
-    keys['e'] = false;
   }
   
   void draw(){

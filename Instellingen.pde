@@ -22,7 +22,8 @@ class instellingen{
       mainVolume--;
     }
       
-    if(selectedY == 2 && keys[' ']){
+    if(selectedY == 2 && keys['e']){
+      keys[key] = false;
       Screen = 0;
     }
   }
