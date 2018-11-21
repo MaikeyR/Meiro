@@ -293,5 +293,4 @@ class Characters {
       keys['f'] = false;
     }
   }
-  
 }

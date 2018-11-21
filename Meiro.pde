@@ -38,6 +38,7 @@ char letter2 = '_';
 char letter3 = '_';
 
 int charNumber = 0;
+int penaltyMiliSeconds = 0;
 /**
 Movement char1;
 Movement char2;

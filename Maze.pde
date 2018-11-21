@@ -83,35 +83,40 @@ class Maze {
           char2.posY = startY2;
           currentGrid[i][j]='b';          
         }
+        
         //code voor de beweegbare muur
         if (char12) {
           
           if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j - 1] == 'v'){
-            if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+            if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i][j + 1] = 'v';
              currentGrid[i][j - 1] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           }
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j + 1] == 'v'){
-            if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+            if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i][j - 1] = 'v';
              currentGrid[i][j + 1] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           } 
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i - 1][j] == 'v'){
-            if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+            if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i + 1][j] = 'v';
              currentGrid[i - 1][j] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           }
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i + 1][j] == 'v'){
-            if((char1.posX > X - 35 && char1.posX < X + 70 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+            if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i - 1][j] = 'v';
              currentGrid[i + 1][j] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           }
         }
@@ -119,31 +124,35 @@ class Maze {
         else {
           
           if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j - 1] == 'v'){
-            if((char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+            if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
              currentGrid[i][j + 1] = 'v';
              currentGrid[i][j - 1] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           }
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i][j + 1] == 'v'){
-            if((char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+            if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
              currentGrid[i][j - 1] = 'v';
              currentGrid[i][j + 1] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2000;
             }
           } 
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i - 1][j] == 'v'){
-            if((char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+            if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
              currentGrid[i + 1][j] = 'v';
              currentGrid[i - 1][j] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2;
             }
           }
           else if(currentGrid[i][j] == 'w' && keys['q'] && currentGrid[i + 1][j] == 'v'){
-            if((char2.posX > X - 35 && char2.posX < X + 70 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+            if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
              currentGrid[i - 1][j] = 'v';
              currentGrid[i + 1][j] = 'b';
              keys[key] = false;
+             penaltyMiliSeconds += 2;
             }
           }
         }
