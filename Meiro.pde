@@ -128,6 +128,9 @@ void draw(){
     startScherm.draw();
   }
   if(Screen == 1){
+    if(keys['e']){
+      Screen = 0;
+    }
     HS.draw();
   }
   if(Screen == 2){
@@ -143,6 +146,9 @@ void draw(){
   }
     lastUpdateTime = currentTime;
   if(Screen == 3){
+    if(keys['e']){
+      Screen = 0;
+    }
     Board.draw();
   }
   if(Screen == 4){
@@ -150,6 +156,9 @@ void draw(){
     instellingen.draw();
   }
   if(Screen == 5){
+    if(keys['e']){
+      Screen = 0;
+    }
     tutorial.render();
     tutorial.draw();
     currentTime = (double) millis() / 1000;
@@ -179,7 +188,7 @@ void keyPressed() {
 
   if(Screen == 1 || Screen == 5){
     keys[key] = true;
-    if(keys['q'] == true){
+    if(keys['e'] == true){
      Screen = 0; 
      keys[key] = false;
     }
@@ -242,7 +251,7 @@ void keyReleased() {
     }
   }
 
-  else if(Screen == 3 || Screen == 4){
+  else if(Screen == 0 || Screen == 1 || Screen == 3 || Screen == 4 || Screen == 5){
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
     

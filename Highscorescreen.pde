@@ -30,13 +30,14 @@ class Highscorescreen {
     if (Screen == 2 && gameEnd == true) {
       gameEnd = false;
     }
-    if(keys['e']) {
-      keys[key] = false;
-      Screen = 0; 
-    }
+    
   }
 
   void draw() {
+    if(keys['e'] == true) {
+      keys[key] = false;
+      Screen = 0; 
+    }
     showHighscore();
     backToMenu();
   }

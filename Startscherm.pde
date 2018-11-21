@@ -75,19 +75,19 @@ class home{
       changeGrid();
       timer.start();
 
-      keys[key] = false;
+      keys['q'] = false;
     }
     else if(selectedX == 0 && selectedY == 0 && key == 'q'){
       Screen = 1;
-      keys[key] = false;
+      keys['q'] = false;
     }
     else if(selectedX == 0 && selectedY == 1 && key == 'q'){
       Screen = 5;
-      keys[key] = false;
+      keys['q'] = false;
       tutorial.tStart();
     }else if (selectedX == 1 && selectedY == 1 && key == 'q'){
       Screen = 4;
-      keys[key] = false;
+      keys['q'] = false;
     }
   }
 }

@@ -112,6 +112,9 @@ class Tutorial{
     fill(0);
     text("Q", 144, 600);
     
-    
+    if(keys['e'] == true) {
+      keys['e'] = false;
+      Screen = 0; 
+    }
   }
 }
