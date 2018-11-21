@@ -8,6 +8,9 @@ Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee c
 Besturing door WASD, character wisselen met E en Q voor interact
 
 */
+
+import ddf.minim.*; //importing the Minim library
+
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -69,6 +72,9 @@ void setup(){
   Titel = loadImage("Titel.png");
   Settings = loadImage("Settings.png");
   
+  loadAssets();
+
+  
   Board = new keyBoard();  
   startScherm = new home();
   HS = new Highscorescreen();
@@ -93,6 +99,8 @@ void setup(){
   char2.sizeY = 10;
 
   instellingen = new instellingen();
+  
+  background1.loop();
 
   frameRate(60);
 }
