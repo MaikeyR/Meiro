@@ -11,10 +11,6 @@ public class Movement {
   
   Movement() {
     
-    posX = 100;
-    posY = 100;
-    sizeX = 35;
-    sizeY = 35;
     dx = 200;
     dy = 200;
     
