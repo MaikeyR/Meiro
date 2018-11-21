@@ -1,5 +1,3 @@
-ETJ
-WFK
 WER
 DHY
 QQA
@@ -8,3 +6,5 @@ BOI
 GKO
 YUI
 SEX
+SFR
+HGT
