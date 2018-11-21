@@ -38,7 +38,6 @@ char letter2 = '_';
 char letter3 = '_';
 
 int charNumber = 0;
-
 int penaltyMiliSeconds = 0;
 /**
 Movement char1;
@@ -56,6 +55,7 @@ Wall walls[][];
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
+Tutorial tutorial;
 
 Timer timer = new Timer();
 instellingen instellingen;
@@ -72,10 +72,14 @@ void setup(){
   Board = new keyBoard();  
   startScherm = new home();
   HS = new Highscorescreen();
+  tutorial = new Tutorial();
   /**
   GameScreen 0 is het startscherm
   GameScreen 1 is het highscore scherm
   GameScreen 2 is de game
+  GameScreen 3 is keyboard
+  GameScreen 4 is instellingen
+  GameScreen 5 is tutorial
   ...
   */
   
@@ -87,8 +91,6 @@ void setup(){
   char2 = new Characters();
   char2.sizeX = 10;
   char2.sizeY = 10;
-  char1.dx = 100;
-  char1.dy = 100;
 
   instellingen = new instellingen();
 
@@ -101,7 +103,6 @@ void drawGame() {
   char1.draw();
   char2.draw();
   timer.draw();
-  //deur.draw();
 }
 
 void updateGame() {
@@ -146,8 +147,16 @@ void draw(){
     Board.draw();
   }
   if(Screen == 4){
-    instellingen.render();
-    instellingen.draw();
+    currentTime = (double) millis() / 1000;
+    dt = currentTime - lastUpdateTime;
+    tutorial.render();
+    tutorial.draw();
+    //instellingen.render();
+    //instellingen.draw();
+  }
+  if(Screen == 5){
+    tutorial.render();
+    tutorial.draw();
   }
   
 }

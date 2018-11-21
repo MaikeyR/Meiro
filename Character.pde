@@ -15,8 +15,8 @@ class Characters {
     posY = 0;
     sizeX = 24;
     sizeY = 24;
-    dx = 125;
-    dy = 125;
+    dx = 100;
+    dy = 100;
     
   }
   
@@ -140,14 +140,14 @@ class Characters {
     //Checkt of characters op finish zijn
     if(char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)){
       char1fin = true;
-    } else{char1fin = false;}
+    }
     
     if(char2.posX > finX && char2.posX < (finX + 35) && char2.posY > finY && char2.posY < (finY + 35)){
       char2fin = true;
-    } else{char2fin = false;}
+    }
     
     if(char2fin && char1fin || keys['f']){
-      if (mazecount < 6) {
+      if (mazecount < 10) {
         mazecount++;
         char1fin = false;
         char2fin = false;
@@ -280,7 +280,7 @@ class Characters {
     }
     if(char2fin && char1fin || keys['f']){
       
-      if (mazecount < 6) {
+      if (mazecount < 10) {
         mazecount++;
         char1fin = false;
         char2fin = false;
@@ -293,5 +293,4 @@ class Characters {
       keys['f'] = false;
     }
   }
-  
 }

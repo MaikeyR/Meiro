@@ -59,6 +59,7 @@ class home{
       Screen = 4;
       keys['q'] = false;
       keys['s'] = false;
+      tutorial.tStart();
     }
   }
 }
