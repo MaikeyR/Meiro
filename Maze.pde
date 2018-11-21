@@ -1,4 +1,5 @@
 class Maze {
+  int xCord1, yCord1, xCord2, yCord2;
   int X = 10;
   int Y = 10;
   
@@ -14,13 +15,12 @@ class Maze {
       }      
     }    
   }
-  
   void wallDraw() {
     //tekent het doolhof en bepaald waar welk blokje komt
     for (int i = 0 ; i < 20 ; i++) {
       for (int j = 0 ; j < 30 ; j++) {
-        X = j * 35 + 10;
-        Y = i * 35 + 10;
+        X = j * 35;
+        Y = i * 35;
         
         if (currentGrid[i][j]=='a') {
           fill(204, 102, 0);

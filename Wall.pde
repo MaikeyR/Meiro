@@ -4,8 +4,8 @@ class Wall{
   
   Wall() {
     
-    x = 0;
-    y = 0;
+    x = 10;
+    y = 10;
     size = 35;
     
   }
