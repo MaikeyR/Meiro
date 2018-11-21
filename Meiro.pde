@@ -1,3 +1,13 @@
+/**
+Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+
+
+iG103-3
+Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
+
+Besturing door WASD, character wisselen met E en Q voor interact
+
+*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -8,10 +18,17 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
+int mazecount = 0;
+
+
 boolean char1fin = false;
 boolean char2fin = false;
 int finX;
 int finY;
+int startX1;
+int startY1;
+int startX2;
+int startY2;
 
 int selectedX = 0;
 int selectedY = 0;
@@ -32,9 +49,12 @@ Characters char2;
 Maze theMaze;
 Wall walls[][];
 
+//Deur deur;
+
 Highscorescreen HS;
 home startScherm;
 keyBoard Board;
+Tutorial tutorial;
 
 Timer timer = new Timer();
 instellingen instellingen;
@@ -51,22 +71,23 @@ void setup(){
   Board = new keyBoard();  
   startScherm = new home();
   HS = new Highscorescreen();
+  tutorial = new Tutorial();
   /**
   GameScreen 0 is het startscherm
   GameScreen 1 is het highscore scherm
   GameScreen 2 is de game
+  GameScreen 3 is keyboard
+  GameScreen 4 is instellingen
+  GameScreen 5 is tutorial
   ...
   */
   
+  //deur = new Deur();
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
-  theMaze = new Maze();
-  theMaze.wallDraw();
   char1 = new Characters();
   char2 = new Characters();
-  char2.posX = 435;
-  char2.posY = 400;
   char2.sizeX = 10;
   char2.sizeY = 10;
 
@@ -87,8 +108,6 @@ void updateGame() {
 
   if (keys['e'] == true) {
   }
-  //theMaze.charCollisionCheck();
-
   if (char12) {
 
     char1.update1(dt);
@@ -127,8 +146,16 @@ void draw(){
     Board.draw();
   }
   if(Screen == 4){
-    instellingen.render();
-    instellingen.draw();
+    currentTime = (double) millis() / 1000;
+    dt = currentTime - lastUpdateTime;
+    tutorial.render();
+    tutorial.draw();
+    //instellingen.render();
+    //instellingen.draw();
+  }
+  if(Screen == 5){
+    tutorial.render();
+    tutorial.draw();
   }
   
 }
@@ -139,7 +166,7 @@ void keyPressed() {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
       
-      if(!keys[' ']){
+      if(!keys['q']){
         keys['a'] = false;
         keys['d'] = false;
         keys['s'] = false;
@@ -162,7 +189,7 @@ void keyPressed() {
   }
   if(Screen == 1){
     keys[key] = true;
-    if(keys[' '] == true){
+    if(keys['q'] == true){
      Screen = 0; 
     }
      keys[key] = false;
