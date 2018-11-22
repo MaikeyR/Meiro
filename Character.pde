@@ -14,8 +14,8 @@ class Characters {
     posY = 0;
     sizeX = 24;
     sizeY = 24;
-    dx = 120;
-    dy = 120;
+    dx = 80;
+    dy = 80;
   }
 
   void draw() {

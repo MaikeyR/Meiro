@@ -1,4 +1,4 @@
-class home{    
+/**class home{    
   public int lastPressed(int lastKeyCode){
     return lastKeyCode;
   }
@@ -62,4 +62,4 @@ class home{
       tutorial.tStart();
     }
   }
-}
+}**/

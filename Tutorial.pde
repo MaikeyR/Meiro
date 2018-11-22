@@ -63,10 +63,10 @@ class Tutorial {
       moveSelect = 100;
     } else moveSelect = 0;
 
-    if (keys['q']) {
+    if (keys['e']) {
       Screen = 0;
     }
-    keys['q'] = false;
+    keys['e'] = false;
   }
 
   void draw() {

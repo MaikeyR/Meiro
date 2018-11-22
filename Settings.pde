@@ -22,7 +22,7 @@ class settings{
       mainVolume--;
     }
       
-    if(selectedY == 2 && keys['q']){
+    if(selectedY == 2 && keys['e']){
       Screen = 0;
     }
   }
