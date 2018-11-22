@@ -3,7 +3,7 @@ class Timer {
   boolean running = false;
   String htime, mtime, stime, time;
   
-    //neemt de tijd op om de hihgscore te bepalen
+    //timer used for the highscore
     void start() {
         startTime = millis();
         running = true;
@@ -35,7 +35,7 @@ class Timer {
     
     int hour() {
       return (getElapsedTime() + penaltyMiliSeconds) / (1000*60*60) % 24;
-    }
+}
     
     void draw() {
       textSize(25);
