@@ -12,7 +12,7 @@ class keyBoard{
   String name;
     
   
-  //maakt een toetsenbord om je 3 initialen in te vullen
+  //Keyboard for the 3 initials for the highscore
   void draw(){
     clear();
     background(255);
@@ -82,7 +82,7 @@ class keyBoard{
   }
   
   
-  //Om naar de highscore screen te gaan
+  //To go to highscore screen
   else if(selectedLetter == 19 && keys['q']){
 
     l1 = str(letter1);
