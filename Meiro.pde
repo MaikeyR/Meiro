@@ -82,8 +82,8 @@ void setup() {
   char2 = new Characters();
   char2.sizeX = 10;
   char2.sizeY = 10;
-  char1.dx = 80;
-  char1.dy = 80;
+  char1.dx = 120;
+  char1.dy = 120;
 
   settings = new settings();
 
@@ -190,7 +190,6 @@ void keyPressed() {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
-      keys['e'] = false;
     }
     keys[key] = false;
   } else if (Screen == 2 || Screen == 3 || Screen == 4 || Screen == 5) {
