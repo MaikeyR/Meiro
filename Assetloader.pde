@@ -1,5 +1,5 @@
 // Graphics
-PImage Trophy, PlayButton, Titel, Settings, horizontaledoorgang, verticaledoorgang, deur;
+PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert, Door, Path, Tutorial;
 
 // Sounds
 Minim minim;
@@ -12,13 +12,16 @@ public void loadAssets() {
   PlayButton = loadImage("Playbutton.png");
   Titel = loadImage("Titel.png");
   Settings = loadImage("Settings.png");
-  horizontaledoorgang = loadImage("horizontaldoorgang.png");
-  verticaledoorgang = loadImage("verticaldoorgang.png");
-  deur = loadImage("deur.png");
+  smallHallwayHoriz = loadImage("horizontaldoorgang.png");
+  smallHallwayVert = loadImage("verticaldoorgang.png");
+  Door = loadImage("deur.png");
+  Path = loadImage("pad.png");
+  Tutorial = loadImage("tutorial.png");
+  
 
   //Load sounds
   minim = new Minim(this);
-  //name = minim.loadFile("name.mp3", 2048);
+  //example: name = minim.loadFile("name.mp3", 2048);
   background0 = minim.loadFile("background0.mp3", 2048);
   background1 = minim.loadFile("background1.mp3", 2048);
   background2 = minim.loadFile("background2.mp3", 2048);
