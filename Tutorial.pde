@@ -27,6 +27,7 @@ class Tutorial {
       patternStop = patternTime;
       pattern++;
       pattern2++;
+      penaltyMiliSeconds += 2000;
       if (pattern == 7) {
         pattern = 0;
       }
