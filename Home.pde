@@ -63,6 +63,8 @@ class home {
       Screen = 2;
       mazecount = 0;
       changeGrid();
+      timer.stop();
+      penaltyMiliSeconds = 0;
       timer.start();
 
       keys['q'] = false;
