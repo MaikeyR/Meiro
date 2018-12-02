@@ -12,8 +12,6 @@ class settings{
      selectedY--; 
      keys['w'] = false;
     }
-
-    
     if(selectedY == 1 && keys['d'] && mainVolume < 100){
       //volume up
       mainVolume++;

@@ -86,8 +86,7 @@ void setup() {
   char1.dy = 120;
 
   settings = new settings();
-
-  background1.loop();
+  //background1.loop();
 
   changeGrid();
 
@@ -105,7 +104,6 @@ void drawGame() {
 
 void updateGame() {
   lastUpdateTime = currentTime;
-  Highscore.update();
 
   if (keys['e'] == true) {
   }
@@ -122,6 +120,7 @@ void updateGame() {
 void draw() {
   clear();
   background(255);
+  Highscore.update();
 
   if (Screen == 0) {
     home.draw();

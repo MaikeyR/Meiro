@@ -27,7 +27,6 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           walls[i][j].draw();
-
         }
         else if (currentGrid[i][j] == PATH) {
           image(Path, X, Y, 35, 35);
@@ -35,7 +34,6 @@ class Maze {
         else if (currentGrid[i][j] == SMALL_HALLWAY_HORIZ) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100);
           image(smallHallwayHoriz, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == SMALL_HALLWAY_VERT) {
@@ -46,8 +44,7 @@ class Maze {
         else if (currentGrid[i][j] == MOVEABLE_WALL_MID){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100, 0, 100);
-          walls[i][j].draw();
+          image(MoveableWall, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == DOOR) {
           walls[i][j].y = Y;
@@ -57,8 +54,7 @@ class Maze {
         else if (currentGrid[i][j] == MOVEABLE_WALL_SIDE){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100, 0, 100);
-          walls[i][j].draw();
+          image(MoveableWall, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == FINISH){
           finX = X;
@@ -66,7 +62,7 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(100, 0, 255);
-          walls[i][j].draw();
+          image(Finish, X, Y, 35, 35);
         }
         else if (currentGrid[i][j]==START1) {
           fill(153);
