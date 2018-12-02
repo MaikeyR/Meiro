@@ -80,8 +80,8 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 15;
-  char2.sizeY = 15;
+  char2.sizeX = 10;
+  char2.sizeY = 10;
   char1.dx = 120;
   char1.dy = 120;
 
