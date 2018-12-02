@@ -12,7 +12,5 @@ class Wall{
   
   void draw() {
     rect(x, y, size, size);
-    
   }
-  
 }

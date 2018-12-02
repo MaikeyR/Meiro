@@ -1,13 +1,16 @@
 /**
-Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+ 
+ 
+ iG103-3
+ Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
+ 
+ Besturing door WASD, character wisselen met E en Q voor interact
+ 
+ */
 
+import ddf.minim.*; //importing the Minim library
 
-iG103-3
-Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
-
-Besturing door WASD, character wisselen met E en Q voor interact
-
-*/
 int Screen = 0;
 int widthMaze = 1050;
 int heightMaze = 700;
@@ -19,7 +22,6 @@ int grd = 0;
 boolean [] keys = new boolean[128];
 
 int mazecount = 0;
-
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -38,51 +40,41 @@ char letter2 = '_';
 char letter3 = '_';
 
 int charNumber = 0;
-/**
-Movement char1;
-Movement char2;
-Maze theMaze;
-*/
+int penaltyMiliSeconds = 0;
+
+home home;
+Highscorescreen Highscore;
+Tutorial tutorial;
+settings settings;
+keyBoard Board;
 
 Characters char1;
 Characters char2;
 Maze theMaze;
 Wall walls[][];
-
-//Deur deur;
-
-Highscorescreen HS;
-home startScherm;
-keyBoard Board;
-Tutorial tutorial;
-
 Timer timer = new Timer();
-instellingen instellingen;
 
-PImage Trophy, PlayButton, Titel, Settings;
-
-void setup(){
+void setup() {
   size(1280, 720);
-  Trophy = loadImage("Trophy.png");
-  PlayButton = loadImage("Playbutton.png");
-  Titel = loadImage("Titel.png");
-  Settings = loadImage("Settings.png");
-  
+
+  // first, load all graphics & sounds
+  loadAssets();
+
   Board = new keyBoard();  
-  startScherm = new home();
-  HS = new Highscorescreen();
+  home = new home();
+  Highscore = new Highscorescreen();
   tutorial = new Tutorial();
+
   /**
-  GameScreen 0 is het startscherm
-  GameScreen 1 is het highscore scherm
-  GameScreen 2 is de game
-  GameScreen 3 is keyboard
-  GameScreen 4 is instellingen
-  GameScreen 5 is tutorial
-  ...
-  */
-  
-  //deur = new Deur();
+   GameScreen 0 is home
+   GameScreen 1 is the highscorescreen
+   GameScreen 2 is the game
+   GameScreen 3 is the keyboard
+   GameScreen 4 are settings
+   GameScreen 5 is the tutorial
+   ...
+   */
+
   walls = new Wall[20][30];
   theMaze = new Maze();
   theMaze.gridSetup();
@@ -90,21 +82,31 @@ void setup(){
   char2 = new Characters();
   char2.sizeX = 10;
   char2.sizeY = 10;
+  char1.dx = 80;
+  char1.dy = 80;
 
-  instellingen = new instellingen();
+  settings = new settings();
+
+  background1.loop();
+
+  changeGrid();
 
   frameRate(60);
 }
 
 void drawGame() {
+  println(frameRate);
   background(0);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
   timer.draw();
+  //deur.draw();
 }
 
 void updateGame() {
+  lastUpdateTime = currentTime;
+  Highscore.update();
 
   if (keys['e'] == true) {
   }
@@ -118,148 +120,164 @@ void updateGame() {
 }
 
 
-void draw(){
-
+void draw() {
   clear();
   background(255);
 
-    HS.update();
-  if (Screen == 0){
-    startScherm.draw();
+  if (Screen == 0) {
+    home.draw();
   }
-  if(Screen == 1){
-    HS.draw();
+  if (Screen == 1) {
+    Highscore.draw();
   }
-  if(Screen == 2){
-    currentTime = (double) millis() / 1000;
-    dt = currentTime - lastUpdateTime;
-    //System.out.println("millis: " + millis());
-    //System.out.println("last update time: " + lastUpdateTime);
-    //System.out.println("current time: " + currentTime);
-    //System.out.println("down time: " + dt);
-
+  if (Screen == 2) {
     updateGame();
     drawGame();
+    currentTime = (double) millis() / 1000;
+    dt = currentTime - lastUpdateTime;
   }
-    lastUpdateTime = currentTime;
-  if(Screen == 3){
+  if (Screen == 3) {
     Board.draw();
   }
-  if(Screen == 4){
+  if (Screen == 4) {
+    settings.render();
+    settings.draw();
+  }
+  if (Screen == 5) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
     tutorial.render();
     tutorial.draw();
-    //instellingen.render();
-    //instellingen.draw();
   }
-  if(Screen == 5){
-    tutorial.render();
-    tutorial.draw();
-  }
-  
 }
 
 void keyPressed() {
 
-  if(Screen == 0){
+  if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
-      
-      if(!keys['q']){
+
+      if (!keys['q']) {
         keys['a'] = false;
         keys['d'] = false;
         keys['s'] = false;
+        keys['w'] = false;
       }             
       keys[key] = true;
-            
+
       switch (key) {
-        
-        case 'A' : keys['a'] = true; break;
-        case 'S' : keys['s'] = true; break;
-        case 'D' : keys['d'] = true; break;
-        case 'W' : keys['w'] = true; break;
-        default : break;
-        
+
+      case 'A' : 
+        keys['a'] = true; 
+        break;
+      case 'S' : 
+        keys['s'] = true; 
+        break;
+      case 'D' : 
+        keys['d'] = true; 
+        break;
+      case 'W' : 
+        keys['w'] = true; 
+        break;
+      default : 
+        break;
       }
-      if(!keys['a'] && !keys['d'] && !keys['s']){
+      if (!keys['a'] && !keys['d'] && !keys['s'] && !keys['w']) {
         keys[key] = false;
       }
     }
   }
-  if(Screen == 1){
+  if (Screen == 1) {
     keys[key] = true;
-    if(keys['q'] == true){
-     Screen = 0; 
+    if (keys['e'] == true) {
+      Screen = 0;
+      keys['e'] = false;
     }
-     keys[key] = false;
-  }
-  if(Screen == 2 || Screen == 3 || Screen == 4){
-
+    keys[key] = false;
+  } else if (Screen == 2 || Screen == 3 || Screen == 4 || Screen == 5) {
     if (key != CODED && key != SHIFT) {
-    
       keys[key] = true;
-    
       switch (key) {
-      
-      case 'A' : keys['a'] = true; break;
-      case 'S' : keys['s'] = true; break;
-      case 'D' : keys['d'] = true; break;
-      case 'W' : keys['w'] = true; break;
-      default : break;
-      
-      }   
-    } 
+
+      case 'A' : 
+        keys['a'] = true; 
+        break;
+      case 'S' : 
+        keys['s'] = true; 
+        break;
+      case 'D' : 
+        keys['d'] = true; 
+        break;
+      case 'W' : 
+        keys['w'] = true; 
+        break;
+      default : 
+        break;
+      }
+    }
   }
 }
 
 void keyReleased() {
-  if(Screen == 2){
+  if (Screen == 2) {
     if (key != CODED && key != SHIFT) {
-      
+
       keys[key] = false;
-      
+
       if (key == 'e' || key == 'E') {
-        
+
         keys['e'] = false;
         keys['E'] = false;
-        
+
         if (char12 == true) {
-          
+
           char12 = false;
-          
         } else if (char12 == false) {
-          
+
           char12 = true;
-          
         }
-        
       } 
-      
+
       switch (key) {
-        
-        case 'A' : keys['a'] = false; break;
-        case 'S' : keys['s'] = false; break;
-        case 'D' : keys['d'] = false; break;
-        case 'W' : keys['w'] = false; break;
-        default : break;
-        
+
+      case 'A' : 
+        keys['a'] = false; 
+        break;
+      case 'S' : 
+        keys['s'] = false; 
+        break;
+      case 'D' : 
+        keys['d'] = false; 
+        break;
+      case 'W' : 
+        keys['w'] = false; 
+        break;
+      default : 
+        break;
       }
     }
   }
 
-  if(Screen == 3 || Screen == 4){
+  if (Screen == 3 || Screen == 4 || Screen == 5) {
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
-    
+
       switch (key) {
-      
-        case 'A' : keys['a'] = false; break;
-        case 'S' : keys['s'] = false; break;
-        case 'D' : keys['d'] = false; break;
-        case 'W' : keys['w'] = false; break;
-        default : break;
-      
+
+      case 'A' : 
+        keys['a'] = false; 
+        break;
+      case 'S' : 
+        keys['s'] = false; 
+        break;
+      case 'D' : 
+        keys['d'] = false; 
+        break;
+      case 'W' : 
+        keys['w'] = false; 
+        break;
+      default : 
+        break;
       }
     }
   }
