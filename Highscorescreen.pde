@@ -23,7 +23,8 @@ class Highscorescreen {
   
   void update() {
     if (Screen == 1 && gameEnd == false) {
-      addNewScore(timer.getElapsedTime(), Board.name);
+      addNewScore(timer.getElapsedTime() + penaltyMiliSeconds, Board.name);
+      println("...");
       gameEnd = true;
       penaltyMiliSeconds = 0;
     }

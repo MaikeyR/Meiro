@@ -87,7 +87,7 @@ void setup() {
 
   settings = new settings();
 
-  background1.loop();
+  //background1.loop();
 
   changeGrid();
 
@@ -95,7 +95,6 @@ void setup() {
 }
 
 void drawGame() {
-  println(frameRate);
   background(0);
   theMaze.wallDraw();
   char1.draw();
@@ -106,7 +105,6 @@ void drawGame() {
 
 void updateGame() {
   lastUpdateTime = currentTime;
-  Highscore.update();
 
   if (keys['e'] == true) {
   }
@@ -124,6 +122,7 @@ void draw() {
   clear();
   background(255);
 
+  Highscore.update();
   if (Screen == 0) {
     home.draw();
   }

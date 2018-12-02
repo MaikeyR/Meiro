@@ -63,6 +63,8 @@ class home {
       Screen = 2;
       mazecount = 0;
       changeGrid();
+      timer.stop();
+      penaltyMiliSeconds = 0;
       timer.start();
 
       keys['q'] = false;
@@ -73,6 +75,7 @@ class home {
       Screen = 5;
       keys['q'] = false;
       tutorial.tStart();
+      timer.start();
     } else if (selectedX == 1 && selectedY == 1 && key == 'q') {
       Screen = 4;
       keys['q'] = false;
