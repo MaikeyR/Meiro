@@ -56,7 +56,7 @@ class Highscorescreen {
   }
   
   void showHighscore() {
-    background(180);
+    background(#121836);
     fill(255);
     rect(10, 10, 1260, 700);
     textSize(53);

@@ -46,6 +46,7 @@ home home;
 Highscorescreen Highscore;
 Tutorial tutorial;
 settings settings;
+LevelSelect LevelSelect;
 keyBoard Board;
 
 Characters char1;
@@ -64,6 +65,7 @@ void setup() {
   home = new home();
   Highscore = new Highscorescreen();
   tutorial = new Tutorial();
+  LevelSelect = new LevelSelect();
 
   /**
    GameScreen 0 is home
@@ -80,21 +82,22 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 10;
-  char2.sizeY = 10;
-  char1.dx = 120;
-  char1.dy = 120;
+  char2.sizeX = 14;
+  char2.sizeY = 14;
+  char2.r = 0;
+  char2.g = 0;
+  char2.b = 255;
 
   settings = new settings();
   //background1.loop();
 
   changeGrid();
 
-  frameRate(60);
+  frameRate(144);
 }
 
 void drawGame() {
-  background(0);
+  background(#121836);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -119,7 +122,7 @@ void updateGame() {
 
 void draw() {
   clear();
-  background(255);
+  background(#121836);
   Highscore.update();
 
   if (Screen == 0) {
@@ -147,10 +150,12 @@ void draw() {
     tutorial.render();
     tutorial.draw();
   }
+  if (Screen == 6) {
+    LevelSelect.draw();
+  }
 }
 
 void keyPressed() {
-
   if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
@@ -185,7 +190,7 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1) {
+  if (Screen == 1 && CODED != key) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
@@ -211,6 +216,20 @@ void keyPressed() {
       default : 
         break;
       }
+    }
+  } else if (Screen == 6){
+  if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
+
+      levelSelectedY++;
+    } else if (key != CODED && key == 'w' && !(levelSelectedY <= minY)) {
+
+      levelSelectedY--;
+    } else if (key != CODED && key == 'a' && !(levelSelectedX <= minX)) {
+
+      levelSelectedX--;
+    } else if (key != CODED && key == 'd' && !(levelSelectedX >= maxX)) {
+      println("test");
+      levelSelectedX++;
     }
   }
 }
@@ -255,7 +274,7 @@ void keyReleased() {
     }
   }
 
-  if (Screen == 3 || Screen == 4 || Screen == 5) {
+  if (Screen == 3 || Screen == 4 || Screen == 5 || Screen == 6) {
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
 

@@ -150,6 +150,13 @@ class Maze {
              penaltyMiliSeconds += 2000;
             }
           }
+          
+          if(currentGrid[i][j] == DOOR){
+            if((char2.posX > X + 5 && char2.posX < X + 30 && char2.posY > Y + 5 && char2.posY < Y + 30)){
+              char2.posX = startX2;
+              char2.posY = startY2;
+            }
+          }
         }
       } 
     }    
