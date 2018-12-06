@@ -17,7 +17,7 @@ class keyBoard{
     clear();
     background(255);
     if(selectedX != 9 && keys['d']){
-       selectedX += 1; 
+       selectedX += 1;
     }
     if(selectedX != 0 && keys['a']){
       selectedX -= 1;
@@ -26,7 +26,7 @@ class keyBoard{
       selectedY -= 1;
     }
     if(selectedY != 2 && keys['s']){
-      selectedY += 1; 
+      selectedY += 1;
     }
     if(keys['q'] == true){
       spacePressed = true;

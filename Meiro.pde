@@ -80,10 +80,11 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 10;
-  char2.sizeY = 10;
-  char1.dx = 120;
-  char1.dy = 120;
+  char2.sizeX = 14;
+  char2.sizeY = 14;
+  char2.r = 0;
+  char2.g = 0;
+  char2.b = 255;
 
   settings = new settings();
   //background1.loop();
@@ -185,7 +186,7 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1) {
+  if (Screen == 1 && CODED != key) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
