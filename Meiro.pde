@@ -21,7 +21,7 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int mazecount = 0;
+int mazeCount = 0;
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -44,7 +44,6 @@ int penaltyMiliSeconds = 0;
 
 home home;
 Highscorescreen Highscore;
-Tutorial tutorial;
 settings settings;
 LevelSelect LevelSelect;
 keyBoard Board;
@@ -64,7 +63,6 @@ void setup() {
   Board = new keyBoard();  
   home = new home();
   Highscore = new Highscorescreen();
-  tutorial = new Tutorial();
   LevelSelect = new LevelSelect();
 
   /**
@@ -147,8 +145,6 @@ void draw() {
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    tutorial.render();
-    tutorial.draw();
   }
   if (Screen == 6) {
     LevelSelect.draw();
@@ -217,20 +213,41 @@ void keyPressed() {
         break;
       }
     }
-  } else if (Screen == 6){
-  if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
+  } else if (Screen == 6) {
+    if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
 
       levelSelectedY++;
     } else if (key != CODED && key == 'w' && !(levelSelectedY <= minY)) {
 
       levelSelectedY--;
-    } else if (key != CODED && key == 'a' && !(levelSelectedX <= minX)) {
-
-      levelSelectedX--;
-    } else if (key != CODED && key == 'd' && !(levelSelectedX >= maxX)) {
-      println("test");
-      levelSelectedX++;
+    } else if (key != CODED && key == 'a') {
+      if (levelSelectedX >= minX && levelSelectedY > 0) {
+        println("test");
+        levelSelectedX = 4;
+        levelSelectedY --;
+      } else {
+        levelSelectedX --;
+      }
+    } else if (key != CODED && key == 'd') {
+      if (levelSelectedX >= maxX -1) {
+        println("test");
+        levelSelectedX = 0;
+        levelSelectedY ++;
+      } else {
+        levelSelectedX++;
+      }
     }
+    if (key != CODED && key == 'e') {
+      Screen = 0;
+    } else if (key != CODED && key == 'q') {
+      
+      Screen = 2;
+      timer.stop();
+      penaltyMiliSeconds = 0;
+      timer.start();
+    } 
+    
+   
   }
 }
 

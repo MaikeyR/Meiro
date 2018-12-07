@@ -77,12 +77,9 @@ class home {
 
     //test if the player wants to go to the next screen.
     if (selectedX == 1 && selectedY == 0 && key == 'q') {
-      Screen = 2;
-      mazecount = 0;
+      Screen = 6;
+      mazeCount = 0;
       changeGrid();
-      timer.stop();
-      penaltyMiliSeconds = 0;
-      timer.start();
 
       keys['q'] = false;
     } else if (selectedX == 0 && selectedY == 0 && key == 'q') {
@@ -91,7 +88,6 @@ class home {
     } else if (selectedX == 0 && selectedY == 1 && key == 'q') {
       Screen = 6;
       keys['q'] = false;
-      tutorial.tStart();
     } else if (selectedX == 1 && selectedY == 1 && key == 'q') {
       Screen = 4;
       keys['q'] = false;

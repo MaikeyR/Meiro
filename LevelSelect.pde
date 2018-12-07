@@ -27,16 +27,7 @@ class LevelSelect {
       minLineOnScreen = levelSelectedY;
       maxLineOnScreen = levelSelectedY + 4;
     }
-
-    if (keys['e'] == true) {
-
-      Screen = 0;
-    }
-
-    if (keys['q'] == true) {
-      currentGrid = grids[levelNummer];
-      Screen = 1;
-    }
+    
   }
 
   void draw() {
@@ -72,6 +63,8 @@ class LevelSelect {
     selectedButton();
 
     update();
+    
+    textAlign(LEFT, BASELINE);
   }
 
   void selectedButton() {
@@ -86,9 +79,11 @@ class LevelSelect {
         }
 
         if (levelSelectedX == j && levelSelectedY == i) {
-
           rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 200);
-
+          fill(255);
+          text(levelNummer + 1, x + 100, y + 100);
+          mazeCount = levelNummer;
+          currentGrid = grids[levelNummer];
           break;
         }
         levelNummer ++;

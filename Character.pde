@@ -6,7 +6,6 @@ class Characters {
   float sizeY;
   float dx;
   float dy;
-  float amountOfLevels = 6; //amount of levels to play.
   char r, g, b;
 
 
@@ -225,8 +224,8 @@ class Characters {
     }
 
     if (char2fin && char1fin || keys['f']) {
-      if (mazecount < amountOfLevels - 1) {
-        mazecount++; 
+      if (mazeCount < grids.length - 1) {
+        mazeCount++; 
         char1fin = false;
         char2fin = false;
         changeGrid();
