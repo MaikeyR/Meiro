@@ -87,80 +87,89 @@ class Maze {
         if (char12) {
           if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j - 1] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i][j + 1] = MOVEABLE_WALL_SIDE;
              currentGrid[i][j - 1] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j + 1] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i][j - 1] = MOVEABLE_WALL_SIDE;
              currentGrid[i][j + 1] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i - 1][j] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i + 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i - 1][j] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i + 1][j] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i - 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i + 1][j] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           }
         } else{
           if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j - 1] == MOVEABLE_WALL_SIDE){
             if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i][j + 1] = MOVEABLE_WALL_SIDE;
              currentGrid[i][j - 1] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           }
           else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j + 1] == MOVEABLE_WALL_SIDE){
             if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i][j - 1] = MOVEABLE_WALL_SIDE;
              currentGrid[i][j + 1] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           } 
           else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i - 1][j] == MOVEABLE_WALL_SIDE){
             if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i + 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i - 1][j] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           }
           else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i + 1][j] == MOVEABLE_WALL_SIDE){
             if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
+             grunt.rewind();
+             grunt.play();
              currentGrid[i - 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i + 1][j] = PATH;
              keys[key] = false;
-             grunt.play();
              penaltyMiliSeconds += 2000;
             }
           }
           
           if(currentGrid[i][j] == DOOR){
             if((char2.posX > X + 5 && char2.posX < X + 30 && char2.posY > Y + 5 && char2.posY < Y + 30)){
+              fall.rewind();
+              fall.play();
               char2.posX = startX2;
               char2.posY = startY2;
-              fall.play();
             }
           }
         }
