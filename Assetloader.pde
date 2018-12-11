@@ -26,6 +26,6 @@ public void loadAssets() {
   minim = new Minim(this);
   //example: name = minim.loadFile("name.mp3", 2048);
   soundtrack = minim.loadFile("assets/sounds/soundtrack.mp3", 2048);
-  fall = minim.loadFile("assets/sounds/background0.mp3", 2048);
-  grunt = minim.loadFile("assets/sounds/background1.mp3", 2048);
+  fall = minim.loadFile("assets/sounds/fall.mp3", 2048);
+  grunt = minim.loadFile("assets/sounds/grunt.mp3", 2048);
 }

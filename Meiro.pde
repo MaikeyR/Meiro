@@ -1,5 +1,6 @@
 /**
- Thomas
+ 
+ Luca
  
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
@@ -10,7 +11,7 @@
  Besturing door WASD, character wisselen met E en Q voor interact
  
  */
- 
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -105,11 +106,11 @@ void setup() {
 
   changeGrid();
 
-  frameRate(60);
+  frameRate(144);
 }
 
 void drawGame() {
-  background(0);
+  background(backgroundColour);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -133,9 +134,8 @@ void updateGame() {
 
 
 void draw() {
-  //background_music.play();
   clear();
-  background(255);
+  background(backgroundColour);
   Highscore.update();
 
   if (Screen == 0) {
@@ -149,6 +149,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    soundtrack.play();
     sidebar.draw();
   }
   if (Screen == 3) {
@@ -168,7 +169,6 @@ void draw() {
 }
 
 void keyPressed() {
-
   if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
@@ -203,7 +203,7 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1) {
+  if (Screen == 1 && CODED != key) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
@@ -230,8 +230,7 @@ void keyPressed() {
         break;
       }
     }
-  }
-  else if (Screen == 6) {
+  } else if (Screen == 6) {
     if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
 
       levelSelectedY++;
