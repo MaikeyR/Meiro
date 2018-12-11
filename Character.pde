@@ -225,15 +225,10 @@ class Characters {
     }
 
     if (char2fin && char1fin || keys['f']) {
-      if (mazecount < amountOfLevels - 1) {
-        mazecount++; 
-        char1fin = false;
-        char2fin = false;
-        changeGrid();
-      } else {
-        Screen = 3;
-        timer.stop();
-      }
+      char1fin = false;
+      char2fin = false;
+      Screen = 3;
+      timer.stop();
       keys['f'] = false;
     }
   }

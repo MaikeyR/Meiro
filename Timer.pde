@@ -40,6 +40,6 @@ class Timer {
     void draw() {
       textSize(25);
       time = hour() +" : "+ minute() +" : "+ second();
-      text(time, 1150, 25);
+      text(time, 1120, 40);
     }
 }

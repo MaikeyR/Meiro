@@ -1,23 +1,53 @@
 class Highscorescreen {
   int[] highscore = new int[10];
   String[] highscoreName = new String[10];
-  String[] scoreStr;
-  String[] nameStr;
-  String highscoretxt = "highscore.txt";
-  String highscoreNametxt = "highscoreName.txt";
+  String[] scoreStr = loadStrings("highscore.txt");
+  String[] nameStr = loadStrings("highscoreName.txt");
   boolean gameEnd = true;
 
   Highscorescreen() {
     //The highscore time gets saved in a text document just like the three initials.
-    String[] scoreStr = null;
-    String[] nameStr = null;
-    scoreStr = loadStrings(highscoretxt);
-    nameStr = loadStrings(highscoreNametxt);
+    println(nameStr.length);
+    println(highscoreName.length);
+    println(mazeCount);
     
-    for (int i = 0; i < highscore.length; i++) {
-      highscore[i] = int(scoreStr[i]);
-      highscoreName[i] = nameStr[i];
+    switch(mazeCount) {
       
+      case 0: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i]);
+                highscoreName[i] = nameStr[i];
+              }
+              break;
+              
+      case 1: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+              
+      case 2: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 3: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 4: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 5: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
     }
   }
   
@@ -35,6 +65,13 @@ class Highscorescreen {
   void draw() {
     showHighscore();
     backToMenu();
+    
+    if (keys[']'] == true) {
+        println(".");
+        saveStrings("highscore.txt", loadStrings("ClearScore.txt"));
+        saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
+        keys[key] = false;
+      }
   }
 
 
@@ -54,7 +91,7 @@ class Highscorescreen {
         }
      }
   }
-  
+
   void showHighscore() {
     background(180);
     fill(255);
@@ -70,28 +107,20 @@ class Highscorescreen {
       text(highscoreName[i], 400, 210 + 40 * i);
     }
     
-    String[] scoreStr = new String[highscore.length];
-    String[] nameStr = highscoreName;
+    //String[] scoreStr = new String[highscore.length];
+    //String[] nameStr = highscoreName;
     
     for (int i = 0; i < highscore.length; i++) {
-      scoreStr[i] = str(highscore[i]);
-      nameStr[i] = highscoreName[i];
+      scoreStr[i+mazeCount*10] = str(highscore[i]);
+      nameStr[i+mazeCount*10] = highscoreName[i];
     }
     
-    saveStrings(highscoretxt, scoreStr);
-    saveStrings(highscoreNametxt, nameStr);
-  }
-  
-  void keyPressed() {
-  
-    if(keys['e'] == true) {
-      Screen = 0; 
-      keys['e'] = false;
-    }
+    saveStrings("highscore.txt", scoreStr);
+    saveStrings("highscoreName.txt", nameStr);
   }
   
   void backToMenu() {
     triangle(70, 640, 105, 630, 105, 650);
-    text("Escape", 130, 650);
+    text("E", 130, 650);
   }
 }

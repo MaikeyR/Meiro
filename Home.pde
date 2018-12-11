@@ -77,7 +77,7 @@ class home {
     //test if the player wants to go to the next screen.
     if (selectedX == 1 && selectedY == 0 && key == 'q') {
       Screen = 2;
-      mazecount = 0;
+      mazeCount = 0;
       changeGrid();
       timer.stop();
       penaltyMiliSeconds = 0;
@@ -87,10 +87,13 @@ class home {
     } else if (selectedX == 0 && selectedY == 0 && key == 'q') {
       Screen = 1;
       keys['q'] = false;
+      
+      //saveStrings("highscore.txt", loadStrings("ClearScore.txt"));      comment dit uit en ga naar de highscores in-game om alle highscores te resetten.
+      //saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
+       
     } else if (selectedX == 0 && selectedY == 1 && key == 'q') {
       Screen = 5;
       keys['q'] = false;
-      tutorial.tStart();
     } else if (selectedX == 1 && selectedY == 1 && key == 'q') {
       Screen = 4;
       keys['q'] = false;

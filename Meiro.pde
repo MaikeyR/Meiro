@@ -21,7 +21,7 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int mazecount = 0;
+int mazeCount = 0;
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -44,9 +44,11 @@ int penaltyMiliSeconds = 0;
 
 home home;
 Highscorescreen Highscore;
-Tutorial tutorial;
+//Tutorial tutorial;
+Sidebar sidebar;
 settings settings;
 keyBoard Board;
+
 
 Characters char1;
 Characters char2;
@@ -63,7 +65,8 @@ void setup() {
   Board = new keyBoard();  
   home = new home();
   Highscore = new Highscorescreen();
-  tutorial = new Tutorial();
+  //tutorial = new Tutorial();
+  sidebar = new Sidebar();
 
   /**
    GameScreen 0 is home
@@ -134,6 +137,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    sidebar.draw();
   }
   if (Screen == 3) {
     Board.draw();
@@ -145,8 +149,8 @@ void draw() {
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    tutorial.render();
-    tutorial.draw();
+    //tutorial.render();
+    //tutorial.draw();
   }
 }
 
@@ -181,6 +185,7 @@ void keyPressed() {
       default : 
         break;
       }
+      
       if (!keys['a'] && !keys['d'] && !keys['s'] && !keys['w']) {
         keys[key] = false;
       }
@@ -233,6 +238,18 @@ void keyReleased() {
         } else if (char12 == false) {
 
           char12 = true;
+        }
+      } 
+      
+      if (key == 'q' || key == 'Q') {
+
+        keys['q'] = false;
+        keys['Q'] = false;
+
+        if (sidebar.Q) {
+          sidebar.Q = false;
+        } else {
+          sidebar.Q = true;
         }
       } 
 
