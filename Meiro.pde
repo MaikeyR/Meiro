@@ -1,6 +1,5 @@
 /**
- 
- Luca
+ Thomas
  
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
@@ -99,11 +98,11 @@ void setup() {
 
   changeGrid();
 
-  frameRate(144);
+  frameRate(60);
 }
 
 void drawGame() {
-  background(backgroundColour);
+  background(0);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -127,8 +126,9 @@ void updateGame() {
 
 
 void draw() {
+  //background_music.play();
   clear();
-  background(backgroundColour);
+  background(255);
   Highscore.update();
 
   if (Screen == 0) {
@@ -161,6 +161,7 @@ void draw() {
 }
 
 void keyPressed() {
+
   if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
@@ -195,7 +196,7 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1 && CODED != key) {
+  if (Screen == 1) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
@@ -221,39 +222,6 @@ void keyPressed() {
       default : 
         break;
       }
-    }
-  } else if (Screen == 6) {
-    if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
-
-      levelSelectedY++;
-    } else if (key != CODED && key == 'w' && !(levelSelectedY <= minY)) {
-
-      levelSelectedY--;
-    } else if (key != CODED && key == 'a') {
-      if (levelSelectedX >= minX && levelSelectedY > 0) {
-        println("test");
-        levelSelectedX = 4;
-        levelSelectedY --;
-      } else {
-        levelSelectedX --;
-      }
-    } else if (key != CODED && key == 'd') {
-      if (levelSelectedX >= maxX -1) {
-        println("test");
-        levelSelectedX = 0;
-        levelSelectedY ++;
-      } else {
-        levelSelectedX++;
-      }
-    }
-    if (key != CODED && key == 'e') {
-      Screen = 0;
-    } else if (key != CODED && key == 'q') {
-
-      Screen = 2;
-      timer.stop();
-      penaltyMiliSeconds = 0;
-      timer.start();
     }
   }
 }
