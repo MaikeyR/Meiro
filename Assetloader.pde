@@ -5,6 +5,9 @@ PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert,
 Minim minim;
 AudioPlayer background0, background1, background2, background3, background4;
 
+// Colours
+
+
 public void loadAssets() {
 
   //graphics

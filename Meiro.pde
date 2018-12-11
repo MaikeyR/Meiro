@@ -1,4 +1,7 @@
 /**
+ 
+ Luca
+ 
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
  
@@ -20,6 +23,9 @@ double lastUpdateTime = 0;
 double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
+
+int backgroundColour = #121836;
+int buttonColour = #133425;
 
 int mazeCount = 0;
 
@@ -46,6 +52,7 @@ home home;
 Highscorescreen Highscore;
 settings settings;
 LevelSelect LevelSelect;
+Sidebar sidebar;
 keyBoard Board;
 
 Characters char1;
@@ -64,6 +71,7 @@ void setup() {
   home = new home();
   Highscore = new Highscorescreen();
   LevelSelect = new LevelSelect();
+  sidebar = new Sidebar();
 
   /**
    GameScreen 0 is home
@@ -95,7 +103,7 @@ void setup() {
 }
 
 void drawGame() {
-  background(#121836);
+  background(backgroundColour);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -120,7 +128,7 @@ void updateGame() {
 
 void draw() {
   clear();
-  background(#121836);
+  background(backgroundColour);
   Highscore.update();
 
   if (Screen == 0) {
@@ -134,6 +142,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    sidebar.draw();
   }
   if (Screen == 3) {
     Board.draw();
@@ -240,14 +249,12 @@ void keyPressed() {
     if (key != CODED && key == 'e') {
       Screen = 0;
     } else if (key != CODED && key == 'q') {
-      
+
       Screen = 2;
       timer.stop();
       penaltyMiliSeconds = 0;
       timer.start();
-    } 
-    
-   
+    }
   }
 }
 
@@ -268,6 +275,18 @@ void keyReleased() {
         } else if (char12 == false) {
 
           char12 = true;
+        }
+      } 
+
+      if (key == 'q' || key == 'Q') {
+
+        keys['q'] = false;
+        keys['Q'] = false;
+
+        if (sidebar.Q) {
+          sidebar.Q = false;
+        } else {
+          sidebar.Q = true;
         }
       } 
 

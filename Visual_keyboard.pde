@@ -15,7 +15,7 @@ class keyBoard{
   //Keyboard for the 3 initials for the highscore
   void draw(){
     clear();
-    background(#121836);
+    background(backgroundColour);
     if(selectedX != 9 && keys['d']){
        selectedX += 1;
     }
@@ -88,6 +88,10 @@ class keyBoard{
     l1 = str(letter1);
     l2 = str(letter2);
     l3 = str(letter3);
+    letter1 = '_';
+    letter2 = '_';
+    letter3 = '_';
+    charNumber = 0;
     name = l1 + l2 + l3;
     Screen = 1;
   }

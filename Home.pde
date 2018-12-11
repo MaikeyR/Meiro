@@ -21,7 +21,7 @@ class home {
     }
 
     clear();
-    background(#121836);
+    background(backgroundColour);
     fill(#6B7CCE);
 
     rect(270, 300, 300, 200);
@@ -85,6 +85,10 @@ class home {
     } else if (selectedX == 0 && selectedY == 0 && key == 'q') {
       Screen = 1;
       keys['q'] = false;
+      
+      //saveStrings("highscore.txt", loadStrings("ClearScore.txt"));      //comment dit uit en ga naar de highscores in-game om alle highscores te resetten.
+      //saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
+      
     } else if (selectedX == 0 && selectedY == 1 && key == 'q') {
       Screen = 6;
       keys['q'] = false;
