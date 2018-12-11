@@ -27,11 +27,11 @@ class LevelSelect {
       minLineOnScreen = levelSelectedY;
       maxLineOnScreen = levelSelectedY + 4;
     }
-    
   }
 
   void draw() {
     clear();
+    background(backgroundColour);
     x = 32;
     y = 30;
     levelNummer = 0;
@@ -41,10 +41,10 @@ class LevelSelect {
         if ( levelNummer >= grids.length ) {
           break;
         }
-        fill(#6B7CCE);
+        fill(buttonColour);
         rect(x, y, 200, 200);
 
-        fill(#0C0F1C);
+        fill(textColour);
         textAlign(CENTER, CENTER);
         text(levelNummer + 1, x + 100, y + 100);
 
@@ -63,14 +63,12 @@ class LevelSelect {
     selectedButton();
 
     update();
-    
+
     textAlign(LEFT, BASELINE);
   }
 
   void selectedButton() {
     levelNummer = 0;
-
-    fill(#2C3B83);
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
         //println("test");
@@ -79,11 +77,16 @@ class LevelSelect {
         }
 
         if (levelSelectedX == j && levelSelectedY == i) {
+          fill(buttonSelectedColour);
           rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 200);
-          fill(255);
+          
+          fill(textColour);
+          textAlign(CENTER, CENTER);
           text(levelNummer + 1, x + 100, y + 100);
+          
           mazeCount = levelNummer;
           currentGrid = grids[levelNummer];
+          textAlign(LEFT, BASELINE);
           break;
         }
         levelNummer ++;

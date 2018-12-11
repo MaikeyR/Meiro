@@ -31,8 +31,7 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int backgroundColour = #121836;
-int buttonColour = #133425;
+int aantalLevels = 7;
 
 int mazeCount = 0;
 

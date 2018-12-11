@@ -22,7 +22,7 @@ class home {
 
     clear();
     background(backgroundColour);
-    fill(#6B7CCE);
+    fill(buttonColour);
 
     rect(270, 300, 300, 200);
     image(Trophy, 232, 210, 400, 400);
@@ -40,38 +40,38 @@ class home {
     image(Settings, 745, 550, 180, 180);
 
 
-    fill(#2C3B83);
+    fill(buttonSelectedColour);
     if (selectedX == 0 && selectedY == 0) { 
       rect(270, 300, 300, 200);
       image(Trophy, 232, 210, 400, 400);
-      fill(#6B7CCE);
+      fill(buttonColour);
       rect(200, 380, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("Q", 210, 408);
     } else if (selectedX == 1 && selectedY == 1) {
       rect(750, 550, 150, 150);
       image(Settings, 745, 550, 180, 180);
-      fill(#6B7CCE);
+      fill(buttonColour);
       rect(680, 610, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("Q", 690, 638);
     } else if (selectedX == 1 && selectedY == 0) {
       rect(770, 300, 300, 200);
       image(PlayButton, 732, 190, 400, 400);
-      fill(#6B7CCE);
+      fill(buttonColour);
       rect(700, 380, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("Q", 710, 408);
     } else if (selectedX == 0 && selectedY == 1) {
       rect(450, 550, 150, 150);
       image(Tutorial, 450, 550, 150, 150);
-      fill(#6B7CCE);
+      fill(buttonColour);
       rect(380, 610, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("Q", 390, 638);
     }
 

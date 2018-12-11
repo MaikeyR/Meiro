@@ -93,11 +93,11 @@ class Highscorescreen {
   }
 
   void showHighscore() {
-    background(180);
-    fill(255);
+    
+    fill(backgroundColour);
     rect(10, 10, 1260, 700);
     textSize(53);
-    fill(0);
+    fill(textColour);
     text("Highscores", 515, 150);
  
     
