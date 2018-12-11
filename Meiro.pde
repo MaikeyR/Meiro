@@ -1,4 +1,6 @@
 /**
+ Thomas
+ 
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
  
@@ -21,7 +23,10 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int mazecount = 0;
+int backgroundColour = #121836;
+int buttonColour = #133425;
+
+int mazeCount = 0;
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -41,12 +46,12 @@ char letter3 = '_';
 
 int charNumber = 0;
 int penaltyMiliSeconds = 0;
-boolean openAnimation = false;
 
 home home;
 Highscorescreen Highscore;
-Tutorial tutorial;
 settings settings;
+LevelSelect LevelSelect;
+Sidebar sidebar;
 keyBoard Board;
 
 Characters char1;
@@ -64,7 +69,8 @@ void setup() {
   Board = new keyBoard();  
   home = new home();
   Highscore = new Highscorescreen();
-  tutorial = new Tutorial();
+  LevelSelect = new LevelSelect();
+  sidebar = new Sidebar();
 
   /**
    GameScreen 0 is home
@@ -81,10 +87,11 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 10;
-  char2.sizeY = 10;
-  char1.dx = 120;
-  char1.dy = 120;
+  char2.sizeX = 14;
+  char2.sizeY = 14;
+  char2.r = 0;
+  char2.g = 0;
+  char2.b = 255;
 
   settings = new settings();
   //background1.loop();
@@ -119,7 +126,7 @@ void updateGame() {
 
 
 void draw() {
-  background.play();
+  //background_music.play();
   clear();
   background(255);
   Highscore.update();
@@ -135,6 +142,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    sidebar.draw();
   }
   if (Screen == 3) {
     Board.draw();
@@ -146,8 +154,6 @@ void draw() {
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    tutorial.render();
-    tutorial.draw();
   }
 }
 
