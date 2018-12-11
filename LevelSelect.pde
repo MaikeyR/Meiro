@@ -82,12 +82,12 @@ class LevelSelect {
           
           fill(textColour);
           textAlign(CENTER, CENTER);
-          text(levelNummer + 1, x + 100, y + 100);
+          text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 100);
           
           mazeCount = levelNummer;
           currentGrid = grids[levelNummer];
           textAlign(LEFT, BASELINE);
-          break;
+          
         }
         levelNummer ++;
       }
