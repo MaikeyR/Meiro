@@ -27,7 +27,6 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           walls[i][j].draw();
-
         }
         else if (currentGrid[i][j] == PATH) {
           image(Path, X, Y, 35, 35);
@@ -35,7 +34,6 @@ class Maze {
         else if (currentGrid[i][j] == SMALL_HALLWAY_HORIZ) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100);
           image(smallHallwayHoriz, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == SMALL_HALLWAY_VERT) {
@@ -46,8 +44,7 @@ class Maze {
         else if (currentGrid[i][j] == MOVEABLE_WALL_MID){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100, 0, 100);
-          walls[i][j].draw();
+          image(MoveableWall, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == DOOR) {
           walls[i][j].y = Y;
@@ -57,8 +54,7 @@ class Maze {
         else if (currentGrid[i][j] == MOVEABLE_WALL_SIDE){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          fill(100, 0, 100);
-          walls[i][j].draw();
+          image(MoveableWall, X, Y, 35, 35);
         }
         else if (currentGrid[i][j] == FINISH){
           finX = X;
@@ -66,7 +62,7 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(100, 0, 255);
-          walls[i][j].draw();
+          image(Finish, X, Y, 35, 35);
         }
         else if (currentGrid[i][j]==START1) {
           fill(153);
@@ -96,24 +92,21 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
             }
-          }
-          else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j + 1] == MOVEABLE_WALL_SIDE){
+          } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j + 1] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i][j - 1] = MOVEABLE_WALL_SIDE;
              currentGrid[i][j + 1] = PATH;
              keys[key] = false;
              penaltyMiliSeconds += 2000;
             }
-          } 
-          else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i - 1][j] == MOVEABLE_WALL_SIDE){
+          } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i - 1][j] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i + 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i - 1][j] = PATH;
              keys[key] = false;
              penaltyMiliSeconds += 2000;
             }
-          }
-          else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i + 1][j] == MOVEABLE_WALL_SIDE){
+          } else if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i + 1][j] == MOVEABLE_WALL_SIDE){
             if((char1.posX > X - 70 && char1.posX < X + 105 && char1.posY > Y - 35 && char1.posY < Y + 70)){
              currentGrid[i - 1][j] = MOVEABLE_WALL_SIDE;
              currentGrid[i + 1][j] = PATH;
@@ -121,7 +114,7 @@ class Maze {
              penaltyMiliSeconds += 2000;
             }
           }
-        } else {
+        } else{
           if(currentGrid[i][j] == MOVEABLE_WALL_MID && keys['q'] && currentGrid[i][j - 1] == MOVEABLE_WALL_SIDE){
             if((char2.posX > X - 70 && char2.posX < X + 105 && char2.posY > Y - 35 && char2.posY < Y + 70)){
              currentGrid[i][j + 1] = MOVEABLE_WALL_SIDE;
@@ -152,6 +145,13 @@ class Maze {
              currentGrid[i + 1][j] = PATH;
              keys[key] = false;
              penaltyMiliSeconds += 2000;
+            }
+          }
+          
+          if(currentGrid[i][j] == DOOR){
+            if((char2.posX > X + 5 && char2.posX < X + 30 && char2.posY > Y + 5 && char2.posY < Y + 30)){
+              char2.posX = startX2;
+              char2.posY = startY2;
             }
           }
         }

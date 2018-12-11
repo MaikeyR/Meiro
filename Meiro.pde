@@ -1,4 +1,7 @@
 /**
+ 
+ Luca
+ 
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
  
@@ -21,7 +24,10 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int mazecount = 0;
+int backgroundColour = #121836;
+int buttonColour = #133425;
+
+int mazeCount = 0;
 
 boolean char1fin = false;
 boolean char2fin = false;
@@ -44,8 +50,9 @@ int penaltyMiliSeconds = 0;
 
 home home;
 Highscorescreen Highscore;
-Tutorial tutorial;
 settings settings;
+LevelSelect LevelSelect;
+Sidebar sidebar;
 keyBoard Board;
 
 Characters char1;
@@ -63,7 +70,8 @@ void setup() {
   Board = new keyBoard();  
   home = new home();
   Highscore = new Highscorescreen();
-  tutorial = new Tutorial();
+  LevelSelect = new LevelSelect();
+  sidebar = new Sidebar();
 
   /**
    GameScreen 0 is home
@@ -80,22 +88,22 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 10;
-  char2.sizeY = 10;
-  char1.dx = 80;
-  char1.dy = 80;
+  char2.sizeX = 14;
+  char2.sizeY = 14;
+  char2.r = 0;
+  char2.g = 0;
+  char2.b = 255;
 
   settings = new settings();
-
-  background1.loop();
+  //background1.loop();
 
   changeGrid();
 
-  frameRate(60);
+  frameRate(144);
 }
 
 void drawGame() {
-  background(0);
+  background(backgroundColour);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -105,7 +113,6 @@ void drawGame() {
 
 void updateGame() {
   lastUpdateTime = currentTime;
-  Highscore.update();
 
   if (keys['e'] == true) {
   }
@@ -121,7 +128,8 @@ void updateGame() {
 
 void draw() {
   clear();
-  background(255);
+  background(backgroundColour);
+  Highscore.update();
 
   if (Screen == 0) {
     home.draw();
@@ -134,6 +142,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    sidebar.draw();
   }
   if (Screen == 3) {
     Board.draw();
@@ -145,13 +154,13 @@ void draw() {
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    tutorial.render();
-    tutorial.draw();
+  }
+  if (Screen == 6) {
+    LevelSelect.draw();
   }
 }
 
 void keyPressed() {
-
   if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
@@ -186,11 +195,10 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1) {
+  if (Screen == 1 && CODED != key) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
-      keys['e'] = false;
     }
     keys[key] = false;
   } else if (Screen == 2 || Screen == 3 || Screen == 4 || Screen == 5) {
@@ -213,6 +221,39 @@ void keyPressed() {
       default : 
         break;
       }
+    }
+  } else if (Screen == 6) {
+    if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
+
+      levelSelectedY++;
+    } else if (key != CODED && key == 'w' && !(levelSelectedY <= minY)) {
+
+      levelSelectedY--;
+    } else if (key != CODED && key == 'a') {
+      if (levelSelectedX >= minX && levelSelectedY > 0) {
+        println("test");
+        levelSelectedX = 4;
+        levelSelectedY --;
+      } else {
+        levelSelectedX --;
+      }
+    } else if (key != CODED && key == 'd') {
+      if (levelSelectedX >= maxX -1) {
+        println("test");
+        levelSelectedX = 0;
+        levelSelectedY ++;
+      } else {
+        levelSelectedX++;
+      }
+    }
+    if (key != CODED && key == 'e') {
+      Screen = 0;
+    } else if (key != CODED && key == 'q') {
+
+      Screen = 2;
+      timer.stop();
+      penaltyMiliSeconds = 0;
+      timer.start();
     }
   }
 }
@@ -237,6 +278,18 @@ void keyReleased() {
         }
       } 
 
+      if (key == 'q' || key == 'Q') {
+
+        keys['q'] = false;
+        keys['Q'] = false;
+
+        if (sidebar.Q) {
+          sidebar.Q = false;
+        } else {
+          sidebar.Q = true;
+        }
+      } 
+
       switch (key) {
 
       case 'A' : 
@@ -257,7 +310,7 @@ void keyReleased() {
     }
   }
 
-  if (Screen == 3 || Screen == 4 || Screen == 5) {
+  if (Screen == 3 || Screen == 4 || Screen == 5 || Screen == 6) {
     if (key != CODED && key != SHIFT) {
       keys[key] = false;
 

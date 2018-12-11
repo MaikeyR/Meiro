@@ -1,9 +1,12 @@
 // Graphics
-PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert, Door, Path, Tutorial;
+PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert, Door, Path, Tutorial, Wall, MoveableWall, Finish;
 
 // Sounds
 Minim minim;
 AudioPlayer background0, background1, background2, background3, background4;
+
+// Colours
+
 
 public void loadAssets() {
 
@@ -17,6 +20,9 @@ public void loadAssets() {
   Door = loadImage("deur.png");
   Path = loadImage("pad.png");
   Tutorial = loadImage("tutorial.png");
+  Wall = loadImage("allclosed.png");
+  MoveableWall = loadImage("moveablewall.png");
+  Finish = loadImage("finish.png");
   
 
   //Load sounds
