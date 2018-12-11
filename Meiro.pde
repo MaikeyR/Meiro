@@ -31,7 +31,8 @@ double dt = 0;
 int grd = 0;
 boolean [] keys = new boolean[128];
 
-int aantalLevels = 7;
+int backgroundColour = #121836;
+int buttonColour = #133425;
 
 int mazeCount = 0;
 
@@ -148,7 +149,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    soundtrack.play();
+    soundtrack.play(); //Song is currently bugged in loop form
     sidebar.draw();
   }
   if (Screen == 3) {
@@ -157,6 +158,7 @@ void draw() {
   if (Screen == 4) {
     settings.render();
     settings.draw();
+    soundtrack.play();  //Test song for volume bar, loop currently bugged
   }
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;

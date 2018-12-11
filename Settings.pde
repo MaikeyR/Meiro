@@ -13,9 +13,11 @@ class settings{
      keys['w'] = false;
     }
     if(selectedY == 1 && keys['d'] && mainVolume < 100){
+      soundtrack.setGain(100); //used to increase volume
       //volume up
       mainVolume++;
     }else if(selectedY == 1 && keys['a'] && mainVolume > 0){
+      soundtrack.setGain(-20);  //used to decrease volume
       //volume down
       mainVolume--;
     }
