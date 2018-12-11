@@ -1,4 +1,3 @@
-
 class Highscorescreen {
   int[] highscore = new int[10];
   String[] highscoreName = new String[10];
@@ -9,7 +8,7 @@ class Highscorescreen {
   boolean gameEnd = true;
 
   Highscorescreen() {
-    //De highscore wordt opgeslagen in een text document even als de ingevulde 3 letters
+    //The highscore time gets saved in a text document just like the three initials.
     String[] scoreStr = null;
     String[] nameStr = null;
     scoreStr = loadStrings(highscoretxt);
@@ -26,18 +25,14 @@ class Highscorescreen {
     if (Screen == 1 && gameEnd == false) {
       addNewScore(timer.getElapsedTime(), Board.name);
       gameEnd = true;
+      penaltyMiliSeconds = 0;
     }
     if (Screen == 2 && gameEnd == true) {
       gameEnd = false;
     }
-    
   }
 
   void draw() {
-    if(keys['e'] == true) {
-      keys[key] = false;
-      Screen = 0; 
-    }
     showHighscore();
     backToMenu();
   }
@@ -59,6 +54,7 @@ class Highscorescreen {
         }
      }
   }
+  
   void showHighscore() {
     background(180);
     fill(255);
@@ -85,16 +81,17 @@ class Highscorescreen {
     saveStrings(highscoretxt, scoreStr);
     saveStrings(highscoreNametxt, nameStr);
   }
-
+  
   void keyPressed() {
   
-    if(keys['e']) {
+    if(keys['e'] == true) {
       Screen = 0; 
+      keys['e'] = false;
     }
   }
-
+  
   void backToMenu() {
     triangle(70, 640, 105, 630, 105, 650);
-    text("Escape", 130, 650);
+    text("E", 130, 650);
   }
 }
