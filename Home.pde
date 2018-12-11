@@ -1,6 +1,9 @@
 class home {    
   int selectedX = 0;
   int selectedY = 0;
+  int imageX = 0;
+  int imageY = 0;
+  int imagedx = 1;
   //Draws homescreen and defines when you go to the next screen.
   void draw() {
     if (keys['a'] && selectedX != 0) {
@@ -20,8 +23,27 @@ class home {
       keys[key] = false;
     }
 
+    ///////////
+
+    //if (){}
+    //image(HomeBackground, imageX, imageY, 1050, 720);
+    //image(HomeBackground, imageX + 1050, imageY, 1050, 720);
+    //image(HomeBackground, imageX + 2100, imageY, 1050, 720);
+
+    ////////////
+
     clear();
-    background(backgroundColour);
+    if (imageX >= -1050) {
+      image(HomeBackground, imageX, imageY, 1050, 720);
+      image(HomeBackground, imageX + 1050, imageY, 1050, 720);
+      image(HomeBackground, imageX + 2100, imageY, 1050, 720);
+      imageX -= dt*imagedx;
+      println(1000/dt);
+    } else {
+      imageX = 0;
+    }
+
+
     fill(buttonColour);
 
     rect(270, 300, 300, 200);
@@ -85,10 +107,9 @@ class home {
     } else if (selectedX == 0 && selectedY == 0 && key == 'q') {
       Screen = 1;
       keys['q'] = false;
-      
+
       //saveStrings("highscore.txt", loadStrings("ClearScore.txt"));      //comment dit uit en ga naar de highscores in-game om alle highscores te resetten.
       //saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
-      
     } else if (selectedX == 0 && selectedY == 1 && key == 'q') {
       Screen = 6;
       keys['q'] = false;
