@@ -3,34 +3,29 @@ PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert,
 
 // Sounds
 Minim minim;
-AudioPlayer background0, background1, background2, background3, background4;
-
-// Colours
-
+AudioPlayer fall, grunt, soundtrack;
 
 public void loadAssets() {
 
   //graphics
-  Trophy = loadImage("Trophy.png");
-  PlayButton = loadImage("Playbutton.png");
-  Titel = loadImage("Titel.png");
-  Settings = loadImage("Settings.png");
-  smallHallwayHoriz = loadImage("horizontaldoorgang.png");
-  smallHallwayVert = loadImage("verticaldoorgang.png");
-  Door = loadImage("deur.png");
-  Path = loadImage("pad.png");
-  Tutorial = loadImage("tutorial.png");
-  Wall = loadImage("allclosed.png");
-  MoveableWall = loadImage("moveablewall.png");
-  Finish = loadImage("finish.png");
+  Trophy = loadImage("assets/textures/Trophy.png");
+  PlayButton = loadImage("assets/textures/Playbutton.png");
+  Titel = loadImage("assets/textures/Titel.png");
+  Settings = loadImage("assets/textures/Settings.png");
+  smallHallwayHoriz = loadImage("assets/textures/horizontaldoorgang.png");
+  smallHallwayVert = loadImage("assets/textures/verticaldoorgang.png");
+  Door = loadImage("assets/textures/deur.png");
+  Path = loadImage("assets/textures/pad.png");
+  Tutorial = loadImage("assets/textures/tutorial.png");
+  Wall = loadImage("assets/textures/allclosed.png");
+  MoveableWall = loadImage("assets/textures/moveablewall.png");
+  Finish = loadImage("assets/textures/finish.png");
   
 
   //Load sounds
   minim = new Minim(this);
   //example: name = minim.loadFile("name.mp3", 2048);
-  background0 = minim.loadFile("background0.mp3", 2048);
-  background1 = minim.loadFile("background1.mp3", 2048);
-  background2 = minim.loadFile("background2.mp3", 2048);
-  background3 = minim.loadFile("background3.mp3", 2048);
-  background4 = minim.loadFile("background4.mp3", 2048);
+  soundtrack = minim.loadFile("assets/sounds/soundtrack.mp3", 2048);
+  fall = minim.loadFile("assets/sounds/background0.mp3", 2048);
+  grunt = minim.loadFile("assets/sounds/background1.mp3", 2048);
 }

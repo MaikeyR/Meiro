@@ -12,6 +12,13 @@
  
  */
 
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 import ddf.minim.*; //importing the Minim library
 
 int Screen = 0;
@@ -142,6 +149,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
+    soundtrack.play();
     sidebar.draw();
   }
   if (Screen == 3) {
