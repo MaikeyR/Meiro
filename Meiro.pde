@@ -1,6 +1,5 @@
 /**
- 
- Luca
+ Thomas
  
  Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
  
@@ -11,7 +10,7 @@
  Besturing door WASD, character wisselen met E en Q voor interact
  
  */
-
+ 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -95,8 +94,7 @@ void setup() {
   theMaze.gridSetup();
   char1 = new Characters();
   char2 = new Characters();
-  char2.sizeX = 14;
-  char2.sizeY = 14;
+  char2.size = 14;
   char2.r = 0;
   char2.g = 0;
   char2.b = 255;
@@ -106,11 +104,11 @@ void setup() {
 
   changeGrid();
 
-  frameRate(144);
+  frameRate(60);
 }
 
 void drawGame() {
-  background(backgroundColour);
+  background(0);
   theMaze.wallDraw();
   char1.draw();
   char2.draw();
@@ -134,8 +132,9 @@ void updateGame() {
 
 
 void draw() {
+  //background_music.play();
   clear();
-  background(backgroundColour);
+  background(255);
   Highscore.update();
 
   if (Screen == 0) {
@@ -149,7 +148,7 @@ void draw() {
     drawGame();
     currentTime = (double) millis() / 1000;
     dt = currentTime - lastUpdateTime;
-    soundtrack.play(); //Song is currently bugged in loop form
+    soundtrack.play();
     sidebar.draw();
   }
   if (Screen == 3) {
@@ -158,7 +157,6 @@ void draw() {
   if (Screen == 4) {
     settings.render();
     settings.draw();
-    soundtrack.play();  //Test song for volume bar, loop currently bugged
   }
   if (Screen == 5) {
     currentTime = (double) millis() / 1000;
@@ -170,6 +168,7 @@ void draw() {
 }
 
 void keyPressed() {
+
   if (Screen == 0) {
     if (key != CODED && key != SHIFT) { 
       keys[key] = true;
@@ -204,7 +203,7 @@ void keyPressed() {
       }
     }
   }
-  if (Screen == 1 && CODED != key) {
+  if (Screen == 1) {
     keys[key] = true;
     if (keys['e'] == true) {
       Screen = 0;
@@ -231,7 +230,8 @@ void keyPressed() {
         break;
       }
     }
-  } else if (Screen == 6) {
+  }
+  else if (Screen == 6) {
     if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
 
       levelSelectedY++;

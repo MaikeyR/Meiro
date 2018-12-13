@@ -7,58 +7,23 @@ class Highscorescreen {
 
   Highscorescreen() {
     //The highscore time gets saved in a text document just like the three initials.
-    println(nameStr.length);
-    println(highscoreName.length);
+    //println(scoreStr[i+mazeCount*10]);
+    //println(highscore[i]);
     println(mazeCount);
-    
-    switch(mazeCount) {
-      
-      case 0: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i]);
-                highscoreName[i] = nameStr[i];
-              }
-              break;
-              
-      case 1: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i+mazeCount*10]);
-                highscoreName[i] = nameStr[i+mazeCount*10];
-              }
-              break;
-              
-      case 2: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i+mazeCount*10]);
-                highscoreName[i] = nameStr[i+mazeCount*10];
-              }
-              break;
-      
-      case 3: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i+mazeCount*10]);
-                highscoreName[i] = nameStr[i+mazeCount*10];
-              }
-              break;
-      
-      case 4: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i+mazeCount*10]);
-                highscoreName[i] = nameStr[i+mazeCount*10];
-              }
-              break;
-      
-      case 5: for (int i = 0; i < highscore.length; i++) {
-                highscore[i] = int(scoreStr[i+mazeCount*10]);
-                highscoreName[i] = nameStr[i+mazeCount*10];
-              }
-              break;
-    }
+    whatHighscore();
   }
   
   void update() {
-    if (Screen == 1 && gameEnd == false) {
+    
+    if (Screen == 1 && gameEnd == false) {      
+      whatHighscore();
       addNewScore(timer.getElapsedTime(), Board.name);
       gameEnd = true;
       penaltyMiliSeconds = 0;
     }
-    if (Screen == 2 && gameEnd == true) {
+    else if (Screen == 2 && gameEnd == true) {
       gameEnd = false;
+      println(".");
     }
   }
 
@@ -76,7 +41,7 @@ class Highscorescreen {
 
 
   void addNewScore(int score, String name) {
-  
+  println(mazeCount);
     for (int i = 0; i < highscore.length; i++) {
    
       if (score <= highscore[i]) {
@@ -122,5 +87,49 @@ class Highscorescreen {
   void backToMenu() {
     triangle(70, 640, 105, 630, 105, 650);
     text("E", 130, 650);
+  }
+  
+  void whatHighscore() {
+    
+    switch(mazeCount) {
+      
+      case 0: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i]);
+                highscoreName[i] = nameStr[i];
+              }
+              break;
+              
+      case 1: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+              
+      case 2: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 3: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 4: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+              }
+              break;
+      
+      case 5: for (int i = 0; i < highscore.length; i++) {
+                highscore[i] = int(scoreStr[i+mazeCount*10]);
+                highscoreName[i] = nameStr[i+mazeCount*10];
+                println(scoreStr[i+mazeCount*10]);
+                println(highscore[i]);
+              }
+              break;
+    }
   }
 }
