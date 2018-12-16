@@ -13,8 +13,7 @@ class LevelSelect {
   int levelNummer;
   int xButtonGrid = 0;
   int yButtonGrid = 0;
-  int buttonGrid[][] = new int[grids.length][4];
-
+  int buttonGrid[][] = new int[aantalLevels][4];
 
   void update() {
 
@@ -27,24 +26,24 @@ class LevelSelect {
       minLineOnScreen = levelSelectedY;
       maxLineOnScreen = levelSelectedY + 4;
     }
+    
   }
 
   void draw() {
     clear();
-    background(backgroundColour);
     x = 32;
     y = 30;
     levelNummer = 0;
 
     for (yButtonGrid = 0; yButtonGrid < maxY; yButtonGrid++) {
       for (xButtonGrid = 0; xButtonGrid < maxX; xButtonGrid++) {
-        if ( levelNummer >= grids.length ) {
+        if ( levelNummer >= aantalLevels ) {
           break;
         }
-        fill(buttonColour);
+        fill(#6B7CCE);
         rect(x, y, 200, 200);
 
-        fill(textColour);
+        fill(#0C0F1C);
         textAlign(CENTER, CENTER);
         text(levelNummer + 1, x + 100, y + 100);
 
@@ -63,34 +62,69 @@ class LevelSelect {
     selectedButton();
 
     update();
-
+    
     textAlign(LEFT, BASELINE);
   }
 
   void selectedButton() {
     levelNummer = 0;
+
+    fill(#2C3B83);
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
-        //println("test");
-        if ( levelNummer >= grids.length ) {
+        
+        if ( levelNummer >= aantalLevels ) {
           break;
         }
 
         if (levelSelectedX == j && levelSelectedY == i) {
-          fill(buttonSelectedColour);
           rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 200);
-          
-          fill(textColour);
-          textAlign(CENTER, CENTER);
-          text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 100);
-          
+          fill(255);
+          text(levelNummer + 1, x + 100, y + 100);
           mazeCount = levelNummer;
           currentGrid = grids[levelNummer];
-          textAlign(LEFT, BASELINE);
-          
+          break;
         }
         levelNummer ++;
       }
     }
   }
+  
+  void updateOnKeyboard(char keyboardKey) {
+    
+    if (keyboardKey == 's' && !(levelSelectedY >= maxY)) {
+
+      levelSelectedY++;
+    } else if (keyboardKey == 'w' && !(levelSelectedY <= minY)) {
+
+      levelSelectedY--;
+    } else if (keyboardKey == 'a') {
+      if (levelSelectedX >= minX && levelSelectedY > 0) {
+        println("test");
+        levelSelectedX = 4;
+        levelSelectedY --;
+      } else {
+        levelSelectedX --;
+      }
+    } else if (keyboardKey == 'd') {
+      if (levelSelectedX >= maxX -1) {
+        println("test");
+        levelSelectedX = 0;
+        levelSelectedY ++;
+      } else {
+        levelSelectedX++;
+      }
+    }
+    if (keyboardKey == 'e') {
+      screen = 0;
+    } else if (keyboardKey == 'q') {
+
+      screen = 2;
+      timer.stop();
+      penaltyMiliSeconds = 0;
+      timer.start();
+    }
+    
+  }
+  
 }

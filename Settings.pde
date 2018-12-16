@@ -1,8 +1,8 @@
-class settings{
+class Settings {
   float selectedY = 1;
   float mainVolume = 50;
 
-  void render(){
+  void update(){
     //The settings menu is not complete yet, more options to come.
     if(keys['s'] == true && selectedY < 2){
      selectedY++;
@@ -21,7 +21,7 @@ class settings{
     }
       
     if(selectedY == 2 && keys['e']){
-      Screen = 0;
+      screen = 0;
     }
   }
   

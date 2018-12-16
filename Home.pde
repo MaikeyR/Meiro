@@ -1,9 +1,9 @@
-class home {    
+class Home {    
   int selectedX = 0;
   int selectedY = 0;
   int imageX = 0;
   int imageY = 0;
-  int imagedx = 1;
+  int imagedx = 50;
   //Draws homescreen and defines when you go to the next screen.
   void draw() {
     if (keys['a'] && selectedX != 0) {
@@ -23,24 +23,18 @@ class home {
       keys[key] = false;
     }
 
-    ///////////
-
-    //if (){}
-    //image(HomeBackground, imageX, imageY, 1050, 720);
-    //image(HomeBackground, imageX + 1050, imageY, 1050, 720);
-    //image(HomeBackground, imageX + 2100, imageY, 1050, 720);
-
-    ////////////
-
-    clear();
+    
     if (imageX >= -1050) {
-      image(HomeBackground, imageX, imageY, 1050, 720);
-      image(HomeBackground, imageX + 1050, imageY, 1050, 720);
-      image(HomeBackground, imageX + 2100, imageY, 1050, 720);
-      imageX -= dt*imagedx;
-      println(1000/dt);
+      image(HomeBackground, imageX, imageY);
+      image(HomeBackground, imageX + 1050, imageY);
+      image(HomeBackground, imageX + 2100, imageY);
+      imageX -= imagedx*dt;
+      //println(frameRate);
     } else {
       imageX = 0;
+      image(HomeBackground, imageX, imageY);
+      image(HomeBackground, imageX + 1050, imageY);
+      image(HomeBackground, imageX + 2100, imageY);
     }
 
 
@@ -98,23 +92,23 @@ class home {
     }
 
     //test if the player wants to go to the next screen.
-    if (selectedX == 1 && selectedY == 0 && key == 'q') {
-      Screen = 6;
+    if (selectedX == 1 && selectedY == 0 && keys['q']) {
+      screen = 5;
       mazeCount = 0;
       changeGrid();
 
       keys['q'] = false;
-    } else if (selectedX == 0 && selectedY == 0 && key == 'q') {
-      Screen = 1;
+    } else if (selectedX == 0 && selectedY == 0 && keys['q']) {
+      screen = 5;
       keys['q'] = false;
 
       //saveStrings("highscore.txt", loadStrings("ClearScore.txt"));      //comment dit uit en ga naar de highscores in-game om alle highscores te resetten.
       //saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
-    } else if (selectedX == 0 && selectedY == 1 && key == 'q') {
-      Screen = 6;
+    } else if (selectedX == 0 && selectedY == 1 && keys['q']) {
+      screen = 5;
       keys['q'] = false;
-    } else if (selectedX == 1 && selectedY == 1 && key == 'q') {
-      Screen = 4;
+    } else if (selectedX == 1 && selectedY == 1 && keys['q']) {
+      screen = 4;
       keys['q'] = false;
     }
   }

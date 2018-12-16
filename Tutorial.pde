@@ -65,7 +65,7 @@ class Tutorial {
     } else moveSelect = 0;
 
     if (keys['e']) {
-      Screen = 0;
+      screen = 0;
     }
     keys['e'] = false;
   }

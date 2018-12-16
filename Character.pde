@@ -24,7 +24,7 @@ class Characters {
   void draw() {
     fill(r, g, b);
     //stroke(173, 146, 37);
-    ellipse(posX, posY, sizeX, sizeY);
+    ellipse(posX+screenShakeX, posY+screenShakeY, sizeX, sizeY);
   }
 
   void update1(double dt) {
@@ -248,7 +248,7 @@ class Characters {
     if (char2fin && char1fin || keys['f']) {
       char1fin = false;
       char2fin = false;
-      Screen = 3;
+      screen = 3;
       timer.stop();
       keys['f'] = false;
     }
@@ -265,5 +265,16 @@ class Characters {
     //}
     //keys['f'] = false;
     //}
+  }
+
+  void changeCharacter() {
+
+    if (char12 == true) {
+
+      char12 = false;
+    } else if (char12 == false) {
+
+      char12 = true;
+    }
   }
 }
