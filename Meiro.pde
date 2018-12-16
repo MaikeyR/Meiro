@@ -1,11 +1,11 @@
 /**
  Meiro's labyrinth
  
- Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijneke en Marco Barantes
  Klas: ig103
  Groepje: 3
  
- Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen 
+ Dit programma is een spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen 
  Besturing door WASD, character wisselen met E en Q voor interact
  
  */
@@ -263,7 +263,6 @@ void keyPressed() {
 }
 
 void keyReleased() {
-
   if (key != CODED) {
 
     //onKeyReleased(key);

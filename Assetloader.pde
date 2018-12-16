@@ -5,12 +5,6 @@ PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert,
 Minim minim;
 AudioPlayer fall, grunt, soundtrack;
 
-// Colours
-int backgroundColour = #121836;
-int buttonColour = #2F3553;
-int buttonSelectedColour = #080C24;
-int textColour = #fcfcfc;
-
 public void loadAssets() {
 
   //graphics
