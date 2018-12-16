@@ -13,8 +13,7 @@ class LevelSelect {
   int levelNummer;
   int xButtonGrid = 0;
   int yButtonGrid = 0;
-  int buttonGrid[][] = new int[grids.length][4];
-
+  int buttonGrid[][] = new int[aantalLevels][4];
 
   void update() {
 
@@ -38,7 +37,7 @@ class LevelSelect {
 
     for (yButtonGrid = 0; yButtonGrid < maxY; yButtonGrid++) {
       for (xButtonGrid = 0; xButtonGrid < maxX; xButtonGrid++) {
-        if ( levelNummer >= grids.length ) {
+        if ( levelNummer >= aantalLevels ) {
           break;
         }
         fill(#6B7CCE);
@@ -73,8 +72,8 @@ class LevelSelect {
     fill(#2C3B83);
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
-        //println("test");
-        if ( levelNummer >= grids.length ) {
+        
+        if ( levelNummer >= aantalLevels ) {
           break;
         }
 
@@ -90,4 +89,42 @@ class LevelSelect {
       }
     }
   }
+  
+  void updateOnKeyboard(char keyboardKey) {
+    
+    if (keyboardKey == 's' && !(levelSelectedY >= maxY)) {
+
+      levelSelectedY++;
+    } else if (keyboardKey == 'w' && !(levelSelectedY <= minY)) {
+
+      levelSelectedY--;
+    } else if (keyboardKey == 'a') {
+      if (levelSelectedX >= minX && levelSelectedY > 0) {
+        println("test");
+        levelSelectedX = 4;
+        levelSelectedY --;
+      } else {
+        levelSelectedX --;
+      }
+    } else if (keyboardKey == 'd') {
+      if (levelSelectedX >= maxX -1) {
+        println("test");
+        levelSelectedX = 0;
+        levelSelectedY ++;
+      } else {
+        levelSelectedX++;
+      }
+    }
+    if (keyboardKey == 'e') {
+      screen = 0;
+    } else if (keyboardKey == 'q') {
+
+      screen = 2;
+      timer.stop();
+      penaltyMiliSeconds = 0;
+      timer.start();
+    }
+    
+  }
+  
 }

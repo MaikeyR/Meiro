@@ -1,16 +1,17 @@
 /**
- Thomas
+ Meiro's labyrinth
  
- Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijnike en Marco Barantes
+ Door: Thomas Otte, Luca Louwris, Sem Laan, Maikel Reijneke en Marco Barantes
+ Klas: ig103
+ Groepje: 3
  
- 
- iG103-3
- Dit programma is ee spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen
- 
+ Dit programma is een spel genaam Meiro's labyrint, in dit spel moet je met twee characters door verschillende doolhoven komen 
  Besturing door WASD, character wisselen met E en Q voor interact
  
  */
- 
+
+
+//importing the Minim library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -18,66 +19,46 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-import ddf.minim.*; //importing the Minim library
-
-int Screen = 0;
-int widthMaze = 1050;
-int heightMaze = 700;
-boolean char12 = true;
-double currentTime = 0;
-double lastUpdateTime = 0;
-double dt = 0;
-int grd = 0;
-boolean [] keys = new boolean[128];
-
-int backgroundColour = #121836;
-int buttonColour = #133425;
-
-int mazeCount = 0;
-
-boolean char1fin = false;
-boolean char2fin = false;
-int finX;
-int finY;
-int startX1;
-int startY1;
-int startX2;
-int startY2;
-
-int selectedX = 0;
-int selectedY = 0;
-
-char letter1 = '_';
-char letter2 = '_';
-char letter3 = '_';
-
-int charNumber = 0;
-int penaltyMiliSeconds = 0;
-
-home home;
-Highscorescreen Highscore;
-settings settings;
-LevelSelect LevelSelect;
+//classes
+Home home;
+HighscoreScreen highscore;
+Settings settings;
+LevelSelect levelSelect;
 Sidebar sidebar;
-keyBoard Board;
-
-Characters char1;
-Characters char2;
-Maze theMaze;
+Keyboard keyboard;
+AssetLoader assetLoader;
+Characters char1, char2;
+Maze maze;
 Wall walls[][];
-Timer timer = new Timer();
+Timer timer;
+
+//integers
+int screen; //TODO: alle Screen in screen veranderen
+int widthMaze, heightMaze;
+int grd;
+int aantalLevels;
+int mazeCount;
+int finX, finY, startX1, startY1, startX2, startY2;
+int selectedX, selectedY;
+int charNumber;
+int penaltyMiliSeconds;
+
+//characters
+char letter1, letter2, letter3;
+
+//booleans
+boolean char12;
+boolean keys[];
+boolean char1fin, char2fin;
+
+//doubles
+double currentTime, lastUpdateTime, dt;
+
 
 void setup() {
+
+  frameRate(60);
   size(1280, 720);
-
-  // first, load all graphics & sounds
-  loadAssets();
-
-  Board = new keyBoard();  
-  home = new home();
-  Highscore = new Highscorescreen();
-  LevelSelect = new LevelSelect();
-  sidebar = new Sidebar();
 
   /**
    GameScreen 0 is home
@@ -85,261 +66,231 @@ void setup() {
    GameScreen 2 is the game
    GameScreen 3 is the keyboard
    GameScreen 4 are settings
-   GameScreen 5 is the tutorial
-   ...
    */
 
-  walls = new Wall[20][30];
-  theMaze = new Maze();
-  theMaze.gridSetup();
-  char1 = new Characters();
-  char2 = new Characters();
-  char2.size = 14;
-  char2.r = 0;
-  char2.g = 0;
-  char2.b = 255;
-
-  settings = new settings();
-  //background1.loop();
-
+  variablesInit();
+  classesInit();
+  assetLoader.loadAssets();
   changeGrid();
-
-  frameRate(60);
 }
 
-void drawGame() {
-  background(0);
-  theMaze.wallDraw();
-  char1.draw();
-  char2.draw();
-  timer.draw();
-  //deur.draw();
-}
+void update() {
 
-void updateGame() {
-  lastUpdateTime = currentTime;
+  switch(screen) {
 
-  if (keys['e'] == true) {
+  case 0 : 
+    break;
+  case 1 : 
+    highscore.update();
+    break;
+  case 2 : 
+    screenShakeGroot();
+    screenShakeCheck();
+    updateCharacters();
+    break;
+  case 3 : 
+    break;
+  case 4 : 
+    settings.update();
+    break;
+  case 5 :
+    break;
+  default : 
+    break;
   }
-  if (char12) {
+}
 
+void render() {
+
+  switch(screen) {
+
+  case 0 : 
+    home.draw();
+    break;
+  case 1 : 
+    highscore.draw();
+    break;
+  case 2 :
+    maze.wallDraw();
+    char1.draw();
+    char2.draw();
+    timer.draw();
+    sidebar.draw();
+    break;
+  case 3 : 
+    keyboard.draw();
+    break;
+  case 4 : 
+    settings.draw();
+    break;
+  case 5 : 
+    levelSelect.draw();
+    break;
+  default : 
+    break;
+  }
+}
+
+void onKeyPressed(char hitKey) {
+
+  if (screen == 5) {
+    levelSelect.updateOnKeyboard(hitKey);
+  }
+
+  if (screen == 2 && hitKey == 'e') {
+
+    char1.changeCharacter();
+  }
+}
+
+//void onKeyReleased(char hitKey) {
+//}
+
+void updateCharacters() {
+
+  if (char12) {
     char1.update1(dt);
   } else {
-
     char2.update2(dt);
   }
 }
 
+void variablesInit() {
+
+  //variables
+  char12 = true;
+  keys = new boolean[128];
+  char1fin = false;
+  char2fin = false;
+  currentTime = 0;
+  lastUpdateTime = 0;
+  dt = 0;
+  screen = 0;
+  widthMaze = 1050;
+  heightMaze = 700;
+  grd = 0;
+  aantalLevels = 6;
+  mazeCount = 0;
+  finX = 0;
+  finY = 0;
+  startX1 = 0;
+  startY1 = 0;
+  startX2 = 0;
+  startY2 = 0;
+  selectedX = 0;
+  selectedY = 0;
+  charNumber = 0;
+  penaltyMiliSeconds = 0;
+  letter1 = '_';
+  letter2 = '_';
+  letter3 = '_';
+}
+
+void classesInit() {
+
+  //classes
+  home = new Home();
+  highscore = new HighscoreScreen();
+  settings = new Settings();
+  levelSelect = new LevelSelect();
+  sidebar = new Sidebar();
+  keyboard = new Keyboard();
+  assetLoader = new AssetLoader();
+  char1 = new Characters();
+  char2 = new Characters();
+  maze = new Maze();
+  walls = new Wall[20][30];
+  timer = new Timer();
+
+  maze.gridSetup();
+  char2.sizeX = 14;
+  char2.sizeY = 14;
+  char2.r = 0;
+  char2.g = 0;
+  char2.b = 255;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+
 
 void draw() {
-  //background_music.play();
-  clear();
-  background(255);
-  Highscore.update();
 
-  if (Screen == 0) {
-    home.draw();
-  }
-  if (Screen == 1) {
-    Highscore.draw();
-  }
-  if (Screen == 2) {
-    updateGame();
-    drawGame();
-    currentTime = (double) millis() / 1000;
-    dt = currentTime - lastUpdateTime;
-    soundtrack.play();
-    sidebar.draw();
-  }
-  if (Screen == 3) {
-    Board.draw();
-  }
-  if (Screen == 4) {
-    settings.render();
-    settings.draw();
-  }
-  if (Screen == 5) {
-    currentTime = (double) millis() / 1000;
-    dt = currentTime - lastUpdateTime;
-  }
-  if (Screen == 6) {
-    LevelSelect.draw();
-  }
+  background(0);
+
+  currentTime = (double) millis() / 1000;
+  dt = currentTime - lastUpdateTime;
+
+  update();
+  render();
+  println(screen);
+
+  lastUpdateTime = currentTime;
 }
 
 void keyPressed() {
 
-  if (Screen == 0) {
-    if (key != CODED && key != SHIFT) { 
-      keys[key] = true;
+  if (key != CODED) {
 
-      if (!keys['q']) {
-        keys['a'] = false;
-        keys['d'] = false;
-        keys['s'] = false;
-        keys['w'] = false;
-      }             
-      keys[key] = true;
+    onKeyPressed(key);
 
-      switch (key) {
-
-      case 'A' : 
-        keys['a'] = true; 
-        break;
-      case 'S' : 
-        keys['s'] = true; 
-        break;
-      case 'D' : 
-        keys['d'] = true; 
-        break;
-      case 'W' : 
-        keys['w'] = true; 
-        break;
-      default : 
-        break;
-      }
-      if (!keys['a'] && !keys['d'] && !keys['s'] && !keys['w']) {
-        keys[key] = false;
-      }
-    }
-  }
-  if (Screen == 1) {
     keys[key] = true;
-    if (keys['e'] == true) {
-      Screen = 0;
-    }
-    keys[key] = false;
-  } else if (Screen == 2 || Screen == 3 || Screen == 4 || Screen == 5) {
-    if (key != CODED && key != SHIFT) {
-      keys[key] = true;
-      switch (key) {
 
-      case 'A' : 
-        keys['a'] = true; 
-        break;
-      case 'S' : 
-        keys['s'] = true; 
-        break;
-      case 'D' : 
-        keys['d'] = true; 
-        break;
-      case 'W' : 
-        keys['w'] = true; 
-        break;
-      default : 
-        break;
-      }
-    }
-  }
-  else if (Screen == 6) {
-    if (key != CODED && key == 's' && !(levelSelectedY >= maxY)) {
+    switch (key) {
 
-      levelSelectedY++;
-    } else if (key != CODED && key == 'w' && !(levelSelectedY <= minY)) {
-
-      levelSelectedY--;
-    } else if (key != CODED && key == 'a') {
-      if (levelSelectedX >= minX && levelSelectedY > 0) {
-        println("test");
-        levelSelectedX = 4;
-        levelSelectedY --;
-      } else {
-        levelSelectedX --;
-      }
-    } else if (key != CODED && key == 'd') {
-      if (levelSelectedX >= maxX -1) {
-        println("test");
-        levelSelectedX = 0;
-        levelSelectedY ++;
-      } else {
-        levelSelectedX++;
-      }
-    }
-    if (key != CODED && key == 'e') {
-      Screen = 0;
-    } else if (key != CODED && key == 'q') {
-
-      Screen = 2;
-      timer.stop();
-      penaltyMiliSeconds = 0;
-      timer.start();
+    case 'A' : 
+      keys['a'] = true; 
+      break;
+    case 'S' : 
+      keys['s'] = true; 
+      break;
+    case 'D' : 
+      keys['d'] = true; 
+      break;
+    case 'W' : 
+      keys['w'] = true; 
+      break;
+    case 'Q' : 
+      keys['q'] = true; 
+      break;
+    case 'E' : 
+      keys['e'] = true; 
+      break;
+    default : 
+      break;
     }
   }
 }
 
 void keyReleased() {
-  if (Screen == 2) {
-    if (key != CODED && key != SHIFT) {
+  if (key != CODED) {
 
-      keys[key] = false;
+    //onKeyReleased(key);
 
-      if (key == 'e' || key == 'E') {
+    keys[key] = false;
 
-        keys['e'] = false;
-        keys['E'] = false;
+    switch (key) {
 
-        if (char12 == true) {
-
-          char12 = false;
-        } else if (char12 == false) {
-
-          char12 = true;
-        }
-      } 
-
-      if (key == 'q' || key == 'Q') {
-
-        keys['q'] = false;
-        keys['Q'] = false;
-
-        if (sidebar.Q) {
-          sidebar.Q = false;
-        } else {
-          sidebar.Q = true;
-        }
-      } 
-
-      switch (key) {
-
-      case 'A' : 
-        keys['a'] = false; 
-        break;
-      case 'S' : 
-        keys['s'] = false; 
-        break;
-      case 'D' : 
-        keys['d'] = false; 
-        break;
-      case 'W' : 
-        keys['w'] = false; 
-        break;
-      default : 
-        break;
-      }
-    }
-  }
-
-  if (Screen == 3 || Screen == 4 || Screen == 5 || Screen == 6) {
-    if (key != CODED && key != SHIFT) {
-      keys[key] = false;
-
-      switch (key) {
-
-      case 'A' : 
-        keys['a'] = false; 
-        break;
-      case 'S' : 
-        keys['s'] = false; 
-        break;
-      case 'D' : 
-        keys['d'] = false; 
-        break;
-      case 'W' : 
-        keys['w'] = false; 
-        break;
-      default : 
-        break;
-      }
+    case 'A' : 
+      keys['a'] = false; 
+      break;
+    case 'S' : 
+      keys['s'] = false; 
+      break;
+    case 'D' : 
+      keys['d'] = false; 
+      break;
+    case 'W' : 
+      keys['w'] = false; 
+      break;
+    case 'Q' : 
+      keys['q'] = false; 
+      break;
+    case 'E' : 
+      keys['e'] = false; 
+      break;
+    default : 
+      break;
     }
   }
 }

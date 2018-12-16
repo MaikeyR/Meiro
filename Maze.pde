@@ -1,7 +1,8 @@
-class Maze {
+lass Maze {
   int xCord1, yCord1, xCord2, yCord2;
   int X = 10;
   int Y = 10;
+
   boolean wallMoved = false;
   int textCooldown = 100;
   float textY, textX, textYStart;
@@ -13,6 +14,7 @@ class Maze {
   float wallMovement = 0.04;
   
   boolean corButton, donButton = false;
+
   
   void gridSetup() {
     
@@ -25,6 +27,7 @@ class Maze {
       }      
     }    
   }
+  
   void wallDraw() {
     //Draws maze, reads out which block to draw.
     for (int i = 0 ; i < 20 ; i++) {
@@ -39,33 +42,33 @@ class Maze {
           walls[i][j].draw();
         }
         else if (currentGrid[i][j] == PATH) {
-          image(Path, X, Y, 35, 35);
+          image(Path, X+screenShakeX, Y+screenShakeY, 35, 35);
         }  
         else if (currentGrid[i][j] == SMALL_HALLWAY_HORIZ) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          image(smallHallwayHoriz, X, Y, 35, 35);
+          image(smallHallwayHoriz, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
         else if (currentGrid[i][j] == SMALL_HALLWAY_VERT) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          image(smallHallwayVert, X, Y, 35, 35);
+          image(smallHallwayVert, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
         else if (currentGrid[i][j] == MOVEABLE_WALL_MID){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          image(MoveableWall, X, Y, 35, 35);
+          image(MoveableWall, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
-        else if (currentGrid[i][j] == HOLE) {
+        else if (currentGrid[i][j] == DOOR) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          image(Door, X, Y, 35, 35);
+          image(Door, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
         else if (currentGrid[i][j] == MOVEABLE_WALL_SIDE){
           walls[i][j].y = Y;
           walls[i][j].x = X;
-          image(Path, X, Y, 35, 35);
-          image(MoveableWall, X, Y, 35, 35);
+          image(Path, X+screenShakeX, Y+screenShakeY, 35, 35);
+          image(MoveableWall, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
         else if (currentGrid[i][j] == FINISH){
           finX = X;
@@ -73,7 +76,7 @@ class Maze {
           walls[i][j].y = Y;
           walls[i][j].x = X;
           fill(100, 0, 255);
-          image(Finish, X, Y, 35, 35);
+          image(Finish, X+screenShakeX, Y+screenShakeY, 35, 35);
         }
         else if (currentGrid[i][j]==START1) {
           fill(153);
@@ -92,6 +95,7 @@ class Maze {
           char2.posX = startX2;
           char2.posY = startY2;
           currentGrid[i][j]=PATH;          
+
         }else if (currentGrid[i][j]==COR_BUTTON){
           if(!corButton){
             fill(200, 0, 0);
@@ -141,10 +145,13 @@ class Maze {
                keys[key] = false;
                penaltyMiliSeconds += 2000;
                wallMoved = true;
+               wallMovedScreenShake = true;
+
                if(!animating){
                 textYStart = Y + 70;
                 textX = X;
                 textY = Y;
+
                 wallDirection = "RIGHT";
                 wallX = X;
                 wallY = Y;
@@ -160,6 +167,8 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
+
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -179,6 +188,7 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -198,6 +208,7 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -218,6 +229,8 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
+             
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -237,6 +250,7 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -256,6 +270,7 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -275,6 +290,7 @@ class Maze {
              keys[key] = false;
              penaltyMiliSeconds += 2000;
              wallMoved = true;
+             wallMovedScreenShake = true;
              if(!animating){
                 textYStart = Y + 70;
                 textX = X;
@@ -358,7 +374,6 @@ class Maze {
           wallDirection = "NULL";
         }
       }
-        
       if(wallMoved && textCooldown != 0){
         fill(255, 0, 255);
         textY += (textYStart - textY) * 0.02;
