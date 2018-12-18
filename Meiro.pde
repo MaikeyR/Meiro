@@ -20,20 +20,23 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 //classes
+Minim minim;
 Home home;
-HighscoreScreen highscore;
+//Assetloader assetLoader;
+Highscorescreen highscore;
 Settings settings;
 LevelSelect levelSelect;
 Sidebar sidebar;
 Keyboard keyboard;
-AssetLoader assetLoader;
 Characters char1, char2;
 Maze maze;
 Wall walls[][];
 Timer timer;
+ScreenShake screenShake;
+GridArrays grid;
 
 //integers
-int screen; //TODO: alle Screen in screen veranderen
+int screen; //TODO: alle screen in screen veranderen
 int widthMaze, heightMaze;
 int grd;
 int aantalLevels;
@@ -61,17 +64,18 @@ void setup() {
   size(1280, 720);
 
   /**
-   GameScreen 0 is home
-   GameScreen 1 is the highscorescreen
-   GameScreen 2 is the game
-   GameScreen 3 is the keyboard
-   GameScreen 4 are settings
+   Gamescreen 0 is home
+   Gamescreen 1 is the highscorescreen
+   Gamescreen 2 is the game
+   Gamescreen 3 is the keyboard
+   Gamescreen 4 are settings
+   Gamescreen 5 is levelselect
    */
 
   variablesInit();
   classesInit();
-  assetLoader.loadAssets();
-  changeGrid();
+  loadAssets();
+  //loadGrid();
 }
 
 void update() {
@@ -84,8 +88,8 @@ void update() {
     highscore.update();
     break;
   case 2 : 
-    screenShakeGroot();
-    screenShakeCheck();
+    screenShake.screenShakeGroot();
+    screenShake.screenShakeCheck();
     updateCharacters();
     break;
   case 3 : 
@@ -94,6 +98,7 @@ void update() {
     settings.update();
     break;
   case 5 :
+    levelSelect.update();
     break;
   default : 
     break;
@@ -190,21 +195,22 @@ void classesInit() {
 
   //classes
   home = new Home();
-  highscore = new HighscoreScreen();
+  highscore = new Highscorescreen();
   settings = new Settings();
   levelSelect = new LevelSelect();
   sidebar = new Sidebar();
   keyboard = new Keyboard();
-  assetLoader = new AssetLoader();
+  //assetLoader = new Assetloader();
   char1 = new Characters();
   char2 = new Characters();
   maze = new Maze();
   walls = new Wall[20][30];
   timer = new Timer();
+  screenShake = new ScreenShake();
+  grid = new GridArrays();
 
   maze.gridSetup();
-  char2.sizeX = 14;
-  char2.sizeY = 14;
+  char2.size = 14;
   char2.r = 0;
   char2.g = 0;
   char2.b = 255;
@@ -223,7 +229,6 @@ void draw() {
 
   update();
   render();
-  println(screen);
 
   lastUpdateTime = currentTime;
 }

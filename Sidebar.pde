@@ -80,7 +80,7 @@ class Sidebar {
       MWPos = 390;
     }
     
-    image(MoveableWall, 1180, MWPos, 35, 35);
-    image(MoveableWall, 1180, 355, 35, 35);
+    image(moveableWall, 1180, MWPos, 35, 35);
+    image(moveableWall, 1180, 355, 35, 35);
   }
 }

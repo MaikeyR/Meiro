@@ -1,27 +1,27 @@
 // Graphics
-PImage Trophy, PlayButton, Titel, Settings, smallHallwayHoriz, smallHallwayVert, Door, Path, Tutorial, Wall, MoveableWall, Finish;
-
+PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallwayVert, door, path, tutorial, wall, moveableWall, finish, homeBackground;
+  
 // Sounds
-Minim minim;
 AudioPlayer fall, grunt, soundtrack;
-
+  
 public void loadAssets() {
-
+  
   //graphics
-  Trophy = loadImage("assets/textures/Trophy.png");
-  PlayButton = loadImage("assets/textures/Playbutton.png");
-  Titel = loadImage("assets/textures/Titel.png");
-  Settings = loadImage("assets/textures/Settings.png");
+  trophy = loadImage("assets/textures/Trophy.png");
+  playButton = loadImage("assets/textures/Playbutton.png");
+  titel = loadImage("assets/textures/Titel.png");
+  settingsImage = loadImage("assets/textures/Settings.png");
   smallHallwayHoriz = loadImage("assets/textures/horizontaldoorgang.png");
   smallHallwayVert = loadImage("assets/textures/verticaldoorgang.png");
-  Door = loadImage("assets/textures/deur.png");
-  Path = loadImage("assets/textures/pad.png");
-  Tutorial = loadImage("assets/textures/tutorial.png");
-  Wall = loadImage("assets/textures/allclosed.png");
-  MoveableWall = loadImage("assets/textures/moveablewall.png");
-  Finish = loadImage("assets/textures/finish.png");
+  door = loadImage("assets/textures/deur.png");
+  path = loadImage("assets/textures/pad.png");
+  tutorial = loadImage("assets/textures/tutorial.png");
+  wall = loadImage("assets/textures/allclosed.png");
+  moveableWall = loadImage("assets/textures/moveablewall.png");
+  finish = loadImage("assets/textures/finish.png");
+  homeBackground = loadImage("assets/textures/homeBackground.png");
+    
   
-
   //Load sounds
   minim = new Minim(this);
   //example: name = minim.loadFile("name.mp3", 2048);

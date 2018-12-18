@@ -8,8 +8,8 @@ int selectedLevel[] = new int[2];
 
 class LevelSelect {
   int x, y;
-  int minLineOnScreen = 0;
-  int maxLineOnScreen = 4;
+  int minLineOnscreen = 0;
+  int maxLineOnscreen = 4;
   int levelNummer;
   int xButtonGrid = 0;
   int yButtonGrid = 0;
@@ -17,14 +17,14 @@ class LevelSelect {
 
   void update() {
 
-    if (levelSelectedY > maxLineOnScreen) {
+    if (levelSelectedY > maxLineOnscreen) {
 
-      maxLineOnScreen = levelSelectedY;
-      minLineOnScreen = levelSelectedY - 4;
-    } else if (levelSelectedY < minLineOnScreen) {
+      maxLineOnscreen = levelSelectedY;
+      minLineOnscreen = levelSelectedY - 4;
+    } else if (levelSelectedY < minLineOnscreen) {
 
-      minLineOnScreen = levelSelectedY;
-      maxLineOnScreen = levelSelectedY + 4;
+      minLineOnscreen = levelSelectedY;
+      maxLineOnscreen = levelSelectedY + 4;
     }
     
   }
@@ -82,7 +82,7 @@ class LevelSelect {
           fill(255);
           text(levelNummer + 1, x + 100, y + 100);
           mazeCount = levelNummer;
-          currentGrid = grids[levelNummer];
+          grid.loadGrid(levelNummer);
           break;
         }
         levelNummer ++;
@@ -100,7 +100,6 @@ class LevelSelect {
       levelSelectedY--;
     } else if (keyboardKey == 'a') {
       if (levelSelectedX >= minX && levelSelectedY > 0) {
-        println("test");
         levelSelectedX = 4;
         levelSelectedY --;
       } else {
@@ -108,7 +107,6 @@ class LevelSelect {
       }
     } else if (keyboardKey == 'd') {
       if (levelSelectedX >= maxX -1) {
-        println("test");
         levelSelectedX = 0;
         levelSelectedY ++;
       } else {
