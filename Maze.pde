@@ -114,7 +114,6 @@ class Maze {
             corButtonTimer = buttonTimer;
           } else {
             corButtonDoorX = i;
-ddddddds
             grid.currentGrid[i][j] = PATH;
           }
         } else if (grid.currentGrid[i][j]==DON_BUTTON_DOOR) {
