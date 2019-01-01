@@ -1,5 +1,5 @@
 // Graphics
-PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallwayVert, door, path, tutorial, wall, moveableWall, finish, homeBackground;
+PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallwayVert, door, path, tutorial, wall, moveableWall, char1wall, char2wall, char1Button, char2Button, finish, homeBackground;
   
 // Sounds
 AudioPlayer fall, grunt, soundtrack, doorAudio, splat;
@@ -18,6 +18,10 @@ public void loadAssets() {
   tutorial = loadImage("assets/textures/tutorial.png");
   wall = loadImage("assets/textures/allclosed.png");
   moveableWall = loadImage("assets/textures/moveablewall.png");
+  char1wall = loadImage("assets/textures/char1wall.png");
+  char2wall = loadImage("assets/textures/char2wall.png");
+  char1Button = loadImage("assets/textures/char1Button.png");
+  char2Button = loadImage("assets/textures/char2Button.png");
   finish = loadImage("assets/textures/finish.png");
   homeBackground = loadImage("assets/textures/homeBackground.png");
     

@@ -102,14 +102,14 @@ class Maze {
           grid.currentGrid[i][j]=PATH;
         } else if (grid.currentGrid[i][j]==COR_BUTTON) {
           fill(200, 0, 0);
-          rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+          image(char1Button, X+screenShakeX, Y+screenShakeY, 35, 35);
         } else if (grid.currentGrid[i][j]==DON_BUTTON) {
           fill(0, 200, 0);
-          rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+          image(char2Button, X+screenShakeX, Y+screenShakeY, 35, 35);
         } else if (grid.currentGrid[i][j]==COR_BUTTON_DOOR) {
           if (!corButton) {
             fill(0, 100, 0);
-            rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+            image(char1wall, X+screenShakeX, Y+screenShakeY, 35, 35);
             corButton = false;
             corButtonTimer = buttonTimer;
           } else {
@@ -119,7 +119,7 @@ class Maze {
         } else if (grid.currentGrid[i][j]==DON_BUTTON_DOOR) {
           if (!donButton) {
             fill(0, 100, 0);
-            rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+            image(char2wall, X+screenShakeX, Y+screenShakeY, 35, 35);
             donButton = false;
             donButtonTimer = buttonTimer;
           } else {
