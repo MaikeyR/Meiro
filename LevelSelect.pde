@@ -130,6 +130,7 @@ class LevelSelect {
         timer.stop();
         penaltyMiliSeconds = 0;
         timer.start();
+        highscoreScreen.gameEnd = false;
         println("excuse me wtf");
       }
 

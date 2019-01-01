@@ -20,9 +20,6 @@ class Highscorescreen {
       addNewScore(timer.getElapsedTime(), home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
-    } else if (screen == 2 && gameEnd == true) {
-      gameEnd = false;
-      println(".");
     }
   }
 
@@ -55,6 +52,7 @@ class Highscorescreen {
       timer.stop();
       penaltyMiliSeconds = 0;
       timer.start();
+      gameEnd = false;
     }
   }
 
@@ -112,48 +110,16 @@ class Highscorescreen {
 
     switch(mazeCount) {
 
-    case 0: 
-      for (int i = 0; i < highscore.length; i++) {
-        highscore[i] = int(scoreStr[i]);
-        highscoreName[i] = nameStr[i];
-      }
-      break;
-
-    case 1: 
-      for (int i = 0; i < highscore.length; i++) {
-        highscore[i] = int(scoreStr[i+mazeCount*10]);
-        highscoreName[i] = nameStr[i+mazeCount*10];
-      }
-      break;
-
-    case 2: 
-      for (int i = 0; i < highscore.length; i++) {
-        highscore[i] = int(scoreStr[i+mazeCount*10]);
-        highscoreName[i] = nameStr[i+mazeCount*10];
-      }
-      break;
-
-    case 3: 
-      for (int i = 0; i < highscore.length; i++) {
-        highscore[i] = int(scoreStr[i+mazeCount*10]);
-        highscoreName[i] = nameStr[i+mazeCount*10];
-      }
-      break;
-
-    case 4: 
-    case 5: 
-      for (int i = 0; i < highscore.length; i++) {
-        highscore[i] = int(scoreStr[i+mazeCount*10]);
-        highscoreName[i] = nameStr[i+mazeCount*10];
-      }
-      break;
-
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
     case 6: 
       for (int i = 0; i < highscore.length; i++) {
         highscore[i] = int(scoreStr[i+mazeCount*10]);
         highscoreName[i] = nameStr[i+mazeCount*10];
-        println(scoreStr[i+mazeCount*10]);
-        println(highscore[i]);
       }
       break;
     }
