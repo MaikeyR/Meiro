@@ -17,7 +17,7 @@ class Highscorescreen {
 
     if (screen == 1 && gameEnd == false) {      
       whatHighscore();
-      addNewScore(timer.getElapsedTime(), keyboard.name);
+      addNewScore(timer.getElapsedTime(), home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
     } else if (screen == 2 && gameEnd == true) {
@@ -28,21 +28,38 @@ class Highscorescreen {
 
   void draw() {
     showHighscore();
-    backToMenu();
+    buttons();
 
     if (keys[']'] == true) {
       println(".");
       saveStrings("highscore.txt", loadStrings("ClearScore.txt"));
       saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
-      keys[key] = false;
     } else if (keys['e']) {
+      if (highScreen == false) {
+        screen = 5;
+    
+      } else if (highScreen == true) {
+        screen = 6;
 
-      screen = 5;
+      }
+    }
+    keys[key] = false;
+  }
+
+  void testForQ(char button) {
+    if (button == 'q') {
+      println("blup");
+      mazeCount++;
+      grid.loadGrid(mazeCount);
+      screen = 2;
+      timer.stop();
+      penaltyMiliSeconds = 0;
+      timer.start();
     }
   }
 
 
-  void addNewScore(int score, String name) {
+  void addNewScore(int score, String currentName) {
     println(mazeCount);
     for (int i = 0; i < highscore.length; i++) {
 
@@ -53,18 +70,16 @@ class Highscorescreen {
           highscoreName[j] = highscoreName[j-1];
         }
         highscore[i] = score;
-        highscoreName[i] = name;
+        highscoreName[i] = currentName;
         break;
       }
     }
   }
 
   void showHighscore() {
-    background(180);
-    fill(255);
-    rect(10, 10, 1260, 700);
+    background(backgroundColour);
     textSize(53);
-    fill(0);
+    fill(textColour);
     text("Highscores", 515, 150);
 
 
@@ -86,9 +101,11 @@ class Highscorescreen {
     saveStrings("highscoreName.txt", nameStr);
   }
 
-  void backToMenu() {
+  void buttons() {
     triangle(70, 640, 105, 630, 105, 650);
     text("E", 130, 650);
+    triangle(1210, 640, 1175, 630, 1175, 650);
+    text("Q", 1125, 650);
   }
 
   void whatHighscore() {
@@ -124,13 +141,14 @@ class Highscorescreen {
       break;
 
     case 4: 
+    case 5: 
       for (int i = 0; i < highscore.length; i++) {
         highscore[i] = int(scoreStr[i+mazeCount*10]);
         highscoreName[i] = nameStr[i+mazeCount*10];
       }
       break;
 
-    case 5: 
+    case 6: 
       for (int i = 0; i < highscore.length; i++) {
         highscore[i] = int(scoreStr[i+mazeCount*10]);
         highscoreName[i] = nameStr[i+mazeCount*10];

@@ -5,6 +5,7 @@ int maxY = 5; //max aantal levels per kolom(ook de levels die off-screen zijn)
 int minY = 0;
 int minX = 0;
 int selectedLevel[] = new int[2];
+boolean highScreen = false;
 
 class LevelSelect {
   int x, y;
@@ -26,11 +27,11 @@ class LevelSelect {
       minLineOnscreen = levelSelectedY;
       maxLineOnscreen = levelSelectedY + 4;
     }
-    
   }
 
   void draw() {
     clear();
+    background(backgroundColour);
     x = 32;
     y = 30;
     levelNummer = 0;
@@ -40,10 +41,10 @@ class LevelSelect {
         if ( levelNummer >= aantalLevels ) {
           break;
         }
-        fill(#6B7CCE);
+        fill(buttonColour);
         rect(x, y, 200, 200);
 
-        fill(#0C0F1C);
+        fill(textColour);
         textAlign(CENTER, CENTER);
         text(levelNummer + 1, x + 100, y + 100);
 
@@ -62,25 +63,27 @@ class LevelSelect {
     selectedButton();
 
     update();
-    
+
     textAlign(LEFT, BASELINE);
   }
 
   void selectedButton() {
     levelNummer = 0;
-
-    fill(#2C3B83);
+   
+    
+    fill(buttonSelectedColour);
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
-        
+
         if ( levelNummer >= aantalLevels ) {
           break;
         }
 
         if (levelSelectedX == j && levelSelectedY == i) {
           rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 200);
-          fill(255);
-          text(levelNummer + 1, x + 100, y + 100);
+          fill(textColour);
+          text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 100);
+          //println(levelNummer);
           mazeCount = levelNummer;
           grid.loadGrid(levelNummer);
           break;
@@ -89,9 +92,9 @@ class LevelSelect {
       }
     }
   }
-  
+
   void updateOnKeyboard(char keyboardKey) {
-    
+    //println("test");
     if (keyboardKey == 's' && !(levelSelectedY >= maxY)) {
 
       levelSelectedY++;
@@ -99,7 +102,8 @@ class LevelSelect {
 
       levelSelectedY--;
     } else if (keyboardKey == 'a') {
-      if (levelSelectedX >= minX && levelSelectedY > 0) {
+      if (levelSelectedX <= minX && levelSelectedY > 0) {
+        //println("test");
         levelSelectedX = 4;
         levelSelectedY --;
       } else {
@@ -107,6 +111,7 @@ class LevelSelect {
       }
     } else if (keyboardKey == 'd') {
       if (levelSelectedX >= maxX -1) {
+        //println("test");
         levelSelectedX = 0;
         levelSelectedY ++;
       } else {
@@ -117,12 +122,23 @@ class LevelSelect {
       screen = 0;
     } else if (keyboardKey == 'q') {
 
-      screen = 2;
-      timer.stop();
-      penaltyMiliSeconds = 0;
-      timer.start();
+      if (screen == 5) {
+
+        screen = 2;
+        soundtrack.rewind();
+        soundtrack.play();
+        timer.stop();
+        penaltyMiliSeconds = 0;
+        timer.start();
+        println("excuse me wtf");
+      }
+
+      if (screen == 6) {
+        highScreen = true;
+        screen = 1;
+      }
+
+      keys[key] = false;
     }
-    
   }
-  
 }

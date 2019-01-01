@@ -2,7 +2,6 @@ class Wall {
 
   float x, y, size;
 
-
   Wall() {
 
     x = 10;
@@ -10,10 +9,7 @@ class Wall {
     size = 35;
   }
 
-
   void draw() {
-    
     image(wall, x+screenShakeX, y+screenShakeY, 35, 35);
-    
   }
 }

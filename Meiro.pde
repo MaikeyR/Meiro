@@ -23,7 +23,7 @@ import ddf.minim.ugens.*;
 Minim minim;
 Home home;
 //Assetloader assetLoader;
-Highscorescreen highscore;
+Highscorescreen highscoreScreen;
 Settings settings;
 LevelSelect levelSelect;
 Sidebar sidebar;
@@ -34,9 +34,12 @@ Wall walls[][];
 Timer timer;
 ScreenShake screenShake;
 GridArrays grid;
+WallKill deathAnimation;
+LevelSelect highscoreSelect;
+
 
 //integers
-int screen; //TODO: alle screen in screen veranderen
+int screen;
 int widthMaze, heightMaze;
 int grd;
 int aantalLevels;
@@ -57,6 +60,11 @@ boolean char1fin, char2fin;
 //doubles
 double currentTime, lastUpdateTime, dt;
 
+//colors
+color backgroundColour = #3149c4;
+color buttonColour = #2F3553;
+color buttonSelectedColour = #080C24;
+color textColour = #FCFCFC;
 
 void setup() {
 
@@ -70,12 +78,12 @@ void setup() {
    Gamescreen 3 is the keyboard
    Gamescreen 4 are settings
    Gamescreen 5 is levelselect
+   Gamescreen 6 is highscoreSelect
    */
 
   variablesInit();
   classesInit();
   loadAssets();
-  //loadGrid();
 }
 
 void update() {
@@ -85,7 +93,7 @@ void update() {
   case 0 : 
     break;
   case 1 : 
-    highscore.update();
+    highscoreScreen.update();
     break;
   case 2 : 
     screenShake.screenShakeGroot();
@@ -100,6 +108,10 @@ void update() {
   case 5 :
     levelSelect.update();
     break;
+  case 6 : 
+    highscoreSelect.update();
+
+    break;
   default : 
     break;
   }
@@ -113,7 +125,7 @@ void render() {
     home.draw();
     break;
   case 1 : 
-    highscore.draw();
+    highscoreScreen.draw();
     break;
   case 2 :
     maze.wallDraw();
@@ -121,6 +133,7 @@ void render() {
     char2.draw();
     timer.draw();
     sidebar.draw();
+    deathAnimation.draw();
     break;
   case 3 : 
     keyboard.draw();
@@ -131,6 +144,10 @@ void render() {
   case 5 : 
     levelSelect.draw();
     break;
+  case 6 : 
+    highscoreSelect.draw();
+
+    break;
   default : 
     break;
   }
@@ -139,12 +156,19 @@ void render() {
 void onKeyPressed(char hitKey) {
 
   if (screen == 5) {
-    levelSelect.updateOnKeyboard(hitKey);
-  }
 
-  if (screen == 2 && hitKey == 'e') {
+    levelSelect.updateOnKeyboard(hitKey);
+    
+  } else if (screen == 2 && hitKey == 'e') {
 
     char1.changeCharacter();
+  } 
+
+  if (screen == 6) {
+
+    highscoreSelect.updateOnKeyboard(hitKey);
+  } else if (screen == 1){
+  highscoreScreen.testForQ(hitKey);
   }
 }
 
@@ -174,7 +198,7 @@ void variablesInit() {
   widthMaze = 1050;
   heightMaze = 700;
   grd = 0;
-  aantalLevels = 6;
+  aantalLevels = 7;
   mazeCount = 0;
   finX = 0;
   finY = 0;
@@ -195,7 +219,7 @@ void classesInit() {
 
   //classes
   home = new Home();
-  highscore = new Highscorescreen();
+  highscoreScreen = new Highscorescreen();
   settings = new Settings();
   levelSelect = new LevelSelect();
   sidebar = new Sidebar();
@@ -208,6 +232,8 @@ void classesInit() {
   timer = new Timer();
   screenShake = new ScreenShake();
   grid = new GridArrays();
+  deathAnimation = new WallKill(20);
+  highscoreSelect = new LevelSelect();
 
   maze.gridSetup();
   char2.size = 14;
@@ -222,13 +248,14 @@ void classesInit() {
 
 void draw() {
 
-  background(0);
+  background(backgroundColour);
 
   currentTime = (double) millis() / 1000;
   dt = currentTime - lastUpdateTime;
 
   update();
   render();
+  //println(screen);
 
   lastUpdateTime = currentTime;
 }

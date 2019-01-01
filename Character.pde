@@ -34,15 +34,15 @@ class Characters {
       //checks if the blocks to the left are not things you can go on. If so, the result is that you cant move.
       boolean wallLeft = false;
 
-      if (grid.currentGrid[yCord][xCord - 1] != PATH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord][xCord - 1] != DON_BUTTON &&
+      if (grid.currentGrid[yCord][xCord - 1] != PATH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != DON_BUTTON &&
         posX - (size / 2) < xCord * 35 + 2) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
         posX - (size / 2) < xCord * 35 + 2 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
         posX - (size / 2) < xCord * 35 + 2 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
@@ -57,15 +57,15 @@ class Characters {
       //checks if the blocks to the right are not things you can go on. If so, the result is that you cant move.
       boolean wallRight = false;
 
-      if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != HOLE && grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord][xCord + 1] != DON_BUTTON &&
+      if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != HOLE && grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != DON_BUTTON &&
         posX + (size / 2) > xCord * 35 + 34) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
         posX + (size / 2) > xCord * 35 + 34 && posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
         posX + (size / 2) > xCord * 35 + 34 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
@@ -80,15 +80,15 @@ class Characters {
       //checks if the blocks on the top are not things you can go on. If so, the result is that you cant move.
       boolean wallUp = false;
 
-      if (grid.currentGrid[yCord - 1][xCord] != PATH && grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != FINISH && grid.currentGrid[yCord - 1][xCord] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord] != DON_BUTTON &&
+      if (grid.currentGrid[yCord - 1][xCord] != PATH && grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != FINISH && grid.currentGrid[yCord - 1][xCord] != DON_BUTTON &&
         posY - (size / 2) < yCord * 35 + 2) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
         posY - (size / 2) < yCord * 35 + 2 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
         posY - (size / 2) < yCord * 35 + 2 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
@@ -103,15 +103,15 @@ class Characters {
       //checks if the blocks on the bottom are not things you can go on. If so, the result is that you cant move.
       boolean wallDown = false;
 
-      if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != HOLE && grid.currentGrid[yCord + 1][xCord] != FINISH && grid.currentGrid[yCord + 1][xCord] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord] != DON_BUTTON &&
-      posY + (size / 2) > yCord * 35 + 34) {
+      if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != HOLE && grid.currentGrid[yCord + 1][xCord] != FINISH && grid.currentGrid[yCord + 1][xCord] != DON_BUTTON &&
+        posY + (size / 2) > yCord * 35 + 34) {
         wallDown = true; 
         posY = yCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
         posY + (size / 2) > yCord * 35 + 34 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
         wallDown = true; 
         posY = yCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
+      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
         posY + (size / 2) > yCord * 35 + 34 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
         wallDown = true; 
         posY = yCord * 35 + 35 - size / 2;
@@ -136,14 +136,14 @@ class Characters {
       boolean wallLeft = false;
 
       if (grid.currentGrid[yCord][xCord - 1] != PATH && grid.currentGrid[yCord][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord][xCord - 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 2) {
+        grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != COR_BUTTON && posX - (size / 2) < xCord * 35 + 2) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON &&
         grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 2 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON &&
         grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 2 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
         wallLeft = true; 
         posX = xCord * 35 + size / 2;
@@ -159,15 +159,15 @@ class Characters {
       //checks if the blocks to the right are not things you can go on. If so, the result is that you cant move.
       boolean wallRight = false;
 
-      if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_VERT &&
+      if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord][xCord + 1] != COR_BUTTON &&
         grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON &&
         grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34 &&posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
         grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
         wallRight = true; 
         posX = xCord * 35 + 35 - size / 2;
@@ -184,14 +184,14 @@ class Characters {
       boolean wallUp = false;
 
       if (grid.currentGrid[yCord - 1][xCord] != PATH && grid.currentGrid[yCord - 1][xCord] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord - 1][xCord] != FINISH &&  grid.currentGrid[yCord - 1][xCord] != HOLE && posY - (size / 2) < yCord * 35 + 2) {
+        grid.currentGrid[yCord - 1][xCord] != FINISH &&  grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != COR_BUTTON && posY - (size / 2) < yCord * 35 + 2) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT && 
+      } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT && 
         grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posY - (size / 2) < yCord * 35 + 2 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
-      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT &&
         grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posY - (size / 2) < yCord * 35 + 2 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
         wallUp = true; 
         posY = yCord * 35 + size / 2;
@@ -208,15 +208,15 @@ class Characters {
       //checks if the blocks on the bottom are not things you can go on. If so, the result is that you cant move.
       boolean wallDown = false;
 
-      if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_VERT &&
+      if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_VERT &&
         grid.currentGrid[yCord + 1][xCord] != FINISH &&grid.currentGrid[yCord + 1][xCord] != HOLE && posY + (size / 2) > yCord * 35 + 34) {
         wallDown = true; 
         posY = yCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT &&
         grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posY + (size / 2) > yCord * 35 + 34 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
         wallDown = true; 
         posY = yCord * 35 + 35 - size / 2;
-      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
+      } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
         grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posY + (size / 2) > yCord * 35 + 34 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
         wallDown = true; 
         posY = yCord * 35 +  35 - size / 2;
@@ -247,23 +247,14 @@ class Characters {
     if (char2fin && char1fin || keys['f']) {
       char1fin = false;
       char2fin = false;
-      screen = 3;
+      screen = 1;
       timer.stop();
       keys['f'] = false;
+      char2.posX = startX2;
+      char2.posY = startY2;
+      char1.posX = startX1;
+      char1.posY = startY1;
     }
-
-    //if (char2fin && char1fin || keys['f']) {
-    //if (mazeCount < grids.length - 1) {
-    //  mazeCount++; 
-    //  char1fin = false;
-    //  char2fin = false;
-    //  changeGrid();
-    //} else {
-    //  screen = 3;
-    //  timer.stop();
-    //}
-    //keys['f'] = false;
-    //}
   }
 
   void changeCharacter() {

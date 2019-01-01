@@ -16,6 +16,10 @@ class Maze {
   boolean mayMoveWall = true;
 
   boolean corButton, donButton = false;
+  float corButtonTimer = 100, donButtonTimer = 100;
+  int donButtonDoorX, donButtonDoorY;
+  int corButtonDoorX, corButtonDoorY;
+  int buttonTimer = 100;
 
 
   void gridSetup() {
@@ -43,6 +47,15 @@ class Maze {
           walls[i][j].draw();
         } else if (grid.currentGrid[i][j] == PATH) {
           image(path, X+screenShakeX, Y+screenShakeY, 35, 35);
+          if (donButtonTimer == 0) {
+            grid.currentGrid[donButtonDoorX][donButtonDoorY] = DON_BUTTON_DOOR;
+            donButton = false;
+            donButtonTimer = buttonTimer;
+          } else if (corButtonTimer == 0) {
+            grid.currentGrid[corButtonDoorX][corButtonDoorY] = COR_BUTTON_DOOR;
+            corButton = false;
+            corButtonTimer = buttonTimer;
+          }
         } else if (grid.currentGrid[i][j] == SMALL_HALLWAY_HORIZ) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
@@ -88,31 +101,31 @@ class Maze {
           char2.posY = startY2;
           grid.currentGrid[i][j]=PATH;
         } else if (grid.currentGrid[i][j]==COR_BUTTON) {
-          if (!corButton) {
-            fill(200, 0, 0);
-            rect(X+screenShakeX, Y+screenShakeY, 35, 35);
-          } else {
-            grid.currentGrid[i][j] = PATH;
-          }
+          fill(200, 0, 0);
+          rect(X+screenShakeX, Y+screenShakeY, 35, 35);
         } else if (grid.currentGrid[i][j]==DON_BUTTON) {
-          if (!donButton) {
-            fill(0, 200, 0);
-            rect(X+screenShakeX, Y+screenShakeY, 35, 35);
-          } else {
-            grid.currentGrid[i][j] = PATH;
-          }
+          fill(0, 200, 0);
+          rect(X+screenShakeX, Y+screenShakeY, 35, 35);
         } else if (grid.currentGrid[i][j]==COR_BUTTON_DOOR) {
           if (!corButton) {
-            fill(100, 0, 0);
+            fill(0, 100, 0);
             rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+            corButton = false;
+            corButtonTimer = buttonTimer;
           } else {
+            corButtonDoorX = i;
+ddddddds
             grid.currentGrid[i][j] = PATH;
           }
         } else if (grid.currentGrid[i][j]==DON_BUTTON_DOOR) {
           if (!donButton) {
             fill(0, 100, 0);
             rect(X+screenShakeX, Y+screenShakeY, 35, 35);
+            donButton = false;
+            donButtonTimer = buttonTimer;
           } else {
+            donButtonDoorX = i;
+            donButtonDoorY = j;
             grid.currentGrid[i][j] = PATH;
           }
         }
@@ -120,9 +133,12 @@ class Maze {
         //code for the button and door mechanic
         if (grid.currentGrid[i][j] == COR_BUTTON && char2.posX > X && char2.posX < X + 35 && char2.posY > Y && char2.posY < Y + 35) {
           corButton = true;
+          corButtonTimer = buttonTimer;
         } else if (grid.currentGrid[i][j] == DON_BUTTON && char1.posX > X && char1.posX < X + 35 && char1.posY > Y && char1.posY < Y + 35) {
           donButton = true;
+          donButtonTimer = buttonTimer;
         }
+
 
 
 
@@ -310,10 +326,16 @@ class Maze {
         }
 
         if (grid.currentGrid[i][j] == MOVEABLE_WALL_SIDE && char1.posX > X && char1.posX < X + 35 && char1.posY > Y && char1.posY < Y + 35) {
+
+          deathAnimation.kill(char1.posX, char1.posY, true);
+
           char1.posX = startX1;
           char1.posY = startY1;
         }
         if (grid.currentGrid[i][j] == MOVEABLE_WALL_SIDE && char2.posX > X && char2.posX < X + 35 && char2.posY > Y && char2.posY < Y + 35) {
+
+          deathAnimation.kill(char2.posX, char2.posY, false);
+
           char2.posX = startX2;
           char2.posY = startY2;
         }
@@ -321,8 +343,8 @@ class Maze {
 
       if (wallMoved && wallMovedLastFrame == false) {
 
-        grunt.rewind();
-        grunt.play();
+        doorAudio.rewind();
+        doorAudio.play();
       }
       if (wallMoved) {
         mayMoveWall = false;
@@ -331,6 +353,7 @@ class Maze {
 
         wallMovedLastFrame = false;
       }
+      
       if (wallDirection == "UP") {
         println("UP");
         image(path, wallXStart+screenShakeX, wallYStart - 35+screenShakeY, 35, 35);
@@ -383,6 +406,12 @@ class Maze {
         textCooldown = 500;
         animating = false;
       }
+    }
+    if (donButton) {
+      donButtonTimer--;
+    }
+    if (corButton) {
+      corButtonTimer--;
     }
   }
 }
