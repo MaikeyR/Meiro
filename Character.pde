@@ -7,7 +7,7 @@ class Characters {
   float dy;
   char r, g, b;
   boolean charChanged;
-  float growth = 20;
+  float growth = 4;
   int charChange = 0;
   float extraSize;
 
@@ -24,8 +24,18 @@ class Characters {
   }
 
   void draw() {
+    if(char12){
+      fill(textColour);
+      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize + 6, char1.size + extraSize + 6);
+      fill(char1.r, g, char1.b);
+      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize, char1.size + extraSize);
+    }else{
+      fill(textColour);
+      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize + 6, char2.size + extraSize + 6);
+      fill(char2.r, g, char2.b);
+      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize, char2.size + extraSize);
+    }
     fill(r, g, b);
-    //stroke(173, 146, 37);
     ellipse(posX+screenShakeX, posY+screenShakeY, size + extraSize, size + extraSize);
     if(charChanged){
       charChangedAnimation();
@@ -269,17 +279,17 @@ class Characters {
     if (char12 == true && charChange <= 0) {
       char12 = false;
       charChanged = true;
-      charChange = 10;
+      charChange = 40;
       
     } else if (char12 == false && charChange <= 0) {
       char12 = true;
       charChanged = true;
-      charChange = 10;
+      charChange = 40;
     }
   }
   
   void charChangedAnimation(){
-    if(char12 && charChange > 5){
+    if(char12 && charChange > 20){
       char1.extraSize += growth;
       charChange--;
     }else if(char12 && charChange > 0){
@@ -287,7 +297,7 @@ class Characters {
       charChange--;
     }
     
-    if(!char12 && charChange > 5){
+    if(!char12 && charChange > 20){
       char2.extraSize += growth;
       charChange--;
     }else if(!char12 && charChange > 0){

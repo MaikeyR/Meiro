@@ -20,19 +20,15 @@ class Home {
 
     if (keys['a'] && selectedX != 0) {
       selectedX--;
-      keys[key] = false;
     }
     if (keys['s'] && selectedY != 1) {
       selectedY++;
-      keys[key] = false;
     }
     if (keys['w'] && selectedY != 0) {
       selectedY--;
-      keys[key] = false;
     }
     if (keys['d'] && selectedX != 1) {
       selectedX++;
-      keys[key] = false;
     }
 
 

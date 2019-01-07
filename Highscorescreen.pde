@@ -20,6 +20,9 @@ class Highscorescreen {
       addNewScore(timer.getElapsedTime(), home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
+    }else if(screen == 1){
+      whatHighscore();
+      showHighscore();
     }
   }
 
@@ -35,7 +38,7 @@ class Highscorescreen {
       screen = 6;
     }
 
-    keys[key] = false;
+    //keys[key] = false;
   }
 
   void testForQ(char button) {

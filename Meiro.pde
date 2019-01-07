@@ -295,27 +295,27 @@ void keyPressed() {
       break;
     case 'E' : 
       keys['e'] = true; 
-      break;  
+      break; 
     default : 
       break;
     }
-  } else {
+  //} else {
 
-    switch (key) {
+  //  switch (keyCode) {
 
-    case LEFT : 
-      keys['a'] = true; 
-      break;
-    case RIGHT : 
-      keys['d'] = true; 
-      break;
-    case DOWN : 
-      keys['s'] = true; 
-      break;
-    case UP : 
-      keys['w'] = true; 
-      break;
-    }
+  //  case LEFT : 
+  //    keys['a'] = true; 
+  //    break;
+  //  case RIGHT : 
+  //    keys['d'] = true; 
+  //    break;
+  //  case DOWN : 
+  //    keys['s'] = true; 
+  //    break;
+  //  case UP : 
+  //    keys['w'] = true; 
+  //    break;
+  //  }
   }
 }
 
@@ -349,22 +349,22 @@ void keyReleased() {
     default : 
       break;
     }
-  } else {
+  //} else {
     
-    switch (key) {
+  //  switch (keyCode) {
 
-    case LEFT : 
-      keys['a'] = false; 
-      break;
-    case RIGHT : 
-      keys['d'] = false; 
-      break;
-    case DOWN : 
-      keys['s'] = false; 
-      break;
-    case UP : 
-      keys['w'] = false; 
-      break;
-    }
+  //  case LEFT : 
+  //    keys['a'] = false; 
+  //    break;
+  //  case RIGHT : 
+  //    keys['d'] = false; 
+  //    break;
+  //  case DOWN : 
+  //    keys['s'] = false; 
+  //    break;
+  //  case UP : 
+  //    keys['w'] = false; 
+  //    break;
+  //  }
   }
 }
