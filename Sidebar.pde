@@ -32,7 +32,7 @@ class Sidebar {
 
     fill(50, 100, 205);
     textSize(24);
-    fill(0);
+    fill(textColour);
     text("W", 1160, 100);
     text("A", 1112, 150);
     text("S", 1164, 150);
@@ -51,12 +51,12 @@ class Sidebar {
     if (char12) {
       rect(1100, 200, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("E", 1114, 230);
     } else {
       rect(1200, 200, 40, 40);
       textSize(24);
-      fill(0);
+      fill(textColour);
       text("E", 1214, 230);
     }
 
@@ -71,7 +71,7 @@ class Sidebar {
     }
     rect(1120, 320, 40, 40);
     textSize(24);
-    fill(0);
+    fill(textColour);
     text("Q", 1131, 349);
     
     if (Q) {
@@ -80,7 +80,7 @@ class Sidebar {
       MWPos = 390;
     }
     
-    image(MoveableWall, 1180, MWPos, 35, 35);
-    image(MoveableWall, 1180, 355, 35, 35);
+    image(moveableWall, 1180, MWPos, 35, 35);
+    image(moveableWall, 1180, 355, 35, 35);
   }
 }

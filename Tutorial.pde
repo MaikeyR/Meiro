@@ -65,7 +65,7 @@ class Tutorial {
     } else moveSelect = 0;
 
     if (keys['e']) {
-      Screen = 0;
+      screen = 0;
     }
     keys['e'] = false;
   }
@@ -166,7 +166,7 @@ class Tutorial {
     rect(930, 230, 35, 350);
 
     fill(255, 0, 155);
-    image(Door, 930, 300, 35, 35);
+    image(door, 930, 300, 35, 35);
 
     fill(100);
     image(smallHallwayHoriz, 930, 470, 35, 35);

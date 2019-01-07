@@ -1,4 +1,4 @@
-class keyBoard{
+class Keyboard{
   float size = 1.00;
   char[] qwerty = new char[]{
     'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
@@ -10,6 +10,8 @@ class keyBoard{
   String l2;
   String l3;
   String name;
+  String nameArray[] = new String[3];
+  String theLetter;
     
   
   //Keyboard for the 3 initials for the highscore
@@ -17,7 +19,7 @@ class keyBoard{
     clear();
     background(backgroundColour);
     if(selectedX != 9 && keys['d']){
-       selectedX += 1;
+       selectedX += 1; 
     }
     if(selectedX != 0 && keys['a']){
       selectedX -= 1;
@@ -26,7 +28,7 @@ class keyBoard{
       selectedY -= 1;
     }
     if(selectedY != 2 && keys['s']){
-      selectedY += 1;
+      selectedY += 1; 
     }
     if(keys['q'] == true){
       spacePressed = true;
@@ -39,19 +41,19 @@ class keyBoard{
     //int teller = 0;
     while(i < 3){
       while(j <= 10){
-        fill(150);
+        fill(buttonColour);
         rect(j * (width / 10), (i * 100) + 420, width / 10, 100);
         j++;
       }
       i++;
       j = 0;
     }
-    fill(200);
+    fill(buttonSelectedColour);
     rect(selectedX * width / 10 ,selectedY * 100 + 420, width / 10, 100);
     
     for(int I = 0; I < 3; I++){
       for(int J = 0; J < 10; J++){
-        fill(0);
+        fill(textColour);
         textSize(70);
         int letter = I * 10 + J;
         text(qwerty[letter], J * (width / 10) + 40, I * 100 + 500);
@@ -83,17 +85,13 @@ class keyBoard{
   
   
   //To go to highscore screen
-  else if(selectedLetter == 19 && keys['q']){
-
-    l1 = str(letter1);
-    l2 = str(letter2);
-    l3 = str(letter3);
-    letter1 = '_';
-    letter2 = '_';
-    letter3 = '_';
-    charNumber = 0;
-    name = l1 + l2 + l3;
-    screen = 1;
+  else if(selectedLetter == 19 && keys['q'] && letter1 != '_' && letter2 != '_' && letter3 != '_'){
+    
+    nameArray[0] = str(letter1);
+    nameArray[1] = str(letter2);
+    nameArray[2] = str(letter3);
+    saveStrings("Name.txt", nameArray);
+    screen = 0;
   }
   
 

@@ -10,6 +10,6 @@ class Wall {
   }
 
   void draw() {
-    image(Wall, x, y, 35, 35);
+    image(wall, x+screenShakeX, y+screenShakeY, 35, 35);
   }
 }
