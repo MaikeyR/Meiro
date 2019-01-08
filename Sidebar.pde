@@ -1,8 +1,9 @@
 class Sidebar {
-  int MWPos;
-  boolean Q;
+  int MWPos = 35;
+  int qSize;
+  int teller;
+  boolean pressed = true;
   void draw() {
-
     //WASD controls
     if (keys['w'] == true) {
       fill(100);
@@ -39,9 +40,18 @@ class Sidebar {
     text("D", 1212, 150);
 
     //player switch
-    fill(50, 100, 205);
-    ellipse(1120, 270, 24, 24);
-    ellipse(1220, 270, 14, 14);
+    if (char12) {
+      fill(255);
+      ellipse(1120, 270, char1.size + 6, char1.size + 6);
+    }
+    fill(255, 0, 0);
+    ellipse(1120, 270, char1.size, char1.size);
+    if (!char12) {
+      fill(255);
+      ellipse(1220, 270, char2.size + 6, char2.size + 6);
+    }
+    fill(0, 0, 255);
+    ellipse(1220, 270, char2.size, char2.size);
     fill (150);
     
     if (keys['e'] == true) {
@@ -63,24 +73,38 @@ class Sidebar {
 
     //moveable walls
     fill(50, 100, 205);
-    ellipse(1140, 410, 24, 24);
+    stroke(255);
+    if(char12) {
+      qSize = 21;
+    } else {
+      qSize = 14;
+    }
+    ellipse(1140, 410, qSize, qSize);
+    stroke(0);
     fill(150);
     
     if (keys['q']) {
       fill(100);
-    }
+    } 
     rect(1120, 320, 40, 40);
     textSize(24);
     fill(textColour);
     text("Q", 1131, 349);
     
-    if (Q) {
-      MWPos = 320;
-    } else {
-      MWPos = 390;
+    if (keys['q'] && pressed == true) {
+      teller = 0;
+      MWPos = MWPos * -1;
+      println(MWPos);
+      pressed = false;
     }
     
-    image(moveableWall, 1180, MWPos, 35, 35);
+    teller++;
+    
+    if (teller > 30) {
+      pressed = true;
+    }
+    
+    image(moveableWall, 1180, 355 + MWPos, 35, 35);
     image(moveableWall, 1180, 355, 35, 35);
   }
 }

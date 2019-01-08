@@ -1,3 +1,6 @@
+float extraSize1;
+float extraSize2;
+
 class Characters {
   int xCord, yCord;
   float posX;
@@ -6,16 +9,14 @@ class Characters {
   float dx;
   float dy;
   char r, g, b;
-  boolean charChanged;
   float growth = 4;
   int charChange = 0;
-  float extraSize;
 
   Characters() {
     posX = 0;
     posY = 0;
     size = 24;
-    extraSize = 0;
+    //extraSize = 0;
     dx = 120;
     dy = 120;
     r = 255;
@@ -24,22 +25,20 @@ class Characters {
   }
 
   void draw() {
+    fill(r, g, b);
+    ellipse(posX+screenShakeX, posY+screenShakeY, size, size);
     if(char12){
       fill(textColour);
-      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize + 6, char1.size + extraSize + 6);
+      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize1 + 6, char1.size + extraSize1 + 6);
       fill(char1.r, g, char1.b);
-      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize, char1.size + extraSize);
-    }else{
+      ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize1, char1.size + extraSize1);
+    }else if(!char12){
       fill(textColour);
-      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize + 6, char2.size + extraSize + 6);
+      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize2 + 6, char2.size + extraSize2 + 6);
       fill(char2.r, g, char2.b);
-      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize, char2.size + extraSize);
+      ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize2, char2.size + extraSize2);
     }
-    fill(r, g, b);
-    ellipse(posX+screenShakeX, posY+screenShakeY, size + extraSize, size + extraSize);
-    if(charChanged){
-      charChangedAnimation();
-    }
+    charChangedAnimation();
   }
 
   void update1(double dt) {
@@ -52,17 +51,17 @@ class Characters {
       boolean wallLeft = false;
 
       if (grid.currentGrid[yCord][xCord - 1] != PATH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != DON_BUTTON &&
-        posX - (size / 2) < xCord * 35 + 2) {
+        posX - (size / 2) < xCord * 35 + 5) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
-        posX - (size / 2) < xCord * 35 + 2 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
+        posX - (size / 2) < xCord * 35 + 5 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
-        posX - (size / 2) < xCord * 35 + 2 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
+        posX - (size / 2) < xCord * 35 + 5 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       }
 
       if (wallLeft == false) {
@@ -75,17 +74,17 @@ class Characters {
       boolean wallRight = false;
 
       if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != HOLE && grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != DON_BUTTON &&
-        posX + (size / 2) > xCord * 35 + 34) {
+        posX + (size / 2) > xCord * 35 + 31) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
-        posX + (size / 2) > xCord * 35 + 34 && posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
+        posX + (size / 2) > xCord * 35 + 31 && posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
-        posX + (size / 2) > xCord * 35 + 34 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
+        posX + (size / 2) > xCord * 35 + 31 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       }
 
       if (wallRight == false) {
@@ -98,17 +97,17 @@ class Characters {
       boolean wallUp = false;
 
       if (grid.currentGrid[yCord - 1][xCord] != PATH && grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != FINISH && grid.currentGrid[yCord - 1][xCord] != DON_BUTTON &&
-        posY - (size / 2) < yCord * 35 + 2) {
+        posY - (size / 2) < yCord * 35 + 5) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != DON_BUTTON &&
-        posY - (size / 2) < yCord * 35 + 2 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
+        posY - (size / 2) < yCord * 35 + 5 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != DON_BUTTON &&
-        posY - (size / 2) < yCord * 35 + 2 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
+        posY - (size / 2) < yCord * 35 + 5 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       }
 
       if (wallUp == false) {
@@ -121,17 +120,17 @@ class Characters {
       boolean wallDown = false;
 
       if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != HOLE && grid.currentGrid[yCord + 1][xCord] != FINISH && grid.currentGrid[yCord + 1][xCord] != DON_BUTTON &&
-        posY + (size / 2) > yCord * 35 + 34) {
+        posY + (size / 2) > yCord * 35 + 31) {
         wallDown = true; 
-        posY = yCord * 35 + 35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != DON_BUTTON &&
-        posY + (size / 2) > yCord * 35 + 34 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
+        posY + (size / 2) > yCord * 35 + 31 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
         wallDown = true; 
-        posY = yCord * 35 + 35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != DON_BUTTON &&
-        posY + (size / 2) > yCord * 35 + 34 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
+        posY + (size / 2) > yCord * 35 + 31 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
         wallDown = true; 
-        posY = yCord * 35 + 35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       }
 
       if (wallDown == false) {
@@ -152,17 +151,17 @@ class Characters {
       boolean wallLeft = false;
 
       if (grid.currentGrid[yCord][xCord - 1] != PATH && grid.currentGrid[yCord][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord][xCord - 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != COR_BUTTON && posX - (size / 2) < xCord * 35 + 2) {
+        grid.currentGrid[yCord][xCord - 1] != FINISH && grid.currentGrid[yCord][xCord - 1] != HOLE && grid.currentGrid[yCord][xCord - 1] != COR_BUTTON && posX - (size / 2) < xCord * 35 + 5) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON &&
-        grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 2 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
+        grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 5 && posY < walls[yCord - 1][xCord - 1].y + 35 + size / 2) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON &&
-        grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 2 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
+        grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posX - (size / 2) < xCord * 35 + 5 && posY > walls[yCord + 1][xCord - 1].y - size / 2 + 1) {
         wallLeft = true; 
-        posX = xCord * 35 + size / 2;
+        posX = xCord * 35 + size / 2  + 3;
       }
 
       if (wallLeft == false) {
@@ -176,17 +175,17 @@ class Characters {
       boolean wallRight = false;
 
       if (grid.currentGrid[yCord][xCord + 1] != PATH && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord][xCord + 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord][xCord + 1] != COR_BUTTON &&
-        grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34) {
+        grid.currentGrid[yCord][xCord + 1] != FINISH && grid.currentGrid[yCord][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 31) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON &&
-        grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34 &&posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
+        grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 31 && posY < walls[yCord - 1][xCord + 1].y + 35 + size / 2) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 34 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
+        grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posX + (size / 2) > xCord * 35 + 31 && posY > walls[yCord + 1][xCord + 1].y - size / 2 + 1) {
         wallRight = true; 
-        posX = xCord * 35 + 35 - size / 2;
+        posX = xCord * 35 + 32 - size / 2;
       }
 
       if (wallRight == false) {
@@ -200,17 +199,17 @@ class Characters {
       boolean wallUp = false;
 
       if (grid.currentGrid[yCord - 1][xCord] != PATH && grid.currentGrid[yCord - 1][xCord] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord - 1][xCord] != FINISH &&  grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != COR_BUTTON && posY - (size / 2) < yCord * 35 + 2) {
+        grid.currentGrid[yCord - 1][xCord] != FINISH &&  grid.currentGrid[yCord - 1][xCord] != HOLE && grid.currentGrid[yCord - 1][xCord] != COR_BUTTON && posY - (size / 2) < yCord * 35 + 5) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       } else if (grid.currentGrid[yCord - 1][xCord - 1] != PATH && grid.currentGrid[yCord - 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord - 1] != SMALL_HALLWAY_VERT && 
-        grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posY - (size / 2) < yCord * 35 + 2 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
+        grid.currentGrid[yCord - 1][xCord - 1] != FINISH && grid.currentGrid[yCord - 1][xCord - 1] != HOLE && posY - (size / 2) < yCord * 35 + 5 && posX < walls[yCord - 1][xCord - 1].x + 35 + size / 2) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       } else if (grid.currentGrid[yCord - 1][xCord + 1] != PATH && grid.currentGrid[yCord - 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord - 1][xCord + 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posY - (size / 2) < yCord * 35 + 2 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
+        grid.currentGrid[yCord - 1][xCord + 1] != FINISH && grid.currentGrid[yCord - 1][xCord + 1] != HOLE && posY - (size / 2) < yCord * 35 + 5 && posX > walls[yCord - 1][xCord + 1].x - size / 2 + 1) {
         wallUp = true; 
-        posY = yCord * 35 + size / 2;
+        posY = yCord * 35 + size / 2 + 3;
       }
 
 
@@ -225,17 +224,17 @@ class Characters {
       boolean wallDown = false;
 
       if (grid.currentGrid[yCord + 1][xCord] != PATH && grid.currentGrid[yCord + 1][xCord] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord + 1][xCord] != FINISH &&grid.currentGrid[yCord + 1][xCord] != HOLE && posY + (size / 2) > yCord * 35 + 34) {
+        grid.currentGrid[yCord + 1][xCord] != FINISH &&grid.currentGrid[yCord + 1][xCord] != HOLE && posY + (size / 2) > yCord * 35 + 31) {
         wallDown = true; 
-        posY = yCord * 35 + 35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord - 1] != PATH && grid.currentGrid[yCord + 1][xCord - 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord - 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posY + (size / 2) > yCord * 35 + 34 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
+        grid.currentGrid[yCord + 1][xCord - 1] != FINISH && grid.currentGrid[yCord + 1][xCord - 1] != HOLE && posY + (size / 2) > yCord * 35 + 31 && posX < walls[yCord + 1][xCord - 1].x + 35 + size / 2) {
         wallDown = true; 
-        posY = yCord * 35 + 35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       } else if (grid.currentGrid[yCord + 1][xCord + 1] != PATH && grid.currentGrid[yCord + 1][xCord + 1] != COR_BUTTON && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_HORIZ && grid.currentGrid[yCord + 1][xCord + 1] != SMALL_HALLWAY_VERT &&
-        grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posY + (size / 2) > yCord * 35 + 34 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
+        grid.currentGrid[yCord + 1][xCord + 1] != FINISH && grid.currentGrid[yCord + 1][xCord + 1] != HOLE && posY + (size / 2) > yCord * 35 + 31 && posX > walls[yCord + 1][xCord + 1].x - size / 2 + 1) {
         wallDown = true; 
-        posY = yCord * 35 +  35 - size / 2;
+        posY = yCord * 35 + 32 - size / 2;
       }
 
       if (wallDown == false) {
@@ -278,30 +277,27 @@ class Characters {
     
     if (char12 == true && charChange <= 0) {
       char12 = false;
-      charChanged = true;
       charChange = 20;
       
     } else if (char12 == false && charChange <= 0) {
       char12 = true;
-      charChanged = true;
       charChange = 20;
     }
   }
   
   void charChangedAnimation(){
     if(char12 && charChange > 10){
-      char1.extraSize += growth;
+      extraSize1 += growth;
       charChange--;
     }else if(char12 && charChange > 0){
-      char1.extraSize -= growth;
+      extraSize1 -= growth;
       charChange--;
     }
-    
     if(!char12 && charChange > 10){
-      char2.extraSize += growth;
+      extraSize2 += growth;
       charChange--;
     }else if(!char12 && charChange > 0){
-      char2.extraSize -= growth;
+      extraSize2 -= growth;
       charChange--;
     }
   }
