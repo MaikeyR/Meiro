@@ -5,7 +5,7 @@ PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallway
 
 
 // Sounds
-AudioPlayer fall, grunt, soundtrack, doorAudio, splat;
+AudioPlayer fall, grunt, soundtrack, doorAudio, splat, brick;
   
 public void loadAssets() {
   
@@ -39,4 +39,5 @@ public void loadAssets() {
   //grunt = minim.loadFile("assets/sounds/grunt.mp3", 2048);
   doorAudio = minim.loadFile("assets/sounds/door.mp3", 2048);
   splat = minim.loadFile("assets/sounds/splat.mp3", 2048);
+  brick = minim.loadFile("assets/sounds/brickmove.mp3", 2048);
 }

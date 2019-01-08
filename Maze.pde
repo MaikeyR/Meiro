@@ -107,12 +107,16 @@ class Maze {
             image(char1wall, X+screenShakeX, Y+screenShakeY, 35, 35);
           }else{
             grid.currentGrid[i][j] = PATH;
+            doorAudio.rewind();
+            doorAudio.play();
           }
         } else if (grid.currentGrid[i][j]==DON_BUTTON_DOOR) {
           if (!donButton) {
             image(char2wall, X+screenShakeX, Y+screenShakeY, 35, 35);
           }else{
-            grid.currentGrid[i][j] = PATH; 
+            grid.currentGrid[i][j] = PATH;
+            doorAudio.rewind();
+            doorAudio.play();
           }
         }
 
@@ -327,8 +331,8 @@ class Maze {
 
       if (wallMoved && wallMovedLastFrame == false) {
 
-        doorAudio.rewind();
-        doorAudio.play();
+        brick.rewind();
+        brick.play();
       }
       if (wallMoved) {
         mayMoveWall = false;

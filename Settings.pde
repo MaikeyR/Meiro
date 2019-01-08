@@ -29,20 +29,16 @@ class Settings {
     }
     if (selectedY == 2 && keys['d'] && sfxVolume < 100) {
       sfxvolume++;
-      fall.setGain(sfxvolume); //used to increase volume
-      doorAudio.setGain(sfxvolume);
-      //grunt.setGain(sfxvolume);
-      //grunt.rewind();
-      //grunt.play();
+      doorAudio.setGain(sfxvolume); //used to increase volume
+      doorAudio.rewind();
+      doorAudio.play();
       //volume up
       sfxVolume++;
     } else if (selectedY == 2 && keys['a'] && sfxVolume > 0) {
       sfxvolume--;
-      fall.setGain(sfxvolume);
-      doorAudio.setGain(sfxvolume);
-      //grunt.setGain(sfxvolume); //used to decrease volume
-      //grunt.rewind();
-      //grunt.play();
+      doorAudio.setGain(sfxvolume); //used to decrease volume
+      doorAudio.rewind();
+      doorAudio.play();
       //volume down
       sfxVolume--;
     }
