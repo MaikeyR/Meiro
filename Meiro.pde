@@ -74,7 +74,7 @@ String clearScore[];
 
 void setup() {
 
-  frameRate(600);
+  frameRate(60);
   size(1280, 720);
 
   /**

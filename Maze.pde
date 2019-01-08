@@ -18,10 +18,8 @@ class Maze {
   boolean mayMoveWall = true;
 
   boolean corButton, donButton = false;
-  float corButtonTimer = 100, donButtonTimer = 100;
   int donButtonDoorX, donButtonDoorY;
   int corButtonDoorX, corButtonDoorY;
-  int buttonTimer = 100;
 
 
   void gridSetup() {
@@ -49,15 +47,6 @@ class Maze {
           walls[i][j].draw();
         } else if (grid.currentGrid[i][j] == PATH) {
           image(path, X+screenShakeX, Y+screenShakeY, 35, 35);
-          if (donButtonTimer == 0) {
-            grid.currentGrid[donButtonDoorX][donButtonDoorY] = DON_BUTTON_DOOR;
-            donButton = false;
-            donButtonTimer = buttonTimer;
-          } else if (corButtonTimer == 0) {
-            grid.currentGrid[corButtonDoorX][corButtonDoorY] = COR_BUTTON_DOOR;
-            corButton = false;
-            corButtonTimer = buttonTimer;
-          }
         } else if (grid.currentGrid[i][j] == SMALL_HALLWAY_HORIZ) {
           walls[i][j].y = Y;
           walls[i][j].x = X;
@@ -130,10 +119,8 @@ class Maze {
         //code for the button and door mechanic
         if (grid.currentGrid[i][j] == COR_BUTTON && char2.posX > X && char2.posX < X + 35 && char2.posY > Y && char2.posY < Y + 35) {
           corButton = true;
-          corButtonTimer = buttonTimer;
         } else if (grid.currentGrid[i][j] == DON_BUTTON && char1.posX > X && char1.posX < X + 35 && char1.posY > Y && char1.posY < Y + 35) {
           donButton = true;
-          donButtonTimer = buttonTimer;
         }
 
 
@@ -403,12 +390,6 @@ class Maze {
         textCooldown = 500;
         animating = false;
       }
-    }
-    if (donButton) {
-      donButtonTimer--;
-    }
-    if (corButton) {
-      corButtonTimer--;
     }
   }
 }

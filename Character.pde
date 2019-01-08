@@ -279,17 +279,17 @@ class Characters {
     if (char12 == true && charChange <= 0) {
       char12 = false;
       charChanged = true;
-      charChange = 40;
+      charChange = 20;
       
     } else if (char12 == false && charChange <= 0) {
       char12 = true;
       charChanged = true;
-      charChange = 40;
+      charChange = 20;
     }
   }
   
   void charChangedAnimation(){
-    if(char12 && charChange > 20){
+    if(char12 && charChange > 10){
       char1.extraSize += growth;
       charChange--;
     }else if(char12 && charChange > 0){
@@ -297,7 +297,7 @@ class Characters {
       charChange--;
     }
     
-    if(!char12 && charChange > 20){
+    if(!char12 && charChange > 10){
       char2.extraSize += growth;
       charChange--;
     }else if(!char12 && charChange > 0){
