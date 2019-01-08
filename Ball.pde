@@ -26,6 +26,8 @@ class Ball {
 
   void draw() {
 
+    splat.rewind();
+    splat.play();
     ellipse(x, y, size, size);
   }
 }
