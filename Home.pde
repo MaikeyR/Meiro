@@ -1,9 +1,12 @@
 class Home {    
   int selectedX = 0;
   int selectedY = 0;
-  int imageX = 0;
+  float backgroundImages[] = {0, 1748};
+  int roundedImages[] = {0, 0};
   int imageY = 0;
-  int imagedx = 50;
+  float imagedx = 50;
+  float farImage = 1748*2;
+  float moveDistance = 0;
 
   String currentNameArray[];
   String currentName;
@@ -14,7 +17,6 @@ class Home {
     currentName = currentNameArray[0] + currentNameArray[1] + currentNameArray[2];
     char currentNameChar[] = {currentName.charAt(0), currentName.charAt(1), currentName.charAt(2)};
     
-    println(currentName);
     if (currentNameChar[0] == '?' && currentNameChar[1] == '?' && currentNameChar[2] == '?') {
       
       screen = 3;
@@ -37,19 +39,40 @@ class Home {
       selectedX++;
     }
 
+    moveDistance = imagedx * (float)(dt);
+    backgroundImages[0] -= moveDistance;
+    backgroundImages[1] -= moveDistance;
+    farImage -= moveDistance;
+    
+    for (int i = 0; i < 2; i++) {
+      
+      if (backgroundImages[i] <= -1748) {
+        backgroundImages[i] = farImage;
+        farImage += 1748;
+      }
+    }
+    //println(farImage);
+    roundedImages[0] = round(backgroundImages[0]);
+    roundedImages[1] = round(backgroundImages[1]);
 
-    if (imageX >= -1050) {
+    
+    image(homeBackground, roundedImages[0], 0);
+    image(homeBackground, roundedImages[1], 0);
+    
+    //println(backgroundImages[0] + " : " + backgroundImages[1]);
+    
+    /*if (imageX >= -1050) {
       image(homeBackground, imageX, imageY);
-      image(homeBackground, imageX + 1050, imageY);
-      image(homeBackground, imageX + 2100, imageY);
+      image(homeBackground, imageX, imageY);
+      image(homeBackground, imageX + width/2+100, imageY);
       imageX -= imagedx*dt;
       //println(frameRate);
     } else {
       imageX = 0;
       image(homeBackground, imageX, imageY);
-      image(homeBackground, imageX + 1050, imageY);
-      image(homeBackground, imageX + 2100, imageY);
-    }
+      image(homeBackground, imageX + width/2-100, imageY);
+      image(homeBackground, imageX + width/2+100, imageY);
+    }*/
 
 
     fill(buttonColour);

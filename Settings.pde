@@ -8,11 +8,11 @@ class Settings {
   void update() {
     //The settings menu is not complete yet, more options to come.
     soundtrack.play();
-    if (keys['s'] == true && selectedY < 3) {
+    if (keys['s'] == true && selectedY < 2) {
       selectedY++;
       keys['s'] = false;
     }
-    if (keys['w'] == true && selectedY > 0) {
+    if (keys['w'] == true && selectedY > 1) {
       selectedY--; 
       keys['w'] = false;
     }
@@ -45,7 +45,7 @@ class Settings {
 
     if (keys['e']) {
       soundtrack.pause();
-      soundtrack.rewind();
+        soundtrack.rewind();
       screen = 0;
     }
   }
@@ -57,26 +57,23 @@ class Settings {
     text("Music", 300, 210);
     text("Sounds", 250, 310);
 
-    line(440, height/2+50, 840, height/2+50);
+    line(440, height/2-150, 840, height/2-150);
     line(440, height/2-50, 840, height/2-50);
 
     noStroke();
     if (selectedY == 1) {
       fill(textColour);
-      ellipse((mainVolume * 4) + 440, height/2-50, 60, 60);
+      ellipse((mainVolume * 4) + 440, height/2-150, 60, 60);
     }
     fill(buttonColour);
-    ellipse((mainVolume * 4) + 440, height/2-50, 40, 40);
+    ellipse((mainVolume * 4) + 440, height/2-150, 40, 40);
     stroke(0);
 
     if (selectedY == 2) {
       fill(textColour);
-      ellipse((sfxVolume * 4) + 440, height/2+50, 60, 60);
+      ellipse((sfxVolume * 4) + 440, height/2-50, 60, 60);
     }
     fill(buttonColour);
-    ellipse((sfxVolume * 4) + 440, height/2+50, 40, 40);
-    fill(0);
-    triangle(70, 640, 105, 630, 105, 650);
-    text("E", 130, 650);
+    ellipse((sfxVolume * 4) + 440, height/2-50, 40, 40);
   }
 }

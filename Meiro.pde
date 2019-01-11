@@ -91,7 +91,6 @@ void setup() {
   variablesInit();
   classesInit();
   loadAssets();
-
 }
 
 void update() {
@@ -133,7 +132,7 @@ void render() {
     home.draw();
     break;
   case 1 : 
-    //highscoreScreen.draw();
+    highscoreScreen.draw();
     break;
   case 2 :
     maze.wallDraw();
@@ -206,7 +205,7 @@ void variablesInit() {
   widthMaze = 1050;
   heightMaze = 700;
   grd = 0;
-  aantalLevels = 12;
+  aantalLevels = 7;
   mazeCount = 0;
   finX = 0;
   finY = 0;
@@ -234,7 +233,6 @@ void classesInit() {
   levelSelect = new LevelSelect();
   sidebar = new Sidebar();
   keyboard = new Keyboard();
-  //assetLoader = new Assetloader();
   char1 = new Characters();
   char2 = new Characters();
   maze = new Maze();
@@ -257,6 +255,7 @@ void classesInit() {
 
 
 void draw() {
+  
   //println(frameRate);
   background(backgroundColour);
 
@@ -265,7 +264,6 @@ void draw() {
 
   update();
   render();
-  //println(screen);
 
   lastUpdateTime = currentTime;
 }
@@ -301,23 +299,6 @@ void keyPressed() {
     default : 
       break;
     }
-  //} else {
-
-  //  switch (keyCode) {
-
-  //  case LEFT : 
-  //    keys['a'] = true; 
-  //    break;
-  //  case RIGHT : 
-  //    keys['d'] = true; 
-  //    break;
-  //  case DOWN : 
-  //    keys['s'] = true; 
-  //    break;
-  //  case UP : 
-  //    keys['w'] = true; 
-  //    break;
-  //  }
   }
 }
 
@@ -351,22 +332,5 @@ void keyReleased() {
     default : 
       break;
     }
-  //} else {
-    
-  //  switch (keyCode) {
-
-  //  case LEFT : 
-  //    keys['a'] = false; 
-  //    break;
-  //  case RIGHT : 
-  //    keys['d'] = false; 
-  //    break;
-  //  case DOWN : 
-  //    keys['s'] = false; 
-  //    break;
-  //  case UP : 
-  //    keys['w'] = false; 
-  //    break;
-  //  }
   }
 }

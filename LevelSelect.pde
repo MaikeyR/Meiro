@@ -1,5 +1,6 @@
 int levelSelectedX = 0;
 int levelSelectedY = 0;
+int selectLevel = 0;
 int maxX = 5; //max aantal levels per rij
 int maxY = 5; //max aantal levels per kolom(ook de levels die off-screen zijn)
 int minY = 0;
@@ -69,8 +70,8 @@ class LevelSelect {
 
   void selectedButton() {
     levelNummer = 0;
-   
-    
+
+
     fill(buttonSelectedColour);
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
@@ -93,27 +94,31 @@ class LevelSelect {
   }
 
   void updateOnKeyboard(char keyboardKey) {
-    //println("test");
+
+    selectLevel = levelSelectedX + (5 * levelSelectedY);
+
     if (keyboardKey == 's' && !(levelSelectedY >= maxY)) {
 
-      levelSelectedY++;
+      if (!(selectLevel >= aantalLevels-5)) {
+        levelSelectedY++;
+      }
     } else if (keyboardKey == 'w' && !(levelSelectedY <= minY)) {
 
       levelSelectedY--;
     } else if (keyboardKey == 'a') {
       if (levelSelectedX <= minX && levelSelectedY > 0) {
-        //println("test");
         levelSelectedX = 4;
         levelSelectedY --;
-      } else {
+      } else if (selectLevel > 0) {
         levelSelectedX --;
       }
     } else if (keyboardKey == 'd') {
+
+
       if (levelSelectedX >= maxX -1) {
-        //println("test");
         levelSelectedX = 0;
         levelSelectedY ++;
-      } else {
+      } else if (selectLevel < aantalLevels-1) {
         levelSelectedX++;
       }
     }
@@ -141,5 +146,7 @@ class LevelSelect {
 
       keys[key] = false;
     }
+
+    selectLevel = levelSelectedX + (5 * levelSelectedY);
   }
 }
