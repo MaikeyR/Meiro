@@ -261,6 +261,7 @@ class Characters {
     if (char2fin && char1fin || keys['p']) {
       char1fin = false;
       char2fin = false;
+      fromGame = true;
       screen = 1;
       timer.stop();
       keys['f'] = false;

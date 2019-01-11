@@ -135,6 +135,7 @@ class LevelSelect {
 
       if (screen == 6) {
         highScreen = true;
+        fromGame = false;
         screen = 1;
       }
 

@@ -56,6 +56,7 @@ char letter1, letter2, letter3;
 boolean char12;
 boolean keys[];
 boolean char1fin, char2fin;
+boolean fromGame;
 
 //doubles
 double currentTime, lastUpdateTime, dt;
@@ -197,6 +198,7 @@ void variablesInit() {
   keys = new boolean[128];
   char1fin = false;
   char2fin = false;
+  fromGame = false;
   currentTime = 0;
   lastUpdateTime = 0;
   dt = 0;

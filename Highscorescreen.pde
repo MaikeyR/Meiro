@@ -20,7 +20,7 @@ class Highscorescreen {
       addNewScore(timer.getElapsedTime(), home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
-    }else if(screen == 1){
+    } else if (screen == 1) {
       whatHighscore();
       showHighscore();
     }
@@ -34,8 +34,10 @@ class Highscorescreen {
       println("kuhigerad.");
       saveStrings("highscore.txt", clearScore);
       saveStrings("highscoreName.txt", clearName);
-    } else if (keys['e']) {
+    } else if (keys['e'] && fromGame == false) {
       screen = 6;
+    } else if (keys['e'] && fromGame == true) {
+      screen = 5;
     }
 
     //keys[key] = false;
@@ -47,7 +49,10 @@ class Highscorescreen {
         screen = 0;
       } else {
         //println("blup");
-        mazeCount++;
+        if (fromGame) {
+          
+          mazeCount++;
+        }
         grid.loadGrid(mazeCount);
         screen = 2;
         timer.stop();

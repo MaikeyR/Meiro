@@ -13,6 +13,12 @@ class Home {
     currentNameArray = loadStrings("Name.txt");
     currentName = currentNameArray[0] + currentNameArray[1] + currentNameArray[2];
     char currentNameChar[] = {currentName.charAt(0), currentName.charAt(1), currentName.charAt(2)};
+    
+    println(currentName);
+    if (currentNameChar[0] == '?' && currentNameChar[1] == '?' && currentNameChar[2] == '?') {
+      
+      screen = 3;
+    }
 
     if (currentNameChar[0] == '_') {
       screen = 3;
