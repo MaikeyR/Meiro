@@ -104,6 +104,8 @@ class Maze {
           image(char2Button, X+screenShakeX, Y+screenShakeY, 35, 35);
         } else if (grid.currentGrid[i][j]==COR_BUTTON_DOOR) {
           if (!corButton) {
+            corButtonDoorX = i;
+            corButtonDoorY = j;
             image(char1wall, X+screenShakeX, Y+screenShakeY, 35, 35);
           }else{
             grid.currentGrid[i][j] = PATH;
@@ -112,6 +114,8 @@ class Maze {
           }
         } else if (grid.currentGrid[i][j]==DON_BUTTON_DOOR) {
           if (!donButton) {
+            donButtonDoorX = i;
+            donButtonDoorY = j;
             image(char2wall, X+screenShakeX, Y+screenShakeY, 35, 35);
           }else{
             grid.currentGrid[i][j] = PATH;

@@ -271,6 +271,10 @@ class Characters {
       char1.posY = startY1;
       grid.currentGrid[maze.iStart1][maze.jStart1] = START1;
       grid.currentGrid[maze.iStart2][maze.jStart2] = START2;
+      maze.corButton= false;
+      maze.donButton= false;
+      grid.currentGrid[maze.donButtonDoorX][maze.donButtonDoorY] = DON_BUTTON ;
+      grid.currentGrid[maze.corButtonDoorX][maze.corButtonDoorY] = COR_BUTTON ;
     }
   }
 
