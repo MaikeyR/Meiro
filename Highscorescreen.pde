@@ -24,6 +24,7 @@ class Highscorescreen {
       whatHighscore();
       showHighscore();
     }
+    draw();
   }
 
   void draw() {

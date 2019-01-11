@@ -133,7 +133,7 @@ void render() {
     home.draw();
     break;
   case 1 : 
-    highscoreScreen.draw();
+    //highscoreScreen.draw();
     break;
   case 2 :
     maze.wallDraw();
@@ -206,7 +206,7 @@ void variablesInit() {
   widthMaze = 1050;
   heightMaze = 700;
   grd = 0;
-  aantalLevels = 12;
+  aantalLevels = 11;
   mazeCount = 0;
   finX = 0;
   finY = 0;
@@ -257,7 +257,7 @@ void classesInit() {
 
 
 void draw() {
-  println(frameRate);
+  //println(frameRate);
   background(backgroundColour);
 
   currentTime = (double) millis() / 1000;
