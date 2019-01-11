@@ -206,7 +206,7 @@ void variablesInit() {
   widthMaze = 1050;
   heightMaze = 700;
   grd = 0;
-  aantalLevels = 8;
+  aantalLevels = 9;
   mazeCount = 0;
   finX = 0;
   finY = 0;
