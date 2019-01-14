@@ -39,6 +39,8 @@ class Highscorescreen {
     } else if (keys['e'] && fromGame == false) {
       screen = 6;
     } else if (keys['e'] && fromGame == true) {
+      soundtrack.pause();
+      soundtrack.rewind();
       screen = 5;
     }
 
@@ -94,12 +96,14 @@ class Highscorescreen {
 
     for (int i = 0; i < highscore.length; i++) {
       textSize(28);
-      text((highscore[i] / (1000*60*60)) % 24 +" : "+ (highscore[i] / (1000*60)) % 60 +" : "+ (highscore[i] / 1000) % 60, 860, 210 + 40 * i);
-      text(highscoreName[i], 400, 210 + 40 * i);
+      if(highscore[i] < 60000) {
+        text((highscore[i] / (1000*60*60)) % 24 +" : "+ (highscore[i] / (1000*60)) % 60 +" : "+ (highscore[i] / 1000) % 60, 860, 210 + 40 * i);
+        text(highscoreName[i], 400, 210 + 40 * i);
+      } else {
+       text("__:__:__", 860, 210 + 40 * i);
+       text("???", 400, 210 + 40 * i);
+      }
     }
-
-    //String[] scoreStr = new String[highscore.length];
-    //String[] nameStr = highscoreName;
 
     for (int i = 0; i < highscore.length; i++) {
       scoreStr[i+mazeCount*10] = str(highscore[i]);

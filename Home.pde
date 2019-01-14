@@ -63,22 +63,10 @@ class Home {
     fill(buttonColour);
 
     rect(270, 300, 300, 200);
-    image(trophy, 232, 210, 400, 400);
-
-    rect(770, 300, 300, 200);
-    image(playButton, 732, 190, 400, 400);
-
-    rect(340, 80, 640, 200);
-    image(titel, 340, 80, 640, 200); 
-
-    rect(750, 550, 150, 150);
-    image(settingsImage, 745, 550, 180, 180);
-
-    rect(450, 550, 150, 150);
-    textAlign(CENTER, CENTER);
-    fill(textColour);
-    text(currentName, 525, 625);
-    textAlign(LEFT, BASELINE);
+    rect(710, 300, 300, 200);
+    rect(320, 50, 640, 200);
+    rect(710, 550, 150, 150);
+    rect(420, 550, 150, 150);
 
 
 
@@ -86,39 +74,41 @@ class Home {
     fill(buttonSelectedColour);
     if (selectedX == 0 && selectedY == 0) { 
       rect(270, 300, 300, 200);
-      image(trophy, 232, 210, 400, 400);
       fill(buttonColour);
-      rect(210, 380, 40, 40);
+      rect(200, 380, 40, 40);
       textSize(24);
       fill(textColour);
-      text("Q", 218, 408);
+      text("Q", 210, 408);
     } else if (selectedX == 1 && selectedY == 1) {
-      rect(750, 550, 150, 150);
-      image(settingsImage, 745, 550, 180, 180);
+      rect(710, 550, 150, 150);
       fill(buttonColour);
-      rect(680, 610, 40, 40);
+      rect(640, 610, 40, 40);
       textSize(24);
       fill(textColour);
-      text("Q", 690, 638);
+      text("Q", 650, 638);
     } else if (selectedX == 1 && selectedY == 0) {
-      rect(770, 300, 300, 200);
-      image(playButton, 732, 190, 400, 400);
+      rect(710, 300, 300, 200);
       fill(buttonColour);
-      rect(700, 380, 40, 40);
-      textSize(24);
+      rect(640, 380, 40, 40);
       fill(textColour);
-      text("Q", 710, 408);
+      text("Q", 650, 408);
     } else if (selectedX == 0 && selectedY == 1) {
-      rect(450, 550, 150, 150);
+      rect(420, 550, 150, 150);
       fill(buttonColour);
-      rect(380, 610, 40, 40);
-      textSize(24);
+      rect(350, 610, 40, 40);
       fill(textColour);
-      textAlign(CENTER, CENTER);
-      text(currentName, 525, 625);
-      textAlign(LEFT, BASELINE);
-      text("Q", 390, 638);
+      text("Q", 360, 638);
     }
+    
+    image(trophy, 232, 210, 400, 400);
+    image(playButton, 672, 190, 400, 400);
+    image(titel, 320, 50, 640, 200);
+    image(settingsImage, 705, 550, 180, 180);
+    textSize(24);
+    textAlign(CENTER, CENTER);
+    fill(textColour);
+    text(currentName, 495, 625);
+    textAlign(LEFT, BASELINE);
 
     //test if the player wants to go to the next screen.
     if (selectedX == 1 && selectedY == 0 && keys['q']) {
@@ -143,21 +133,21 @@ class Home {
     }
     
     fill (buttonColour); 
-    rect(100, 70, 40, 40);
-    rect(50, 120, 40, 40);
-    rect(150, 120, 40, 40);
-    rect(100, 170, 40, 40);
+    rect(125, 70, 40, 40);
+    rect(75, 120, 40, 40);
+    rect(175, 120, 40, 40);
+    rect(125, 170, 40, 40);
 
     textSize(24);
     fill(textColour);
-    text("W", 110, 100);
-    text("A", 62, 150);
-    text("S", 113, 200);
-    text("D", 162, 150);
+    text("W", 135, 100);
+    text("A", 87, 150);
+    text("S", 138, 200);
+    text("D", 187, 150);
 
-    triangle(10, 140, 35, 150, 35, 130);
-    triangle(225, 140, 200, 150, 200, 130);
-    triangle(120, 245, 110, 220, 130, 220);
-    triangle(120, 35, 110, 60, 130, 60);
+    triangle(35, 140, 60, 150, 60, 130);
+    triangle(250, 140, 225, 150, 225, 130);
+    triangle(145, 245, 135, 220, 155, 220);
+    triangle(145, 35, 135, 60, 155, 60);
   }
 }

@@ -43,11 +43,11 @@ class LevelSelect {
           break;
         }
         fill(buttonColour);
-        rect(x, y, 200, 200);
+        rect(x, y, 200, 150);
 
         fill(textColour);
         textAlign(CENTER, CENTER);
-        text(levelNummer + 1, x + 100, y + 100);
+        text(levelNummer + 1, x + 100, y + 75);
 
         buttonGrid[levelNummer][0] = xButtonGrid;
         buttonGrid[levelNummer][1] = yButtonGrid;
@@ -58,7 +58,7 @@ class LevelSelect {
 
         x += 254;
       }
-      y += 230;
+      y += 200;
       x = 32;
     }
     selectedButton();
@@ -66,15 +66,18 @@ class LevelSelect {
     update();
 
     textAlign(LEFT, BASELINE);
-    
+    textSize(24);
     fill(buttonColour);
     rect(115, 622, 40, 40);
     rect(1115, 624, 40, 40);
     fill(textColour);
-    triangle(70, 640, 105, 630, 105, 650);
-    text("E", 130, 650);
-    triangle(1210, 640, 1175, 630, 1175, 650);
-    text("Q", 1125, 650);
+    //triangle(70, 640, 105, 630, 105, 650);
+    //text("E", 130, 650);
+    //triangle(1210, 640, 1175, 630, 1175, 650);
+    //text("Q", 1125, 650);
+    
+    text("Q   : Select", 1125, 650);
+    text("Back :   E", 39, 650);
   }
 
   void selectedButton() {
@@ -85,13 +88,13 @@ class LevelSelect {
     for (int i = 0; i < maxY; i++) {
       for (int j = 0; j < maxX; j++) {
 
-        if ( levelNummer >= aantalLevels ) {
+        if ( levelNummer >= aantalLevels) {
           break;
         }
         if (levelSelectedX == j && levelSelectedY == i) {
-          rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 200);
+          rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 150);
           fill(textColour);
-          text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 100);
+          text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 75);
           //println(levelNummer);
           mazeCount = levelNummer;
           grid.loadGrid(levelNummer);
@@ -122,9 +125,7 @@ class LevelSelect {
         levelSelectedX --;
       }
     } else if (keyboardKey == 'd') {
-
-
-      if (levelSelectedX >= maxX -1) {
+      if (levelSelectedX >= maxX -1 && levelSelectedY < 2) {
         levelSelectedX = 0;
         levelSelectedY ++;
       } else if (selectLevel < aantalLevels-1) {

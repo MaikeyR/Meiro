@@ -45,7 +45,7 @@ class Settings {
 
     if (keys['e']) {
       soundtrack.pause();
-        soundtrack.rewind();
+      soundtrack.rewind();
       screen = 0;
     }
   }
@@ -54,32 +54,34 @@ class Settings {
     //volume
     textSize(30);
     fill(textColour);
-    text("Music", 300, 210);
-    text("Sounds", 250, 310);
+    text("Music", 300, 270);
+    text("Sounds", 250, 370);
 
-    line(440, height/2-150, 840, height/2-150);
-    line(440, height/2-50, 840, height/2-50);
+    line(440, height/2-90, 840, height/2-90);
+    line(440, height/2+10, 840, height/2+10);
 
-    noStroke();
     if (selectedY == 1) {
       fill(textColour);
-      ellipse((mainVolume * 4) + 440, height/2-150, 60, 60);
+      ellipse((mainVolume * 4) + 440, height/2-90, 60, 60);
     }
     fill(buttonColour);
-    ellipse((mainVolume * 4) + 440, height/2-150, 40, 40);
-    stroke(0);
+    ellipse((mainVolume * 4) + 440, height/2-90, 40, 40);
 
     if (selectedY == 2) {
       fill(textColour);
-      ellipse((sfxVolume * 4) + 440, height/2-50, 60, 60);
+      ellipse((sfxVolume * 4) + 440, height/2+10, 60, 60);
     }
     fill(buttonColour);
-    ellipse((sfxVolume * 4) + 440, height/2-50, 40, 40);
+    ellipse((sfxVolume * 4) + 440, height/2+10, 40, 40);
     
     fill(buttonColour);
+    textSize(24);
     rect(115, 622, 40, 40);
+    fill(textColour);    
+    text("Back :   E", 37, 650);
+
+    textSize(53);
     fill(textColour);
-    triangle(70, 640, 105, 630, 105, 650);
-    text("E", 130, 650);
+    text("Settings", 515, 150);
   }
 }
