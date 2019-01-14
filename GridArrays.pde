@@ -15,10 +15,9 @@
  l = DON DEUR GEACTIVEERD DOOR KNOP
  */
 
-
+//Voor leesbaarheid in de rest van de code passen we hier aan wat welke letter betekend, zodat je dat later kan gebruiken inplaats van letters.
 static char WALL='a', PATH='b';
 static char FINISH='f', START1='1', START2='2';
-
 static char HOLE='d', MOVEABLE_WALL_MID='w', MOVEABLE_WALL_SIDE='v';
 static char SMALL_HALLWAY_VERT='t', SMALL_HALLWAY_HORIZ='s';
 static char COR_BUTTON='p', DON_BUTTON='o', COR_BUTTON_DOOR='k', DON_BUTTON_DOOR='l';
@@ -27,8 +26,7 @@ class GridArrays {
 
   char currentGrid [][]; 
 
-  int round = 0;
-
+  //selecteert het doolhof voor het juiste level, zodat hij de juiste levels tekent en aanpast. Hij maakt een nieuw array voor het doolhof om de dingen in het doolhof aan te passen.
   void loadGrid(int grid) {
     
     currentGrid = grids[grid];

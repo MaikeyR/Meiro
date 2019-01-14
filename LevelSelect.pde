@@ -16,7 +16,8 @@ class LevelSelect {
   int xButtonGrid = 0;
   int yButtonGrid = 0;
   int buttonGrid[][] = new int[aantalLevels][4];
-
+  
+  //Checkt welk level geselecteerd is.
   void update() {
 
     if (levelSelectedY > maxLineOnscreen) {
@@ -37,11 +38,15 @@ class LevelSelect {
     y = 30;
     levelNummer = 0;
 
+    //tekent de knoppen met de juiste tekst.
     for (yButtonGrid = 0; yButtonGrid < maxY; yButtonGrid++) {
       for (xButtonGrid = 0; xButtonGrid < maxX; xButtonGrid++) {
         if ( levelNummer >= aantalLevels ) {
+          
+           // stopt met tekenen als het aantal knoppen gelijk is aan het aantal levels.
           break;
         }
+        
         fill(buttonColour);
         rect(x, y, 200, 150);
 
@@ -75,7 +80,8 @@ class LevelSelect {
     text("Q   : Select", 1125, 650);
     text("Back :   E", 39, 650);
   }
-
+  
+  //past de knop die geselecteerd is aan zodat je ziet welke knop geselecteerd is. Maakt ook direct het doolhof van dat level. Door het level te laden in de gird.loadGrid()
   void selectedButton() {
     levelNummer = 0;
 
@@ -100,6 +106,7 @@ class LevelSelect {
     }
   }
 
+  //stuurt aan wat er gebeurd met welke toetsen.
   void updateOnKeyboard(char keyboardKey) {
 
     selectLevel = levelSelectedX + (5 * levelSelectedY);
@@ -128,11 +135,12 @@ class LevelSelect {
       }
     }
     if (keyboardKey == 'e') {
+      //Terug naar hoofdmenu
       screen = 0;
     } else if (keyboardKey == 'q') {
 
       if (screen == 5) {
-
+        //door naar level
         screen = 2;
         soundtrack.rewind(); //soundtrack wordt geladen
         soundtrack.play();
@@ -143,6 +151,7 @@ class LevelSelect {
       }
 
       if (screen == 6) {
+        //door naar highscore
         highScreen = true;
         fromGame = false;
         screen = 1;
@@ -150,7 +159,7 @@ class LevelSelect {
 
       keys[key] = false;
     }
-
+    
     selectLevel = levelSelectedX + (5 * levelSelectedY);
   }
 }
