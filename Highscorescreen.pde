@@ -34,7 +34,6 @@ class Highscorescreen {
     buttons();
 
     if (keys['y']) {
-      println("kuhigerad.");
       saveStrings("highscore.txt", clearScore);
       saveStrings("highscoreName.txt", clearName);
     } else if (keys['e'] && fromGame == false) {
@@ -49,7 +48,7 @@ class Highscorescreen {
   void testForQ(char button) {
     
     if (button == 'q') {
-      if ( mazeCount == 6) {
+      if ( mazeCount == aantalLevels - 1) {
         screen = 0;
       } else {
         //println("blup");
@@ -120,6 +119,7 @@ class Highscorescreen {
 
   void whatHighscore() {
     for (int i = 0; i < highscore.length; i++) {
+      println(mazeCount);
       highscore[i] = int(scoreStr[i+mazeCount*10]);
       highscoreName[i] = nameStr[i+mazeCount*10];
     }
