@@ -134,7 +134,7 @@ class LevelSelect {
       if (screen == 5) {
 
         screen = 2;
-        soundtrack.rewind();
+        soundtrack.rewind(); //soundtrack wordt geladen
         soundtrack.play();
         timer.stop();
         penaltyMiliSeconds = 0;
