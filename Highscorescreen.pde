@@ -110,10 +110,14 @@ class Highscorescreen {
 
   void buttons() {
   //knoppen
-    triangle(70, 640, 105, 630, 105, 650);
-    text("E", 130, 650);
-    triangle(1210, 640, 1175, 630, 1175, 650);
-    text("Q", 1125, 650);
+    textSize(24);
+    fill(buttonColour);
+    rect(115, 622, 40, 40);
+    rect(1115, 624, 40, 40);
+    fill(textColour);
+    
+    text("Q   : Select", 1125, 650);
+    text("Back :   E", 39, 650);
   }
 
   void whatHighscore() {
