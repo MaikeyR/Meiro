@@ -6,21 +6,19 @@ class Highscorescreen {
   boolean gameEnd = true;
 
   Highscorescreen() {
-    //The highscore time gets saved in a text document just like the three initials.
-    //println(scoreStr[i+mazeCount*10]);
-    //println(highscore[i]);
-    //println(mazeCount);
     whatHighscore();
   }
 
   void update() {
-
+    //selects and overrides new highscore
     if (screen == 1 && gameEnd == false) {      
       whatHighscore();
-      addNewScore(timer.getElapsedTime(), home.currentName);
+      addNewScore(timer.getElapsedTime() + penaltyMiliSeconds, home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
-    } else if (screen == 1) {
+    } 
+    //displays highscores
+    else if (screen == 1) {
       whatHighscore();
       showHighscore();
     }
@@ -32,7 +30,7 @@ class Highscorescreen {
     
     showHighscore();
     buttons();
-
+    //resets highscores
     if (keys['y']) {
       saveStrings("highscore.txt", clearScore);
       saveStrings("highscoreName.txt", clearName);
@@ -53,7 +51,6 @@ class Highscorescreen {
       if ( mazeCount == aantalLevels - 1) {
         screen = 0;
       } else {
-        //println("blup");
         if (fromGame) {
           
           mazeCount++;
@@ -70,7 +67,6 @@ class Highscorescreen {
 
 
   void addNewScore(int score, String currentName) {
-    ///println(mazeCount);
     for (int i = 0; i < highscore.length; i++) {
 
       if (score <= highscore[i]) {
@@ -96,12 +92,12 @@ class Highscorescreen {
 
     for (int i = 0; i < highscore.length; i++) {
       textSize(28);
-      if(highscore[i] < 60000) {
+      if(highscore[i] < 600000) {
         text((highscore[i] / (1000*60*60)) % 24 +" : "+ (highscore[i] / (1000*60)) % 60 +" : "+ (highscore[i] / 1000) % 60, 860, 210 + 40 * i);
         text(highscoreName[i], 400, 210 + 40 * i);
       } else {
-       text("__:__:__", 860, 210 + 40 * i);
-       text("???", 400, 210 + 40 * i);
+        text("__:__:__", 860, 210 + 40 * i);
+        text("???", 400, 210 + 40 * i);
       }
     }
 
@@ -123,7 +119,6 @@ class Highscorescreen {
 
   void whatHighscore() {
     for (int i = 0; i < highscore.length; i++) {
-      println(mazeCount);
       highscore[i] = int(scoreStr[i+mazeCount*10]);
       highscoreName[i] = nameStr[i+mazeCount*10];
     }

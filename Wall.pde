@@ -2,6 +2,7 @@ class Wall {
 
   float x, y, size;
 
+  //initialiseert de doolhof onderdelen
   Wall() {
 
     x = 10;

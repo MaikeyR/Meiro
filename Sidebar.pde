@@ -96,7 +96,6 @@ class Sidebar {
     if (keys['q'] && pressed == true || maze.wallMoved && pressed == true) {
       teller = 0;
       MWPos = MWPos * -1;
-      println(MWPos);
       pressed = false;
     }
     

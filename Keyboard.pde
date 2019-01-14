@@ -16,6 +16,7 @@ class Keyboard {
 
   //Keyboard for the 3 initials for the highscore
   void draw() {
+    //controlls the limit for how far you can move
     clear();
     background(backgroundColour);
     if (selectedX != 9 && keys['d']) {
@@ -63,6 +64,7 @@ class Keyboard {
     fill(buttonSelectedColour);
     rect(selectedX * width / 10, selectedY * 100 + 420, width / 10, 100);
 
+    //creates the buttons for the keyboard
     for (int I = 0; I < 3; I++) {
       for (int J = 0; J < 10; J++) {
         fill(textColour);
@@ -79,7 +81,7 @@ class Keyboard {
 
     int selectedLetter = selectedX + (selectedY * 10);
 
-
+    //puts selected letter in the name
     if (keys['q'] && charNumber < 3 && selectedLetter != 19 && selectedLetter <= 26) {
       charNumber++;    
       switch(charNumber) {
@@ -106,7 +108,7 @@ class Keyboard {
       screen = 0;
     }
 
-
+    //backspace
     if (keys['e']) {
       charNumber--;
       switch(charNumber + 1) {
@@ -121,7 +123,8 @@ class Keyboard {
         break;
       }
     }
-
+    
+    //Buttons for how to move
     textSize(70);
     text(letter1, 100, 100);
     text(letter2, 200, 100);

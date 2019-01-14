@@ -32,6 +32,7 @@ class ScreenShake {
     screenShakeTimer = new Timer();
   }
 
+
   void screenShakeGroot(boolean wallMoved) {
 
     if (wallMoved) {
@@ -59,19 +60,16 @@ class ScreenShake {
   }
 
   void screenShakeCheck() {
-    //println("check");
     if (screenShakeKlein == true || screenShakeGroot == true) {
 
       if (screenShakeGroot == true && grootKlein == 0) {
 
         grootKlein = 2;
         lastShakeUpdateTime = 0;
-        //println("check");
       } else if (screenShakeKlein == true && grootKlein == 0) {
 
         grootKlein = 1;
         lastShakeUpdateTime = 0;
-        //println("check1");
       }
 
       if (screenShakeTimer.running == false) {
@@ -81,7 +79,7 @@ class ScreenShake {
       currentShakeTime = screenShakeTimer.getElapsedTime();
       shakeDt = currentShakeTime - lastShakeUpdateTime;
 
-
+      //Berekent de positie van het doolhof op de tijd van de screenshake
       if (screenShakeTimer.getElapsedTime() < 60) {
 
         if (grootKlein == 1) {
@@ -92,7 +90,6 @@ class ScreenShake {
 
           screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * 150;
           screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * 150;
-          //println(screenShakeX + "    " + screenShakeY);
         }
       } else if (screenShakeTimer.getElapsedTime() < 150) {
 
@@ -104,7 +101,6 @@ class ScreenShake {
 
           screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * -175;
           screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * -150;
-          //println(screenShakeX + "    " + screenShakeY);
         }
       } else if (screenShakeTimer.getElapsedTime() < 240) {
 
@@ -116,7 +112,6 @@ class ScreenShake {
 
           screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * 95;
           screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * 75;
-          //println(screenShakeX + "    " + screenShakeY);
         }
       } else if (screenShakeTimer.getElapsedTime() < 330) {
 
@@ -134,7 +129,6 @@ class ScreenShake {
 
           screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * -screenShakeXOffset *50;
           screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * -screenShakeYOffset *50;
-          //println(screenShakeX + "    " + screenShakeY);
         }
       }
 

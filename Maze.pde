@@ -95,7 +95,7 @@ class Maze {
           char2.posX = startX2;
           char2.posY = startY2;
           grid.currentGrid[i][j]=PATH;
-          //CODE FOR COR BUTTON
+          //CODE FOR COR/DON BUTTON
         } else if (grid.currentGrid[i][j]==COR_BUTTON) {
           fill(200, 0, 0);
           image(char1Button, X+screenShakeX, Y+screenShakeY, 35, 35);
@@ -299,6 +299,7 @@ class Maze {
             }
           }
         }
+        //falling animation
         if ((grid.currentGrid[i][j] == HOLE && char2.posX > X + 5 && char2.posX < X + 30 && char2.posY > Y + 5 && char2.posY < Y + 30 && !falling)) {
           fall.rewind();
           fall.play();
@@ -347,9 +348,9 @@ class Maze {
 
         wallMovedLastFrame = false;
       }
-
+      
+      //wall move animation
       if (wallDirection == "UP") {
-        println("UP");
         image(path, wallXStart+screenShakeX, wallYStart - 35+screenShakeY, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY + 35, 35, 35);
@@ -359,7 +360,6 @@ class Maze {
           mayMoveWall = true;
         }
       } else if (wallDirection == "DOWN") {
-        println("DOWN");
         image(path, wallXStart+screenShakeX, wallYStart+screenShakeY + 35, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY - 35, 35, 35);
@@ -369,7 +369,6 @@ class Maze {
           mayMoveWall = true;
         }
       } else if (wallDirection == "LEFT") {
-        println("LEFT");
         image(path, wallXStart - 35 +screenShakeX, wallYStart+screenShakeY, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY, 35, 35);
         image(moveableWall, wallX + 35 +screenShakeX, wallY+screenShakeY, 35, 35);
@@ -379,7 +378,6 @@ class Maze {
           mayMoveWall = true;
         }
       } else if (wallDirection == "RIGHT") {
-        println("RIGHT");
         image(path, wallXStart + 35+screenShakeX, wallYStart+screenShakeY, 35, 35);
         image(moveableWall, wallX+screenShakeX, wallY+screenShakeY, 35, 35);
         image(moveableWall, wallX - 35+screenShakeX, wallY+screenShakeY, 35, 35);

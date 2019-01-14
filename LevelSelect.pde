@@ -71,10 +71,6 @@ class LevelSelect {
     rect(115, 622, 40, 40);
     rect(1115, 624, 40, 40);
     fill(textColour);
-    //triangle(70, 640, 105, 630, 105, 650);
-    //text("E", 130, 650);
-    //triangle(1210, 640, 1175, 630, 1175, 650);
-    //text("Q", 1125, 650);
     
     text("Q   : Select", 1125, 650);
     text("Back :   E", 39, 650);
@@ -95,7 +91,6 @@ class LevelSelect {
           rect(buttonGrid[levelNummer][2], buttonGrid[levelNummer][3], 200, 150);
           fill(textColour);
           text(levelNummer + 1, buttonGrid[levelNummer][2] + 100, buttonGrid[levelNummer][3] + 75);
-          //println(levelNummer);
           mazeCount = levelNummer;
           grid.loadGrid(levelNummer);
           break;
@@ -145,7 +140,6 @@ class LevelSelect {
         penaltyMiliSeconds = 0;
         timer.start();
         highscoreScreen.gameEnd = false;
-        println("excuse me wtf");
       }
 
       if (screen == 6) {

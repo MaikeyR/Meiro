@@ -25,6 +25,7 @@ class Timer {
         return elapsed;
     }
     
+    //berekent de tijd per eenheid
     int second() {
       return ((getElapsedTime() + penaltyMiliSeconds) / 1000) % 60;
     }

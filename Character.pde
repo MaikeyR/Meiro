@@ -40,7 +40,8 @@ class Characters {
     }
     charChangedAnimation();
   }
-
+  
+  //checks collisions for Don character
   void update1(double dt) {
     //Collision for character 1
     xCord = (int) (posX / 35);
@@ -281,7 +282,8 @@ class Characters {
       maze.donButton= false;
     }
   }
-
+  
+  //changes selected character
   void changeCharacter() {
     
     if (char12 == true && charChange <= 0) {
@@ -294,6 +296,7 @@ class Characters {
     }
   }
   
+  //animates the newly selected character
   void charChangedAnimation(){
     if(char12 && charChange > 10){
       extraSize1 += growth;

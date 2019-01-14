@@ -20,7 +20,6 @@ class WallKill {
   }
 
   void kill(float x, float y, boolean character1) {
-    //println("test");
     if (character1) {
 
       r = 255;
@@ -33,7 +32,7 @@ class WallKill {
       b = 255;
     }
 
-
+    //calculeert waar de balletjes zijn bij de dood gaan animatie
     if (balls[0].movePerSecond <= stopAtSpeed) {
 
       for (Ball ball : balls) {

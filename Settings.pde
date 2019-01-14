@@ -6,7 +6,7 @@ class Settings {
   float sfxvolume = -13;
 
   void update() {
-    //The settings menu is not complete yet, more options to come.
+    //checkt welke slider geselecteerd is en welke waarde hij aangeeft, dit bepaald het volume
     soundtrack.play();
     if (keys['s'] == true && selectedY < 2) {
       selectedY++;
@@ -51,7 +51,6 @@ class Settings {
   }
 
   void draw() {
-    //volume
     textSize(30);
     fill(textColour);
     text("Music", 300, 270);

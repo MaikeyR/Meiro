@@ -259,7 +259,6 @@ void classesInit() {
 
 void draw() {
 
-  println(frameRate);
   background(backgroundColour);
 
   currentTime = (double) millis() / 1000;

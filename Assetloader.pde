@@ -1,8 +1,5 @@
 // Graphics
 PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallwayVert, door, path, tutorial, wall, moveableWall, char1wall, char2wall, char1Button, char2Button, finish, homeBackground;
-  
-// Tekst  
-
 
 // Sounds
 AudioPlayer fall, grunt, soundtrack, doorAudio, splat, brick;
@@ -28,8 +25,6 @@ public void loadAssets() {
   finish = loadImage("assets/textures/finish.png");
   homeBackground = loadImage("assets/textures/homeBackground.png");
   
-  
-    
   
   //Load sounds
   minim = new Minim(this);

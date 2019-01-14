@@ -18,14 +18,9 @@ class Home {
     char currentNameChar[] = {currentName.charAt(0), currentName.charAt(1), currentName.charAt(2)};
 
     if (currentNameChar[0] == '?' && currentNameChar[1] == '?' && currentNameChar[2] == '?') {
-
       screen = 3;
     }
-
-    if (currentNameChar[0] == '_') {
-      screen = 3;
-    }
-
+    //limits movement
     if (keys['a'] && selectedX != 0) {
       selectedX--;
     }
@@ -70,7 +65,7 @@ class Home {
 
 
 
-
+    //creates the selected button look
     fill(buttonSelectedColour);
     if (selectedX == 0 && selectedY == 0) { 
       rect(270, 300, 300, 200);
@@ -132,6 +127,7 @@ class Home {
       keys['q'] = false;
     }
     
+    //controlls in left upper corner
     fill (buttonColour); 
     rect(125, 70, 40, 40);
     rect(75, 120, 40, 40);
