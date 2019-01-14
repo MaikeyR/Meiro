@@ -72,15 +72,17 @@ class Sidebar {
 
 
     //moveable walls
-    fill(50, 100, 205);
-    stroke(255);
+    fill(255);
     if(char12) {
-      qSize = 21;
+      qSize = 24;
+      ellipse(1140, 410, char1.size + 6, char1.size + 6);
+      fill(255, 0, 0);
     } else {
       qSize = 14;
+      ellipse(1140, 410, char2.size + 6, char2.size + 6);
+      fill(0, 0, 255);
     }
     ellipse(1140, 410, qSize, qSize);
-    stroke(0);
     fill(150);
     
     if (keys['q']) {
@@ -91,7 +93,7 @@ class Sidebar {
     fill(textColour);
     text("Q", 1131, 349);
     
-    if (keys['q'] && pressed == true) {
+    if (keys['q'] && pressed == true || maze.wallMoved && pressed == true) {
       teller = 0;
       MWPos = MWPos * -1;
       println(MWPos);
