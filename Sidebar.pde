@@ -1,10 +1,13 @@
 class Sidebar {
+// sidebar variabelen
   int MWPos = 35;
   int qSize;
   int teller;
   boolean pressed = true;
+  
   void draw() {
-    //WASD controls
+  //Alle knoppen en wat ze doen laten zien in de sidebar
+    //WASD controls laten zien
     if (keys['w'] == true) {
       fill(100);
       rect(1150, 70, 40, 40);
@@ -39,7 +42,7 @@ class Sidebar {
     text("S", 1164, 150);
     text("D", 1212, 150);
 
-    //player switch
+    //player switch laten zien
     if (char12) {
       fill(255);
       ellipse(1120, 270, char1.size + 6, char1.size + 6);
@@ -71,7 +74,7 @@ class Sidebar {
     }
 
 
-    //moveable walls
+    //moveable walls laten zien
     fill(255);
     if(char12) {
       qSize = 24;
