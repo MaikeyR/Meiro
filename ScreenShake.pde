@@ -32,12 +32,21 @@ class ScreenShake {
     screenShakeTimer = new Timer();
   }
 
-  void screenShakeGroot() {
+  void screenShakeGroot(boolean wallMoved) {
 
-    if (wallMovedscreenShake && screenShakeKlein == false && screenShakeGroot == false) {
+    if (wallMoved) {
 
-      screenShakeGroot = true;
-      wallMovedscreenShake = false;
+      if (wallMovedscreenShake && screenShakeKlein == false && screenShakeGroot == false) {
+
+        screenShakeGroot = true;
+        wallMovedscreenShake = false;
+      }
+    } else if (!wallMoved) {
+
+      if (!screenShakeKlein && !screenShakeGroot) {
+
+        screenShakeGroot = true;
+      }
     }
   }
 
@@ -46,7 +55,6 @@ class ScreenShake {
     if (screenShakeKlein == false && screenShakeGroot == false) {
 
       screenShakeKlein = true;
-      wallMovedscreenShake = false;
     }
   }
 

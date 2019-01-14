@@ -24,9 +24,12 @@ class Highscorescreen {
       whatHighscore();
       showHighscore();
     }
+    
+    draw();
   }
 
   void draw() {
+    
     showHighscore();
     buttons();
 
@@ -44,6 +47,7 @@ class Highscorescreen {
   }
 
   void testForQ(char button) {
+    
     if (button == 'q') {
       if ( mazeCount == 6) {
         screen = 0;
@@ -82,6 +86,7 @@ class Highscorescreen {
   }
 
   void showHighscore() {
+    
     background(backgroundColour);
     textSize(53);
     fill(textColour);

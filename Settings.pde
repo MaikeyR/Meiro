@@ -75,5 +75,8 @@ class Settings {
     }
     fill(buttonColour);
     ellipse((sfxVolume * 4) + 440, height/2-50, 40, 40);
+    fill(0);
+    triangle(70, 640, 105, 630, 105, 650);
+    text("E", 130, 650);
   }
 }

@@ -16,9 +16,9 @@ class Home {
     currentNameArray = loadStrings("Name.txt");
     currentName = currentNameArray[0] + currentNameArray[1] + currentNameArray[2];
     char currentNameChar[] = {currentName.charAt(0), currentName.charAt(1), currentName.charAt(2)};
-    
+
     if (currentNameChar[0] == '?' && currentNameChar[1] == '?' && currentNameChar[2] == '?') {
-      
+
       screen = 3;
     }
 
@@ -43,36 +43,21 @@ class Home {
     backgroundImages[0] -= moveDistance;
     backgroundImages[1] -= moveDistance;
     farImage -= moveDistance;
-    
+
     for (int i = 0; i < 2; i++) {
-      
+
       if (backgroundImages[i] <= -1748) {
         backgroundImages[i] = farImage;
         farImage += 1748;
       }
     }
-    //println(farImage);
+
     roundedImages[0] = round(backgroundImages[0]);
     roundedImages[1] = round(backgroundImages[1]);
 
-    
+
     image(homeBackground, roundedImages[0], 0);
     image(homeBackground, roundedImages[1], 0);
-    
-    //println(backgroundImages[0] + " : " + backgroundImages[1]);
-    
-    /*if (imageX >= -1050) {
-      image(homeBackground, imageX, imageY);
-      image(homeBackground, imageX, imageY);
-      image(homeBackground, imageX + width/2+100, imageY);
-      imageX -= imagedx*dt;
-      //println(frameRate);
-    } else {
-      imageX = 0;
-      image(homeBackground, imageX, imageY);
-      image(homeBackground, imageX + width/2-100, imageY);
-      image(homeBackground, imageX + width/2+100, imageY);
-    }*/
 
 
     fill(buttonColour);
@@ -149,8 +134,6 @@ class Home {
       levelSelectedX = 0;
       levelSelectedY = 0;
       keys['q'] = false;
-      //saveStrings("highscore.txt", loadStrings("ClearScore.txt"));      //comment dit uit en ga naar de highscores in-game om alle highscores te resetten.
-      //saveStrings("highscoreName.txt", loadStrings("ClearName.txt"));
     } else if (selectedX == 0 && selectedY == 1 && keys['q']) {
       screen = 3;
       keys['q'] = false;

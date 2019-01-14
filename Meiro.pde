@@ -62,10 +62,10 @@ boolean fromGame;
 double currentTime, lastUpdateTime, dt;
 
 //colors
-color backgroundColour = #3149c4;
-color buttonColour = #2F3553;
-color buttonSelectedColour = #080C24;
-color textColour = #FCFCFC;
+color backgroundColour;
+color buttonColour;
+color buttonSelectedColour;
+color textColour;
 
 //strings
 String clearName[];
@@ -103,7 +103,7 @@ void update() {
     highscoreScreen.update();
     break;
   case 2 : 
-    screenShake.screenShakeGroot();
+    screenShake.screenShakeGroot(true);
     screenShake.screenShakeCheck();
     updateCharacters();
     break;
@@ -132,7 +132,6 @@ void render() {
     home.draw();
     break;
   case 1 : 
-    highscoreScreen.draw();
     break;
   case 2 :
     maze.wallDraw();
@@ -222,6 +221,10 @@ void variablesInit() {
   letter3 = '_';
   clearName = loadStrings("ClearName.txt");
   clearScore = loadStrings("ClearScore.txt");
+  backgroundColour = #3149c4;
+  buttonColour = #2F3553;
+  buttonSelectedColour = #080C24;
+  textColour = #FCFCFC;
 }
 
 void classesInit() {
@@ -255,7 +258,7 @@ void classesInit() {
 
 
 void draw() {
-  
+
   //println(frameRate);
   background(backgroundColour);
 
