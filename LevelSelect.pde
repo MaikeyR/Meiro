@@ -66,6 +66,15 @@ class LevelSelect {
     update();
 
     textAlign(LEFT, BASELINE);
+    
+    fill(buttonColour);
+    rect(115, 622, 40, 40);
+    rect(1115, 624, 40, 40);
+    fill(textColour);
+    triangle(70, 640, 105, 630, 105, 650);
+    text("E", 130, 650);
+    triangle(1210, 640, 1175, 630, 1175, 650);
+    text("Q", 1125, 650);
   }
 
   void selectedButton() {

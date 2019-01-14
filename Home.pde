@@ -88,10 +88,10 @@ class Home {
       rect(270, 300, 300, 200);
       image(trophy, 232, 210, 400, 400);
       fill(buttonColour);
-      rect(200, 380, 40, 40);
+      rect(210, 380, 40, 40);
       textSize(24);
       fill(textColour);
-      text("Q", 210, 408);
+      text("Q", 218, 408);
     } else if (selectedX == 1 && selectedY == 1) {
       rect(750, 550, 150, 150);
       image(settingsImage, 745, 550, 180, 180);
@@ -141,5 +141,23 @@ class Home {
       screen = 4;
       keys['q'] = false;
     }
+    
+    fill (buttonColour); 
+    rect(100, 70, 40, 40);
+    rect(50, 120, 40, 40);
+    rect(150, 120, 40, 40);
+    rect(100, 170, 40, 40);
+
+    textSize(24);
+    fill(textColour);
+    text("W", 110, 100);
+    text("A", 62, 150);
+    text("S", 113, 200);
+    text("D", 162, 150);
+
+    triangle(10, 140, 35, 150, 35, 130);
+    triangle(225, 140, 200, 150, 200, 130);
+    triangle(120, 245, 110, 220, 130, 220);
+    triangle(120, 35, 110, 60, 130, 60);
   }
 }

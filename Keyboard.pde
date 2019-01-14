@@ -127,7 +127,7 @@ class Keyboard {
     text(letter2, 200, 100);
     text(letter3, 300, 100);
 
-    fill (150); 
+    fill (buttonColour); 
     rect(1100, 70, 40, 40);
     rect(1050, 120, 40, 40);
     rect(1150, 120, 40, 40);
