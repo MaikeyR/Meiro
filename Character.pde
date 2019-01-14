@@ -2,6 +2,7 @@ float extraSize1;
 float extraSize2;
 
 class Characters {
+//vaststellen van alle variabelen van de characters
   int xCord, yCord;
   float posX;
   float posY;
@@ -16,7 +17,6 @@ class Characters {
     posX = 0;
     posY = 0;
     size = 24;
-    //extraSize = 0;
     dx = 120;
     dy = 120;
     r = 255;
@@ -25,6 +25,7 @@ class Characters {
   }
 
   void draw() {
+  //het drawen van beide characters
     fill(r, g, b);
     ellipse(posX+screenShakeX, posY+screenShakeY, size, size);
     if(char12){
@@ -41,9 +42,8 @@ class Characters {
     charChangedAnimation();
   }
   
-  //checks collisions for Don character
   void update1(double dt) {
-    //Collision for character 1
+    //Collision voor character 1
     xCord = (int) (posX / 35);
     yCord = (int) (posY / 35);
 
@@ -142,7 +142,7 @@ class Characters {
   }
 
   void update2(double dt) {
-    //Collision for character 2
+    //Collision voor character 2
 
     xCord = (int) (posX / 35);
     yCord = (int) (posY / 35);
@@ -246,7 +246,7 @@ class Characters {
   }
 
   void checkFinish() {
-    //checks if both characters are on the finish.
+    //checkt of beide characters op de finish staan
     if (char1.posX > finX && char1.posX < (finX + 35) && char1.posY > finY && char1.posY < (finY + 35)) {
       char1fin = true;
     } else {
@@ -260,6 +260,7 @@ class Characters {
     }
 
     if (char2fin && char1fin || keys['p']) {
+    //gevolgen van finishen
       char1fin = false;
       char2fin = false;
       fromGame = true;
@@ -283,9 +284,8 @@ class Characters {
     }
   }
   
-  //changes selected character
   void changeCharacter() {
-    
+    //veranderen van character
     if (char12 == true && charChange <= 0) {
       char12 = false;
       charChange = 20;
@@ -295,9 +295,10 @@ class Characters {
       charChange = 20;
     }
   }
-  
-  //animates the newly selected character
+ 
+ 
   void charChangedAnimation(){
+  //animation voor het veranderen van characters
     if(char12 && charChange > 10){
       extraSize1 += growth;
       charChange--;
