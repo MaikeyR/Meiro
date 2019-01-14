@@ -5,36 +5,33 @@ class Highscorescreen {
   String[] nameStr = loadStrings("highscoreName.txt");
   boolean gameEnd = true;
 
+
   Highscorescreen() {
+  //pakt een standaard highscore die hij laat zien
     whatHighscore();
   }
 
   void update() {
-    //selects and overrides new highscore
+    //kijkt of er net een game is gespeeld en stelt de score vast
     if (screen == 1 && gameEnd == false) {      
       whatHighscore();
       addNewScore(timer.getElapsedTime() + penaltyMiliSeconds, home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
     } 
-    //displays highscores
     else if (screen == 1) {
       whatHighscore();
-      showHighscore();
     }
     
     draw();
   }
 
   void draw() {
-    
+    //laat de highscorescherm zien
     showHighscore();
     buttons();
-    //resets highscores
-    if (keys['y']) {
-      saveStrings("highscore.txt", clearScore);
-      saveStrings("highscoreName.txt", clearName);
-    } else if (keys['e'] && fromGame == false) {
+    //terug naar levelSelect
+    if (keys['e'] && fromGame == false) {
       screen = 6;
     } else if (keys['e'] && fromGame == true) {
       soundtrack.pause();
@@ -46,7 +43,7 @@ class Highscorescreen {
   }
 
   void testForQ(char button) {
-    
+    //gaat van highscores naar het volgende level als dat kan
     if (button == 'q') {
       if ( mazeCount == aantalLevels - 1) {
         screen = 0;
@@ -67,6 +64,7 @@ class Highscorescreen {
 
 
   void addNewScore(int score, String currentName) {
+  //het bereken van de plek in de lijst van je score
     for (int i = 0; i < highscore.length; i++) {
 
       if (score <= highscore[i]) {
@@ -83,7 +81,7 @@ class Highscorescreen {
   }
 
   void showHighscore() {
-    
+    //functie voor wat er allemaal aan highscores gedrawd wordt
     background(backgroundColour);
     textSize(53);
     fill(textColour);
@@ -111,6 +109,7 @@ class Highscorescreen {
   }
 
   void buttons() {
+  //knoppen
     triangle(70, 640, 105, 630, 105, 650);
     text("E", 130, 650);
     triangle(1210, 640, 1175, 630, 1175, 650);
@@ -118,6 +117,7 @@ class Highscorescreen {
   }
 
   void whatHighscore() {
+  //fuctie voor het bepalen welke highscore lijst hij nodig heeft
     for (int i = 0; i < highscore.length; i++) {
       highscore[i] = int(scoreStr[i+mazeCount*10]);
       highscoreName[i] = nameStr[i+mazeCount*10];
