@@ -1,12 +1,12 @@
 class Sidebar {
-// sidebar variabelen
+  // sidebar variabelen
   int MWPos = 35;
   int qSize;
   int teller;
   boolean pressed = true;
-  
+
   void draw() {
-  //Alle knoppen en wat ze doen laten zien in de sidebar
+    //Alle knoppen en wat ze doen laten zien in de sidebar
     //WASD controls laten zien
     if (keys['w'] == true) {
       fill(100);
@@ -56,11 +56,11 @@ class Sidebar {
     fill(0, 0, 255);
     ellipse(1220, 270, char2.size, char2.size);
     fill (150);
-    
+
     if (keys['e'] == true) {
       fill (100);
     }
-    
+
     if (char12) {
       rect(1100, 200, 40, 40);
       textSize(24);
@@ -76,7 +76,7 @@ class Sidebar {
 
     //moveable walls laten zien
     fill(255);
-    if(char12) {
+    if (char12) {
       qSize = 24;
       ellipse(1140, 410, char1.size + 6, char1.size + 6);
       fill(255, 0, 0);
@@ -87,7 +87,7 @@ class Sidebar {
     }
     ellipse(1140, 410, qSize, qSize);
     fill(150);
-    
+
     if (keys['q']) {
       fill(100);
     } 
@@ -95,19 +95,19 @@ class Sidebar {
     textSize(24);
     fill(textColour);
     text("Q", 1131, 349);
-    
+
     if (keys['q'] && pressed == true || maze.wallMoved && pressed == true) {
       teller = 0;
       MWPos = MWPos * -1;
       pressed = false;
     }
-    
+
     teller++;
-    
+
     if (teller > 30) {
       pressed = true;
     }
-    
+
     image(moveableWall, 1180, 355 + MWPos, 35, 35);
     image(moveableWall, 1180, 355, 35, 35);
   }

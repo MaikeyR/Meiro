@@ -16,7 +16,7 @@ class LevelSelect {
   int xButtonGrid = 0;
   int yButtonGrid = 0;
   int buttonGrid[][] = new int[aantalLevels][4];
-  
+
   //Checkt welk level geselecteerd is.
   void update() {
 
@@ -42,11 +42,11 @@ class LevelSelect {
     for (yButtonGrid = 0; yButtonGrid < maxY; yButtonGrid++) {
       for (xButtonGrid = 0; xButtonGrid < maxX; xButtonGrid++) {
         if ( levelNummer >= aantalLevels ) {
-          
-           // stopt met tekenen als het aantal knoppen gelijk is aan het aantal levels.
+
+          // stopt met tekenen als het aantal knoppen gelijk is aan het aantal levels.
           break;
         }
-        
+
         fill(buttonColour);
         rect(x, y, 200, 150);
 
@@ -76,11 +76,11 @@ class LevelSelect {
     rect(115, 622, 40, 40);
     rect(1115, 624, 40, 40);
     fill(textColour);
-    
+
     text("Q   : Select", 1125, 650);
     text("Back :   E", 39, 650);
   }
-  
+
   //past de knop die geselecteerd is aan zodat je ziet welke knop geselecteerd is. Maakt ook direct het doolhof van dat level. Door het level te laden in de gird.loadGrid()
   void selectedButton() {
     levelNummer = 0;
@@ -159,7 +159,7 @@ class LevelSelect {
 
       keys[key] = false;
     }
-    
+
     selectLevel = levelSelectedX + (5 * levelSelectedY);
   }
 }

@@ -7,7 +7,7 @@ class Highscorescreen {
 
 
   Highscorescreen() {
-  //pakt een standaard highscore die hij laat zien
+    //pakt een standaard highscore die hij laat zien
     whatHighscore();
   }
 
@@ -18,11 +18,10 @@ class Highscorescreen {
       addNewScore(timer.getElapsedTime() + penaltyMiliSeconds, home.currentName);
       gameEnd = true;
       penaltyMiliSeconds = 0;
-    } 
-    else if (screen == 1) {
+    } else if (screen == 1) {
       whatHighscore();
     }
-    
+
     draw();
   }
 
@@ -49,7 +48,7 @@ class Highscorescreen {
         screen = 0;
       } else {
         if (fromGame) {
-          
+
           mazeCount++;
         }
         grid.loadGrid(mazeCount);
@@ -64,7 +63,7 @@ class Highscorescreen {
 
 
   void addNewScore(int score, String currentName) {
-  //het bereken van de plek in de lijst van je score
+    //het bereken van de plek in de lijst van je score
     for (int i = 0; i < highscore.length; i++) {
 
       if (score <= highscore[i]) {
@@ -90,7 +89,7 @@ class Highscorescreen {
 
     for (int i = 0; i < highscore.length; i++) {
       textSize(28);
-      if(highscore[i] < 600000) {
+      if (highscore[i] < 600000) {
         text((highscore[i] / (1000*60*60)) % 24 +" : "+ (highscore[i] / (1000*60)) % 60 +" : "+ (highscore[i] / 1000) % 60, 860, 210 + 40 * i);
         text(highscoreName[i], 400, 210 + 40 * i);
       } else {
@@ -109,19 +108,19 @@ class Highscorescreen {
   }
 
   void buttons() {
-  //knoppen
+    //knoppen
     textSize(24);
     fill(buttonColour);
     rect(115, 622, 40, 40);
     rect(1115, 624, 40, 40);
     fill(textColour);
-    
+
     text("Q   : Select", 1125, 650);
     text("Back :   E", 39, 650);
   }
 
   void whatHighscore() {
-  //fuctie voor het bepalen welke highscore lijst hij nodig heeft
+    //fuctie voor het bepalen welke highscore lijst hij nodig heeft
     for (int i = 0; i < highscore.length; i++) {
       highscore[i] = int(scoreStr[i+mazeCount*10]);
       highscoreName[i] = nameStr[i+mazeCount*10];

@@ -123,7 +123,7 @@ class Keyboard {
         break;
       }
     }
-    
+
     //Buttons for how to move
     textSize(70);
     text(letter1, 100, 100);

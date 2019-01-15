@@ -72,7 +72,7 @@ class Settings {
     }
     fill(buttonColour);
     ellipse((sfxVolume * 4) + 440, height/2+10, 40, 40);
-    
+
     fill(buttonColour);
     textSize(24);
     rect(115, 622, 40, 40);

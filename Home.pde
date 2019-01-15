@@ -94,7 +94,7 @@ class Home {
       fill(textColour);
       text("Q", 360, 638);
     }
-    
+
     image(trophy, 232, 210, 400, 400);
     image(playButton, 672, 190, 400, 400);
     image(titel, 320, 50, 640, 200);
@@ -126,7 +126,7 @@ class Home {
       screen = 4;
       keys['q'] = false;
     }
-    
+
     //controlls in left upper corner
     fill (buttonColour); 
     rect(125, 70, 40, 40);

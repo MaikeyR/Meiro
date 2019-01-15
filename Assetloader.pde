@@ -3,9 +3,9 @@ PImage trophy, playButton, titel, settingsImage, smallHallwayHoriz, smallHallway
 
 // Sounds
 AudioPlayer fall, grunt, soundtrack, doorAudio, splat, brick;
-  
+
 public void loadAssets() {
-  
+
   //graphics
   trophy = loadImage("assets/textures/Trophy.png");
   playButton = loadImage("assets/textures/Playbutton.png");
@@ -24,8 +24,8 @@ public void loadAssets() {
   char2Button = loadImage("assets/textures/char2Button.png");
   finish = loadImage("assets/textures/finish.png");
   homeBackground = loadImage("assets/textures/homeBackground.png");
-  
-  
+
+
   //Load sounds
   minim = new Minim(this);
   //example: name = minim.loadFile("name.mp3", 2048);

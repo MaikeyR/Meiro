@@ -316,6 +316,7 @@ class Maze {
             char2.posY = startY2;
             char2.size = 14;
             falling = false;
+            fall.pause();
             screenShake.screenShakeKlein();
           }
         }
@@ -348,7 +349,7 @@ class Maze {
 
         wallMovedLastFrame = false;
       }
-      
+
       //wall move animation
       if (wallDirection == "UP") {
         image(path, wallXStart+screenShakeX, wallYStart - 35+screenShakeY, 35, 35);

@@ -22,7 +22,6 @@ import ddf.minim.ugens.*;
 //classes
 Minim minim;
 Home home;
-//Assetloader assetLoader;
 Highscorescreen highscoreScreen;
 Settings settings;
 LevelSelect levelSelect;
@@ -72,13 +71,13 @@ String clearName[];
 String clearScore[];
 
 
-
+//Initialiseerd alles aan het begin van het spel
 void setup() {
 
   frameRate(60);
   size(1280, 720);
 
-  /**
+  /*
    Gamescreen 0 is home
    Gamescreen 1 is the highscorescreen
    Gamescreen 2 is the game
@@ -88,11 +87,15 @@ void setup() {
    Gamescreen 6 is highscoreSelect
    */
 
+  //initialiseerd alle variabelen en daarna alle classes, deze functies kun je verderop in dit tabje vinden
   variablesInit();
   classesInit();
+
+  //Laad alle assets vanaf het tabje AssetLoader
   loadAssets();
 }
 
+//Wordt in draw() opgeroepen en doet alle berekeningen afhankelijk van waar je bent
 void update() {
 
   switch(screen) {
@@ -124,6 +127,7 @@ void update() {
   }
 }
 
+//Tekent alle objecten van het juiste scherm, wordt na update aangeroepen in draw()
 void render() {
 
   switch(screen) {
@@ -159,6 +163,7 @@ void render() {
   }
 }
 
+//Roept functies op wanneer een key wordt aangeslagen, wordt opgeroepen in keyPressed()
 void onKeyPressed(char hitKey) {
 
   if (screen == 5) {
@@ -177,9 +182,7 @@ void onKeyPressed(char hitKey) {
   }
 }
 
-//void onKeyReleased(char hitKey) {
-//}
-
+//Update het character dat op dat moment actief is, wordt opgeroepen in update()
 void updateCharacters() {
 
   if (char12) {
@@ -189,6 +192,7 @@ void updateCharacters() {
   }
 }
 
+//Initialiseerd alle variabelen
 void variablesInit() {
 
   //variables
@@ -227,9 +231,10 @@ void variablesInit() {
   textColour = #FCFCFC;
 }
 
+//Initialiseerd alle classes
 void classesInit() {
 
-  //classes
+  //Classes
   home = new Home();
   highscoreScreen = new Highscorescreen();
   settings = new Settings();
@@ -256,11 +261,12 @@ void classesInit() {
 
 //----------------------------------------------------------------------------------------------------
 
-
+//Voert iedere frame alles uit wat uitgevoerd moet worden
 void draw() {
 
   background(backgroundColour);
 
+  //Houdt de tijd bij en hoeveel miliseconden er tussen iedere frame zit
   currentTime = (double) millis() / 1000;
   dt = currentTime - lastUpdateTime;
 
@@ -270,6 +276,7 @@ void draw() {
   lastUpdateTime = currentTime;
 }
 
+//Wordt aangeroepen wanneer iemand op een toets drukt en houdt bij welke toetsen ingedrukt zijn
 void keyPressed() {
 
   if (key != CODED) {
@@ -304,10 +311,9 @@ void keyPressed() {
   }
 }
 
+//Wordt aangeroepen wanneer iemand een toets loslaat en houdt bij welke toetsen ingedrukt zijn
 void keyReleased() {
   if (key != CODED) {
-
-    //onKeyReleased(key);
 
     keys[key] = false;
 

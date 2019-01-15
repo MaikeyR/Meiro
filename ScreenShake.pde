@@ -3,16 +3,10 @@ float screenShakeY = 10;
 
 class ScreenShake {
 
-  float screenShakeXOffset;
-  float screenShakeYOffset;
-  boolean screenShakeKlein;
-  boolean screenShakeGroot;
-  int grootKlein;
-  float shakeAmountKlein;
-  float shakeAmountGroot;
-  int shakeDt;
-  int lastShakeUpdateTime;
-  int currentShakeTime;
+  float shakeAmountKlein, shakeAmountGroot, shakeSpeed;
+  float screenShakeXOffset, screenShakeYOffset;
+  int shakeDt, lastShakeUpdateTime, currentShakeTime;
+  boolean screenShakeKlein, screenShakeGroot, grootKlein;
   boolean wallMovedscreenShake;
   Timer screenShakeTimer;
 
@@ -22,7 +16,8 @@ class ScreenShake {
     screenShakeYOffset = 0;
     screenShakeKlein = false;
     screenShakeGroot = false;
-    grootKlein = 0;
+    shakeSpeed = 0;
+    grootKlein = false;
     shakeAmountKlein = 1;
     shakeAmountGroot = 2;
     shakeDt = 0;
@@ -62,14 +57,16 @@ class ScreenShake {
   void screenShakeCheck() {
     if (screenShakeKlein == true || screenShakeGroot == true) {
 
-      if (screenShakeGroot == true && grootKlein == 0) {
+      if (screenShakeGroot == true && grootKlein == false) {
 
-        grootKlein = 2;
+        grootKlein = true;
         lastShakeUpdateTime = 0;
-      } else if (screenShakeKlein == true && grootKlein == 0) {
+        shakeSpeed = shakeAmountGroot;
+      } else if (screenShakeKlein == true && grootKlein == false) {
 
-        grootKlein = 1;
+        grootKlein = true;
         lastShakeUpdateTime = 0;
+        shakeSpeed = shakeAmountKlein;
       }
 
       if (screenShakeTimer.running == false) {
@@ -82,37 +79,16 @@ class ScreenShake {
       //Berekent de positie van het doolhof op de tijd van de screenshake
       if (screenShakeTimer.getElapsedTime() < 60) {
 
-        if (grootKlein == 1) {
-
-          screenShakeX += shakeAmountKlein * (shakeDt / float(1000)) * 150;
-          screenShakeY += shakeAmountKlein * (shakeDt / float(1000)) * 150;
-        } else if (grootKlein == 2) {
-
-          screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * 150;
-          screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * 150;
-        }
+        screenShakeX += shakeSpeed * (shakeDt / float(1000)) * 150;
+        screenShakeY += shakeSpeed * (shakeDt / float(1000)) * 150;
       } else if (screenShakeTimer.getElapsedTime() < 150) {
 
-        if (grootKlein == 1) {
-
-          screenShakeX += shakeAmountKlein * (shakeDt / float(1000)) * -175;
-          screenShakeY += shakeAmountKlein * (shakeDt / float(1000)) * -150;
-        } else if (grootKlein == 2) {
-
-          screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * -175;
-          screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * -150;
-        }
+        screenShakeX += shakeSpeed * (shakeDt / float(1000)) * -175;
+        screenShakeY += shakeSpeed * (shakeDt / float(1000)) * -150;
       } else if (screenShakeTimer.getElapsedTime() < 240) {
 
-        if (grootKlein == 1) {
-
-          screenShakeX += shakeAmountKlein * (shakeDt / float(1000)) * 95;
-          screenShakeY += shakeAmountKlein * (shakeDt / float(1000)) * 75;
-        } else if (grootKlein == 2) {
-
-          screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * 95;
-          screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * 75;
-        }
+        screenShakeX += shakeSpeed * (shakeDt / float(1000)) * 95;
+        screenShakeY += shakeSpeed * (shakeDt / float(1000)) * 75;
       } else if (screenShakeTimer.getElapsedTime() < 330) {
 
         if (lastShakeUpdateTime < 330) {
@@ -121,22 +97,15 @@ class ScreenShake {
           screenShakeYOffset = screenShakeY - 10;
         }
 
-        if (grootKlein == 1) {
-
-          screenShakeX += shakeAmountKlein * (shakeDt / float(1000)) * -screenShakeXOffset *50;
-          screenShakeY += shakeAmountKlein * (shakeDt / float(1000)) * -screenShakeYOffset *50;
-        } else if (grootKlein == 2) {
-
-          screenShakeX += shakeAmountGroot * (shakeDt / float(1000)) * -screenShakeXOffset *50;
-          screenShakeY += shakeAmountGroot * (shakeDt / float(1000)) * -screenShakeYOffset *50;
-        }
+        screenShakeX += shakeSpeed * (shakeDt / float(1000)) * -screenShakeXOffset *50;
+        screenShakeY += shakeSpeed * (shakeDt / float(1000)) * -screenShakeYOffset *50;
       }
 
       if (screenShakeTimer.getElapsedTime() > 330) {
 
         screenShakeX = 10;
         screenShakeY = 10;
-        grootKlein = 0;
+        grootKlein = false;
         screenShakeKlein = false;
         screenShakeGroot = false;
         screenShakeTimer.stop();

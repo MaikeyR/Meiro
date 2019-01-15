@@ -2,7 +2,7 @@ float extraSize1;
 float extraSize2;
 
 class Characters {
-//vaststellen van alle variabelen van de characters
+  //vaststellen van alle variabelen van de characters
   int xCord, yCord;
   float posX;
   float posY;
@@ -25,15 +25,15 @@ class Characters {
   }
 
   void draw() {
-  //het drawen van beide characters
+    //het drawen van beide characters
     fill(r, g, b);
     ellipse(posX+screenShakeX, posY+screenShakeY, size, size);
-    if(char12){
+    if (char12) {
       fill(textColour);
       ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize1 + 6, char1.size + extraSize1 + 6);
       fill(char1.r, g, char1.b);
       ellipse(char1.posX+screenShakeX, char1.posY+screenShakeY, char1.size + extraSize1, char1.size + extraSize1);
-    }else if(!char12){
+    } else if (!char12) {
       fill(textColour);
       ellipse(char2.posX+screenShakeX, char2.posY+screenShakeY, char2.size + extraSize2 + 6, char2.size + extraSize2 + 6);
       fill(char2.r, g, char2.b);
@@ -41,7 +41,7 @@ class Characters {
     }
     charChangedAnimation();
   }
-  
+
   void update1(double dt) {
     //Collision voor character 1
     xCord = (int) (posX / 35);
@@ -260,7 +260,7 @@ class Characters {
     }
 
     if (char2fin && char1fin || keys['p']) {
-    //gevolgen van finishen
+      //gevolgen van finishen
       char1fin = false;
       char2fin = false;
       fromGame = true;
@@ -273,43 +273,42 @@ class Characters {
       char1.posY = startY1;
       grid.currentGrid[maze.iStart1][maze.jStart1] = START1;
       grid.currentGrid[maze.iStart2][maze.jStart2] = START2;
-      if(maze.corButton){
-      grid.currentGrid[maze.corButtonDoorX][maze.corButtonDoorY] = COR_BUTTON_DOOR;
+      if (maze.corButton) {
+        grid.currentGrid[maze.corButtonDoorX][maze.corButtonDoorY] = COR_BUTTON_DOOR;
       }
-      if(maze.donButton){
+      if (maze.donButton) {
         grid.currentGrid[maze.donButtonDoorX][maze.donButtonDoorY] = DON_BUTTON_DOOR;
       }
       maze.corButton= false;
       maze.donButton= false;
     }
   }
-  
+
   void changeCharacter() {
     //veranderen van character
     if (char12 == true && charChange <= 0) {
       char12 = false;
       charChange = 20;
-      
     } else if (char12 == false && charChange <= 0) {
       char12 = true;
       charChange = 20;
     }
   }
- 
- 
-  void charChangedAnimation(){
-  //animation voor het veranderen van characters
-    if(char12 && charChange > 10){
+
+
+  void charChangedAnimation() {
+    //animation voor het veranderen van characters
+    if (char12 && charChange > 10) {
       extraSize1 += growth;
       charChange--;
-    }else if(char12 && charChange > 0){
+    } else if (char12 && charChange > 0) {
       extraSize1 -= growth;
       charChange--;
     }
-    if(!char12 && charChange > 10){
+    if (!char12 && charChange > 10) {
       extraSize2 += growth;
       charChange--;
-    }else if(!char12 && charChange > 0){
+    } else if (!char12 && charChange > 0) {
       extraSize2 -= growth;
       charChange--;
     }
